@@ -6,7 +6,7 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 18:34:12 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/03/20 20:02:08 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/03/20 23:09:01 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 
 	t_dst = (unsigned char *)dst;
 	t_src = (unsigned char *)src;
+	if (t_dst == 0 && t_src == 0)
+		return (0);
 	i = 0;
 	while (i < n)
 	{
@@ -27,5 +29,5 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 			t_dst[i] = t_src[i];
 		i++;
 	}
-	return (t_dst);
+	return (dst);
 }
