@@ -6,11 +6,13 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 22:18:39 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/03/16 22:19:30 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/03/26 01:29:46 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strlen(char *s)
+#include	"libft.h"
+
+size_t	ft_strlen(const char *s)
 {
 	int	i;
 
