@@ -6,7 +6,7 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 14:12:58 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/03/26 01:30:12 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/03/29 00:35:36 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,6 @@ int		ft_strncmp(const char *s1, const char *s2, size_t n);
 char	*ft_strrchr(const char *s, int c);
 int		ft_tolower(int c);
 int		ft_toupper(int c);
+char	*ft_substr(char const *s, unsigned int start, size_t len);
 
 #endif
