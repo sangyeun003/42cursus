@@ -17,10 +17,14 @@ $(NAME): $(OBJS)
 
 clean:
 	rm -f $(OBJS)
+	rm -f $(OBJS_BONUS)
 
 fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
+
+bonus: $(OBJS_BONUS)
+	ar r $(NAME) $(OBJS_BONUS)
 
 .PHONY: all clean fclean re bonus
