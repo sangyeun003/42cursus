@@ -6,38 +6,30 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 11:15:02 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/04/04 22:05:58 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/04/05 12:14:28 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include	"libft.h"
 
-static int	ft_strncmp(char *s1, char *s2, size_t len)
+char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
-	int	i;
+	unsigned int		i;
+	char				*h;
+	char				*n;
 
 	i = 0;
-	while (s1[i] && s2[i] && i < len)
+	h = (char *)haystack;
+	n = (char *)needle;
+	if (!(ft_strlen(n)))
+		return (h);
+	if (ft_strlen(h) < ft_strlen(n))
+		return (0);
+	while (haystack[i + ft_strlen(n) - 1] && i + ft_strlen(n) - 1 < len)
 	{
-		if (s1[i] != s2[i])
-			return (s1[i] - s2[i]);
+		if (!(ft_strncmp(h + i, n, ft_strlen(n))))
+			return (h + i);
 		i++;
 	}
-	if (i == len)
-		i--;
-	return (s1[i] - s2[i]);
-}
-
-char	*strnstr(const char *haystack, const char *needle, size_t len)
-{
-	int	i;
-	int	j;
-	int	same;
-
-	i = 0;
-	j = 0;
-	while (haystack[i] && i < len)
-	{
-		
-	}
+	return (0);
 }
