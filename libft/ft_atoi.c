@@ -6,15 +6,17 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 10:35:25 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/03/26 01:24:58 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/04/09 16:32:51 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include	"libft.h"
+
 int	ft_atoi(const char *str)
 {
-	int	i;
-	int	result;
-	int	sign;
+	int				i;
+	int				sign;
+	unsigned long	result;
 
 	result = 0;
 	sign = 1;
@@ -32,5 +34,20 @@ int	ft_atoi(const char *str)
 		result = result * 10 + str[i] - '0';
 		i++;
 	}
+	if (result > 9223372036854775807 && sign == 1)
+		return (-1);
+	else if (result - 1 > 9223372036854775807 && sign == -1)
+		return (0);
 	return (sign * result);
 }
+// #include <stdio.h>
+
+// int main()
+// {
+// 	printf("%d\n", atoi("9223372036854775807"));
+// 	printf("%d\n", atoi("-0"));
+// 	printf("%d\n", ft_atoi("9223372036854775807"));
+// 	printf("%d\n", ft_atoi("-0"));
+// 	unsigned	long i = 0;
+// 	printf("%lu\n", i - 1);
+// }

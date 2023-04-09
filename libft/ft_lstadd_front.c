@@ -6,7 +6,7 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 01:27:54 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/04/05 20:07:47 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/04/09 14:21:31 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,11 @@
 
 void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	new->next = (*lst)->next;
-	(*lst)->next = new;
+	if (!lst || !new)
+		return ;
+	if (*lst)
+		new->next = (*lst);
+	else
+		new->next = 0;
+	*lst = new;
 }
