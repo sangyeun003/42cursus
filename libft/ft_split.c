@@ -6,7 +6,7 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 14:07:10 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/04/05 17:15:54 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/04/09 19:38:02 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static int	count_word_len(char const *s, char c)
 	return (count);
 }
 
-int	alloc_word(char **result, char const *s, char c, int num_of_word)
+static int	alloc_word(char **result, char const *s, char c, int num_of_word)
 {
 	int	i;
 	int	wordlen;

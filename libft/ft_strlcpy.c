@@ -6,7 +6,7 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 21:39:10 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/03/29 12:45:22 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/04/09 20:23:14 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
-	unsigned int	i;
+	size_t	i;
 
 	if (dstsize)
 	{
@@ -26,5 +26,5 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 		}
 		dst[i] = 0;
 	}
-	return ((size_t)ft_strlen((char *)src));
+	return (ft_strlen((char *)src));
 }

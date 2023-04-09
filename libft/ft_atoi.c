@@ -6,7 +6,7 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 10:35:25 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/04/09 16:32:51 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/04/09 18:46:40 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,14 +40,3 @@ int	ft_atoi(const char *str)
 		return (0);
 	return (sign * result);
 }
-// #include <stdio.h>
-
-// int main()
-// {
-// 	printf("%d\n", atoi("9223372036854775807"));
-// 	printf("%d\n", atoi("-0"));
-// 	printf("%d\n", ft_atoi("9223372036854775807"));
-// 	printf("%d\n", ft_atoi("-0"));
-// 	unsigned	long i = 0;
-// 	printf("%lu\n", i - 1);
-// }

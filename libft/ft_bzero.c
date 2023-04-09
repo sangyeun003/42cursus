@@ -6,7 +6,7 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 18:24:39 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/03/20 20:15:11 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/04/09 20:39:00 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	ft_bzero(void *s, size_t n)
 {
-	unsigned int	i;
-	char			*tmp;
+	size_t	i;
+	char	*tmp;
 
 	tmp = (char *)s;
 	i = 0;

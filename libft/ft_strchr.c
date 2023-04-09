@@ -6,7 +6,7 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 13:59:35 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/03/26 01:36:12 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/04/09 19:45:57 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@ char	*ft_strchr(const char *s, int c)
 	int		i;
 	char	find;
 
-	find = c;
+	find = (char)c;
 	i = 0;
 	while (s[i])
 	{

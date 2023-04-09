@@ -6,7 +6,7 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 15:45:19 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/03/20 20:34:15 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/04/09 20:27:02 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	unsigned int	i;
+	size_t			i;
 	unsigned char	*t1;
 	unsigned char	*t2;
 
@@ -29,5 +29,5 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 	}
 	if (i == n)
 		return (0);
-	return (t1[i] - t2[i]);
+	return ((int)(t1[i] - t2[i]));
 }

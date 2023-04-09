@@ -6,7 +6,7 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 22:11:47 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/03/20 19:58:29 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/04/09 20:22:42 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ size_t	ft_strlcat(char *dest, char *src, unsigned int size)
 	unsigned int	i;
 	unsigned int	len;
 
-	len = ft_strlen(dest);
+	len = (unsigned int)ft_strlen(dest);
 	i = 0;
 	if (size >= len + 1)
 	{
@@ -27,8 +27,8 @@ size_t	ft_strlcat(char *dest, char *src, unsigned int size)
 			i++;
 		}
 		dest[len + i] = '\0';
-		return (len + ft_strlen(src));
+		return (len + (unsigned int)ft_strlen(src));
 	}
 	else
-		return (size + ft_strlen(src));
+		return (size + (unsigned int)ft_strlen(src));
 }

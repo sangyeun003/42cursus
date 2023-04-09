@@ -6,7 +6,7 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 10:32:34 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/03/31 10:36:59 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/04/09 20:19:59 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
-	int	i;
-	int	len;
+	size_t	i;
+	size_t	len;
 
 	len = ft_strlen(s);
 	i = 0;

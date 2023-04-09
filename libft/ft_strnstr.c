@@ -6,7 +6,7 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 11:15:02 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/04/05 12:14:28 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/04/09 20:34:09 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
-	unsigned int		i;
-	char				*h;
-	char				*n;
+	size_t	i;
+	char	*h;
+	char	*n;
 
 	i = 0;
 	h = (char *)haystack;

@@ -6,17 +6,16 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 21:55:54 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/03/20 20:05:59 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/04/09 20:20:39 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include	<stdlib.h>
 #include	"libft.h"
 
 char	*ft_strdup(const char *s1)
 {
-	int		len;
-	int		i;
+	size_t	len;
+	size_t	i;
 	char	*result;
 
 	len = ft_strlen((char *)s1);

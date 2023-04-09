@@ -6,7 +6,7 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 18:34:12 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/03/20 23:14:18 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/04/09 19:31:20 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	unsigned int	i;
+	size_t			i;
 	unsigned char	*t_dst;
 	unsigned char	*t_src;
 

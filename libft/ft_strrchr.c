@@ -6,16 +6,18 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 14:43:31 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/03/26 01:49:58 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/04/09 20:30:01 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include	"libft.h"
 
 char	*ft_strrchr(const char *s, int c)
 {
 	int		i;
 	char	find;
 
-	find = c;
+	find = (char)c;
 	i = 0;
 	while (s[i])
 		i++;

@@ -6,9 +6,11 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 13:58:45 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/03/20 20:00:52 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/04/09 19:06:07 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include	"libft.h"
 
 int	ft_tolower(int c)
 {

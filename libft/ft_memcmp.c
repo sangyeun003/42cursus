@@ -6,7 +6,7 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 18:41:10 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/03/20 19:55:26 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/04/09 20:40:16 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	unsigned int	i;
+	size_t			i;
 	unsigned char	*t1;
 	unsigned char	*t2;
 

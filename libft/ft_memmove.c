@@ -6,7 +6,7 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 21:17:09 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/03/20 19:56:08 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/04/09 19:31:37 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	*ft_memmove(void *dst, const void *src, size_t n)
 {
-	unsigned int	i;
+	size_t			i;
 	unsigned char	*t_dst;
 	unsigned char	*t_src;
 
@@ -36,5 +36,5 @@ void	*ft_memmove(void *dst, const void *src, size_t n)
 		while (n-- > 0)
 			t_dst[n] = t_src[n];
 	}
-	return ((void *)t_dst);
+	return (dst);
 }

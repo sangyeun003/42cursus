@@ -6,7 +6,7 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 11:59:49 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/03/29 12:20:36 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/04/09 20:20:30 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	int		i;
-	int		j;
-	int		len;
+	size_t	i;
+	size_t	j;
+	size_t	len;
 	char	*result;
 
-	len = (int)(ft_strlen(s1) + ft_strlen(s2));
+	len = ft_strlen(s1) + ft_strlen(s2);
 	result = (char *)malloc((len + 1) * sizeof(char));
 	if (!result)
 		return (0);
