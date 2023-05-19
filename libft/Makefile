@@ -7,10 +7,16 @@ WFLAGS=-Wall -Wextra -Werror
 NAME=libft.a
 HEADER=.
 
+ifdef BONUS
+	OBJS_FILES = $(OBJS) $(OBJS_BONUS)
+else
+	OBJS_FILES = $(OBJS)
+endif
+
 all: $(NAME)
 
-$(NAME): $(OBJS)
-	ar r $(NAME) $(OBJS)
+$(NAME): $(OBJS_FILES)
+	ar r $(NAME) $(OBJS_FILES)
 
 %.o: %.c
 	$(CC) $(WFLAGS) -c $^ -o $@ -I $(HEADER)
@@ -24,7 +30,7 @@ fclean: clean
 
 re: fclean all
 
-bonus: $(OBJS_BONUS)
-	ar r $(NAME) $(OBJS_BONUS)
+bonus:
+	make BONUS=1 all
 
 .PHONY: all clean fclean re bonus
