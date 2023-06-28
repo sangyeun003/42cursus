@@ -1,11 +1,11 @@
-SRCS=
+SRCS=ft_printf.c ft_putp.c ft_putchar.c ft_putnbr.c ft_putstr.c ft_putunsignedint.c ft_putunsignedint_hex_large.c ft_putunsignedint_hex_small.c
 OBJS=$(SRCS:.c=.o)
 SRCS_BONUS=
 OBJS_BONUS=$(SRCS_BONUS:.c=.o)
 CC=cc
 WFLAGS=-Wall -Wextra -Werror
-NAME=
-HEADER=libft.a
+NAME=ftprintf.a
+HEADER=.
 
 ifdef BONUS
 	OBJS_FILES = $(OBJS) $(OBJS_BONUS)

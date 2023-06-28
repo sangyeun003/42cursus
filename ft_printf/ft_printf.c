@@ -6,7 +6,7 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 21:44:18 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/06/28 12:16:26 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/06/28 17:15:18 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,10 @@
 
 int	ft_printf(const	char *format, ...)
 {
+	int		*result;
 	va_list	ap;
 
+	*result = 0;
 	va_start(ap, format);
 	while (*format)
 	{
@@ -26,27 +28,26 @@ int	ft_printf(const	char *format, ...)
 			if (*format == 0)
 				break ;
 			if (*format == 'c')
-				ft_putchar_fd(va_arg(ap, char), 1);
+				ft_putchar(va_arg(ap, char));
 			else if (*format == 's')
-				ft_putstr_fd(va_arg(ap, char*), 1);
+				ft_putstr(va_arg(ap, char *));
 			else if (*format == 'd' || *format == 'i')
-				ft_putnbr_fd(va_arg(ap, int), 1);
+				ft_putnbr(va_arg(ap, int));
 			else if (*format == 'u')
 				ft_putunsignedint(va_arg(ap, unsigned int));
-			// else if (*format == 'p')
-			// 	ft_putp(va_arg(ap, void*));
+			else if (*format == 'p')
+				ft_putp(va_arg(ap, void *));
 			else if (*format == 'X')
 				ft_putunsignedint_hex_large(va_arg(ap, unsigned int));
 			else if (*format == 'x')
 				ft_putunsignedint_hex_small(va_arg(ap, unsigned int));
-			format++;
+			else if (*format == '%')
+				write(1, "%", 1);
 		}
 		else
-		{
 			write(1, format, 1);
-			format++;
-		}
+		format++;
 	}
 	va_end(ap);
-	return (0);
+	return (*result);
 }

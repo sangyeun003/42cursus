@@ -1,20 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_toupper.c                                       :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/19 13:56:53 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/04/09 19:05:54 by sangyepa         ###   ########.fr       */
+/*   Created: 2023/06/28 16:00:15 by sangyepa          #+#    #+#             */
+/*   Updated: 2023/06/28 17:16:03 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include	"libft.h"
+#include	"ft_printf.h"
 
-int	ft_toupper(int c)
+void	ft_putstr(char *s)
 {
-	if (c >= 'a' && c <= 'z')
-		return (c - ('a' - 'A'));
-	return (c);
+	char	c;
+
+	while (*s)
+	{
+		c = *s;
+		write(1, &c, 1);
+		s++;
+	}
 }

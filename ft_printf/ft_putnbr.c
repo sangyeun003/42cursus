@@ -1,39 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstmap.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/05 17:28:31 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/04/09 18:44:01 by sangyepa         ###   ########.fr       */
+/*   Created: 2023/06/28 15:56:55 by sangyepa          #+#    #+#             */
+/*   Updated: 2023/06/28 17:10:50 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include	"libft.h"
+#include	"ft_printf.h"
 
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
+void	ft_putnbr(int n)
 {
-	t_list	*result;
-	t_list	*new;
-	void	*tmp;
+	char	a;
 
-	if (!lst || !f)
-		return (0);
-	result = 0;
-	while (lst)
+	a = 0;
+	if (n < 0)
 	{
-		tmp = f(lst->content);
-		new = ft_lstnew(tmp);
-		if (!new)
+		if (n == -2147483648)
 		{
-			del(tmp);
-			ft_lstclear(&result, del);
-			return (0);
+			write(1, "-2147483648", 11);
+			return ;
 		}
-		ft_lstadd_back(&result, new);
-		lst = lst->next;
+		n *= -1;
+		write(1, "-", 1);
 	}
-	new = 0;
-	return (result);
+	if (n < 10)
+	{
+		a = n + '0';
+		write(1, &a, 1);
+		return ;
+	}
+	ft_putnbr(n / 10);
+	ft_putnbr(n % 10);
 }
