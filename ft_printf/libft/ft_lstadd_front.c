@@ -1,26 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/27 21:41:58 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/06/28 12:27:21 by sangyepa         ###   ########.fr       */
+/*   Created: 2023/04/03 01:27:54 by sangyepa          #+#    #+#             */
+/*   Updated: 2023/04/09 14:21:31 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# include	<stdlib.h>
-# include	<unistd.h>
-# include	<stdarg.h>
-# include	"./libft/libft.h"
+#include	"libft.h"
 
-int		ft_printf(const	char *format, ...);
-void	ft_putunsignedint(unsigned int n);
-void	ft_putunsignedint_hex_large(unsigned int nbr);
-void	ft_putunsignedint_hex_small(unsigned int nbr);
-
-int		main(void);
-
-#endif
+void	ft_lstadd_front(t_list **lst, t_list *new)
+{
+	if (!lst || !new)
+		return ;
+	if (*lst)
+		new->next = (*lst);
+	else
+		new->next = 0;
+	*lst = new;
+}

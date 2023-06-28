@@ -1,26 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/27 21:41:58 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/06/28 12:27:21 by sangyepa         ###   ########.fr       */
+/*   Created: 2023/03/19 14:43:31 by sangyepa          #+#    #+#             */
+/*   Updated: 2023/04/09 20:30:01 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# include	<stdlib.h>
-# include	<unistd.h>
-# include	<stdarg.h>
-# include	"./libft/libft.h"
+#include	"libft.h"
 
-int		ft_printf(const	char *format, ...);
-void	ft_putunsignedint(unsigned int n);
-void	ft_putunsignedint_hex_large(unsigned int nbr);
-void	ft_putunsignedint_hex_small(unsigned int nbr);
+char	*ft_strrchr(const char *s, int c)
+{
+	int		i;
+	char	find;
 
-int		main(void);
-
-#endif
+	find = (char)c;
+	i = 0;
+	while (s[i])
+		i++;
+	while (i >= 0)
+	{
+		if ((char)s[i] == find)
+			return ((char *)&s[i]);
+		i--;
+	}
+	return (0);
+}

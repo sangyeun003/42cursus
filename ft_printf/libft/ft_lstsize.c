@@ -1,26 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/27 21:41:58 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/06/28 12:27:21 by sangyepa         ###   ########.fr       */
+/*   Created: 2023/04/03 01:28:05 by sangyepa          #+#    #+#             */
+/*   Updated: 2023/04/09 13:11:45 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# include	<stdlib.h>
-# include	<unistd.h>
-# include	<stdarg.h>
-# include	"./libft/libft.h"
+#include	"libft.h"
 
-int		ft_printf(const	char *format, ...);
-void	ft_putunsignedint(unsigned int n);
-void	ft_putunsignedint_hex_large(unsigned int nbr);
-void	ft_putunsignedint_hex_small(unsigned int nbr);
+int	ft_lstsize(t_list *lst)
+{
+	int	size;
 
-int		main(void);
-
-#endif
+	size = 1;
+	if (!lst)
+		return (0);
+	while (lst->next)
+	{
+		lst = lst->next;
+		size++;
+	}
+	return (size);
+}

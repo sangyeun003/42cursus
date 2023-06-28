@@ -1,26 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/27 21:41:58 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/06/28 12:27:21 by sangyepa         ###   ########.fr       */
+/*   Created: 2023/03/19 21:55:54 by sangyepa          #+#    #+#             */
+/*   Updated: 2023/04/09 20:20:39 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# include	<stdlib.h>
-# include	<unistd.h>
-# include	<stdarg.h>
-# include	"./libft/libft.h"
+#include	"libft.h"
 
-int		ft_printf(const	char *format, ...);
-void	ft_putunsignedint(unsigned int n);
-void	ft_putunsignedint_hex_large(unsigned int nbr);
-void	ft_putunsignedint_hex_small(unsigned int nbr);
+char	*ft_strdup(const char *s1)
+{
+	size_t	len;
+	size_t	i;
+	char	*result;
 
-int		main(void);
-
-#endif
+	len = ft_strlen((char *)s1);
+	result = (char *)malloc(sizeof(char) * (len + 1));
+	if (result == 0)
+		return (0);
+	i = 0;
+	while (i < len)
+	{
+		result[i] = s1[i];
+		i++;
+	}
+	result[i] = 0;
+	return (result);
+}

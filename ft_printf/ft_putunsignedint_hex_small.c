@@ -1,26 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_putunsignedint_hex_small.c                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/27 21:41:58 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/06/28 12:27:21 by sangyepa         ###   ########.fr       */
+/*   Created: 2023/06/27 22:11:11 by sangyepa          #+#    #+#             */
+/*   Updated: 2023/06/28 11:48:43 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# include	<stdlib.h>
-# include	<unistd.h>
-# include	<stdarg.h>
-# include	"./libft/libft.h"
+#include        "ft_printf.h"
 
-int		ft_printf(const	char *format, ...);
-void	ft_putunsignedint(unsigned int n);
-void	ft_putunsignedint_hex_large(unsigned int nbr);
-void	ft_putunsignedint_hex_small(unsigned int nbr);
+void	ft_putunsignedint_hex_small(unsigned int nbr)
+{
+	char	n;
 
-int		main(void);
-
-#endif
+	if (nbr < 16)
+	{
+		if (nbr < 10)
+			n = nbr + '0';
+		else
+			n = nbr + 87;
+		write(1, &n, 1);
+		return ;
+	}
+	ft_putunsignedint_hex_small(nbr / 16);
+	ft_putunsignedint_hex_small(nbr % 16);
+	return ;
+}

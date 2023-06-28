@@ -1,26 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/27 21:41:58 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/06/28 12:27:21 by sangyepa         ###   ########.fr       */
+/*   Created: 2023/03/29 23:22:49 by sangyepa          #+#    #+#             */
+/*   Updated: 2023/04/09 20:24:10 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# include	<stdlib.h>
-# include	<unistd.h>
-# include	<stdarg.h>
-# include	"./libft/libft.h"
+#include	"libft.h"
 
-int		ft_printf(const	char *format, ...);
-void	ft_putunsignedint(unsigned int n);
-void	ft_putunsignedint_hex_large(unsigned int nbr);
-void	ft_putunsignedint_hex_small(unsigned int nbr);
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
+{
+	char	*tmp;
+	char	*result;
+	size_t	len;
+	size_t	i;
 
-int		main(void);
-
-#endif
+	tmp = (char *)s;
+	len = ft_strlen((char *)s);
+	result = (char *)malloc((len + 1) * sizeof(char));
+	if (!result)
+		return (0);
+	i = 0;
+	while (i < len)
+	{
+		result[i] = f((unsigned int)i, tmp[i]);
+		i++;
+	}
+	result[i] = 0;
+	return (result);
+}
