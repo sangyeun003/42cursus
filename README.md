@@ -2,24 +2,21 @@
 1. Libft
 2. ft_printf
 
-va_start(ap, format);
-	if (*format == 'c')
-		ft_putchar(va_arg(ap, int));
-	else if (*format == 's')
-		ft_putstr(va_arg(ap, char *));
-	else if (*format == 'd' || *format == 'i')
-		ft_putnbr(va_arg(ap, int));
-	else if (*format == 'u')
-		ft_putunsignedint(va_arg(ap, unsigned int));
-	else if (*format == 'p')
-		ft_putp(va_arg(ap, void *));
-	else if (*format == 'X')
-		ft_putunsignedint_hex_large(va_arg(ap, unsigned int));
-	else if (*format == 'x')
-		ft_putunsignedint_hex_small(va_arg(ap, unsigned int));
-	else if (*format == '%')
+void	ft_putp(void *address, int *result)
+{
+	unsigned int	num;
+	char			*temp;
+
+	num = 0;
+	temp = (char *)address;
+	while (*temp)
 	{
-		write(1, "%", 1);
-		(*result)++;
+		if (*temp >= '0' && *temp <= '9')
+			num = num * 16 + *temp - '0';
+		else
+			num = num * 16 + *temp - 'a' + 10;
+		temp++;
 	}
-	va_end(ap);
+	ft_putunsignedint_hex_small(num, result);
+}
+

@@ -6,26 +6,27 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 22:12:50 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/06/28 17:09:06 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/06/29 14:39:17 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include	"ft_printf.h"
 
-void	ft_putp(void *address)
+void	ft_putp(unsigned long long nbr, int *result)
 {
-	unsigned int	num;
-	char			*temp;
+	char	n;
 
-	num = 0;
-	temp = (char *)address;
-	while (*temp)
+	if (nbr < 16)
 	{
-		if (*temp >= '0' && *temp <= '9')
-			num = num * 16 + *temp - '0';
+		if (nbr < 10)
+			n = nbr + '0';
 		else
-			num = num * 16 + *temp - 'a' + 10;
-		temp++;
+			n = nbr + 87;
+		write(1, &n, 1);
+		*result += 1;
+		return ;
 	}
-	ft_putunsignedint_hex_small(num);
+	ft_putp(nbr / 16, result);
+	ft_putp(nbr % 16, result);
+	return ;
 }

@@ -6,13 +6,13 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 15:56:29 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/06/28 17:08:20 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/06/29 12:07:47 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include	"ft_printf.h"
 
-void	ft_putchar(char c)
+int	ft_putchar(char c)
 {
-	write(1, &c, 1);
+	return (write(1, &c, 1));
 }

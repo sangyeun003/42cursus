@@ -1,36 +1,24 @@
-SRCS=ft_printf.c ft_putp.c ft_putchar.c ft_putnbr.c ft_putstr.c ft_putunsignedint.c ft_putunsignedint_hex_large.c ft_putunsignedint_hex_small.c
+SRCS=ft_printf.c ft_putp.c ft_putchar.c ft_putnbr.c ft_putstr.c ft_putunsignedint.c ft_putunsignedint_hex_large.c ft_putunsignedint_hex_small.c ft_check.c
 OBJS=$(SRCS:.c=.o)
-SRCS_BONUS=
-OBJS_BONUS=$(SRCS_BONUS:.c=.o)
 CC=cc
 WFLAGS=-Wall -Wextra -Werror
-NAME=ftprintf.a
+NAME=libftprintf.a
 HEADER=.
-
-ifdef BONUS
-	OBJS_FILES = $(OBJS) $(OBJS_BONUS)
-else
-	OBJS_FILES = $(OBJS)
-endif
 
 all: $(NAME)
 
-$(NAME): $(OBJS_FILES)
-	ar r $(NAME) $(OBJS_FILES)
+$(NAME): $(OBJS)
+	ar r $(NAME) $(OBJS)
 
 %.o: %.c
 	$(CC) $(WFLAGS) -c $^ -o $@ -I $(HEADER)
 
 clean:
 	rm -f $(OBJS)
-	rm -f $(OBJS_BONUS)
 
 fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
 
-bonus:
-	make BONUS=1 all
-
-.PHONY: all clean fclean re bonus
+.PHONY: all clean fclean re
