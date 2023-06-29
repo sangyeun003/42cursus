@@ -6,7 +6,7 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 14:20:33 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/06/29 15:48:11 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/06/29 19:31:13 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,5 @@ void	ft_check(va_list *ap, const char *format, int *result)
 		write(1, "%", 1);
 		*result += 1;
 	}
+	return ;
 }

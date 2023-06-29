@@ -8,7 +8,7 @@ HEADER=.
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	ar r $(NAME) $(OBJS)
+	ar rc $(NAME) $(OBJS)
 
 %.o: %.c
 	$(CC) $(WFLAGS) -c $^ -o $@ -I $(HEADER)

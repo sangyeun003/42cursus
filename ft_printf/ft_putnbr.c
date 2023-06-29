@@ -6,7 +6,7 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 15:56:55 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/06/29 13:01:55 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/06/29 19:31:23 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,5 @@ void	ft_putnbr(int n, int *result)
 	}
 	ft_putnbr(n / 10, result);
 	ft_putnbr(n % 10, result);
+	return ;
 }
