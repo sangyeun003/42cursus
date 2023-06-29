@@ -6,11 +6,10 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 21:44:18 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/06/29 15:50:33 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/06/29 18:37:15 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// 출력한 문자의 수를 return
 #include	"ft_printf.h"
 
 int	ft_printf(const	char *format, ...)

@@ -6,7 +6,7 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 21:41:58 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/06/29 15:48:32 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/06/29 18:41:16 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,5 @@ void	ft_putunsignedint(unsigned int n, int *result);
 void	ft_putunsignedint_hex_large(unsigned int nbr, int *result);
 void	ft_putunsignedint_hex_small(unsigned int nbr, int *result);
 void	ft_putnbr(int n, int *result);
-
-// int		main(void);
 
 #endif
