@@ -6,7 +6,7 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 21:44:18 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/06/29 18:37:15 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/06/30 22:37:55 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,7 @@ int	ft_printf(const	char *format, ...)
 		if (*format == '%')
 			ft_check(&ap, ++format, &result);
 		else
-		{
-			write(1, format, 1);
-			result++;
-		}
+			result += write(1, format, 1);
 		if (result < past_result)
 		{
 			va_end(ap);

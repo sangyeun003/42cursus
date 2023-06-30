@@ -1,32 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putunsignedint_hex_small.c                      :+:      :+:    :+:   */
+/*   ft_putunsignedint_hex.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/27 22:11:11 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/06/29 13:01:22 by sangyepa         ###   ########.fr       */
+/*   Created: 2023/06/28 11:47:52 by sangyepa          #+#    #+#             */
+/*   Updated: 2023/07/01 00:03:53 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include        "ft_printf.h"
 
-void	ft_putunsignedint_hex_small(unsigned int nbr, int *result)
+void	ft_putunsignedint_hex(unsigned int nbr, int *result, char x)
 {
 	char	n;
+	int		check;
 
 	if (nbr < 16)
 	{
 		if (nbr < 10)
 			n = nbr + '0';
 		else
-			n = nbr + 87;
-		write(1, &n, 1);
-		*result += 1;
+		{
+			if (x == 'X')
+				n = nbr + 55;
+			else if (x == 'x')
+				n = nbr + 87;
+		}
+		check = write(1, &n, 1);
+		if (check < 0)
+			*result = check;
+		else
+			*result += check;
 		return ;
 	}
-	ft_putunsignedint_hex_small(nbr / 16, result);
-	ft_putunsignedint_hex_small(nbr % 16, result);
-	return ;
+	ft_putunsignedint_hex(nbr / 16, result, x);
+	if (*result < 0)
+		return ;
+	ft_putunsignedint_hex(nbr % 16, result, x);
 }

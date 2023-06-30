@@ -1,4 +1,4 @@
-SRCS=ft_printf.c ft_putp.c ft_putchar.c ft_putnbr.c ft_putstr.c ft_putunsignedint.c ft_putunsignedint_hex_large.c ft_putunsignedint_hex_small.c ft_check.c
+SRCS=ft_printf.c ft_putp.c ft_putchar.c ft_put_integer.c ft_putstr.c ft_putunsignedint.c ft_putunsignedint_hex.c ft_check.c
 OBJS=$(SRCS:.c=.o)
 CC=cc
 WFLAGS=-Wall -Wextra -Werror
