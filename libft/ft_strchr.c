@@ -6,9 +6,11 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 13:59:35 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/04/09 19:45:57 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/07/03 16:55:49 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include	"libft.h"
 
 char	*ft_strchr(const char *s, int c)
 {
