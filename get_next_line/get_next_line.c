@@ -6,7 +6,7 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 18:43:00 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/06/29 18:45:53 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/07/03 17:53:39 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,20 @@
 
 char	*get_next_line(int fd)
 {
+	static char	*backup;
+	char		buf[BUFFER_SIZE + 1];
+	int			check;
 
+	if (fd < 0)
+		return (0);
+	check = 1;
+	while (check)
+	{
+		check = read(fd, buf, BUFFER_SIZE);
+		if (check < 0)
+			return (0);
+		buf[BUFFER_SIZE] = 0;
+		// backup에 buf 이어붙이기
+		
+	}
 }
