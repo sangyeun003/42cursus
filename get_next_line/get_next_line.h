@@ -6,7 +6,7 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 18:43:27 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/07/06 22:24:22 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/07/10 21:22:44 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,13 @@
 # include	<unistd.h>
 # include	<stdlib.h>
 
-// # define OPEN_MAX 8192
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 1
+# endif
+
+// # ifndef OPEN_MAX
+// #  define OPEN_MAX 8192
+// # endif
 
 char	*get_next_line(int fd);
 
