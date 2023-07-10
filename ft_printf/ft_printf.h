@@ -6,12 +6,11 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 21:41:58 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/07/01 00:09:09 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/07/10 16:19:52 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
-# include	<stdlib.h>
 # include	<unistd.h>
 # include	<stdarg.h>
 
