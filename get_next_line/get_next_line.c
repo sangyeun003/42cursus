@@ -6,12 +6,13 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 18:43:00 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/07/11 18:42:24 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/07/11 21:48:00 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include	"get_next_line.h"
 #include	<string.h>
+#include	<stdio.h>
 
 char	*get_next_line(int fd)
 {
@@ -22,7 +23,8 @@ char	*get_next_line(int fd)
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 	{
-		free(backup);
+		if (backup)
+			free(backup);
 		return (0);
 	}
 	if (backup)
@@ -39,22 +41,44 @@ char	*get_next_line(int fd)
 		free(backup);
 		return (0);
 	}
-	while (!strchr(backup, '\n'))
+	if (!backup)
+	{
+		read_size = read(fd, buf, BUFFER_SIZE);
+		if (read_size <= 0)
+		{
+			free(backup);
+			backup = 0;
+			free(buf);
+			return (0);
+		}
+		buf[read_size] = 0;
+		backup = strdup(buf);
+		if (!backup)
+		{
+			free(backup);
+			backup = 0;
+			free(buf);
+			return (0);
+		}
+	}
+	while (!strchr(backup, '\n') && read_size == BUFFER_SIZE)
 	{
 		read_size = read(fd, buf, BUFFER_SIZE);
 		if (read_size < 0)
 		{
 			free(backup);
+			backup = 0;
 			free(buf);
 			return (0);
 		}
+		else if (read_size == 0)
+			break ;
 		buf[read_size] = 0;
-		if (!backup)
-			backup = strdup(buf);
-		else
-			backup = ft_strjoin(backup, buf);
+		backup = ft_strjoin(backup, buf);
 		if (!backup)
 		{
+			free(backup);
+			backup = 0;
 			free(buf);
 			return (0);
 		}
@@ -63,18 +87,26 @@ char	*get_next_line(int fd)
 	if (!line)
 	{
 		free(backup);
+		backup = 0;
 		free(buf);
 		return (0);
 	}
-	*(strchr(line, '\n') + 1) = 0;
-	backup = strchr(backup, '\n') + 1;
-	line = strdup(line);
-	if (!line)
+	if (strchr(line, '\n'))
+		*(strchr(line, '\n') + 1) = 0;
+	if (strchr(backup, '\n'))
 	{
-		free(backup);
-		free(buf);
-		return (0);
+		backup = strchr(backup, '\n') + 1;
+		line = strdup(line);
+		if (!line)
+		{
+			free(backup);
+			backup = 0;
+			free(buf);
+			return (0);
+		}
 	}
+	else
+		backup = 0;
 	return (line);
 }
 
@@ -82,3 +114,5 @@ char	*get_next_line(int fd)
 
 // 1. 읽은거에 개행이 들어있을 때
 // 2. 읽은거에 개행이 없을 때 -> 더 읽어야함
+	// i) 계속 읽다가 개행을 만나면 1로 가면 됨
+	// ii)EOF 만남

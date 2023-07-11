@@ -1,2 +1,1 @@
-aaaaaabcd
-bbbbbccccccc
+1
