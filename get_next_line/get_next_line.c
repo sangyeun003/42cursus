@@ -6,7 +6,7 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 18:43:00 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/07/11 21:48:00 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/07/14 23:58:40 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ char	*get_next_line(int fd)
 {
 	static char	*backup;
 	char		*line;
+	char		*temp;
 	char		*buf;
 	int			read_size;
 
@@ -38,30 +39,20 @@ char	*get_next_line(int fd)
 	buf = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char));
 	if (!buf)
 	{
-		free(backup);
+		if (backup)
+			free(backup);
 		return (0);
 	}
 	if (!backup)
 	{
-		read_size = read(fd, buf, BUFFER_SIZE);
-		if (read_size <= 0)
-		{
-			free(backup);
-			backup = 0;
-			free(buf);
-			return (0);
-		}
-		buf[read_size] = 0;
-		backup = strdup(buf);
+		backup = strdup("");
 		if (!backup)
 		{
-			free(backup);
-			backup = 0;
 			free(buf);
 			return (0);
 		}
 	}
-	while (!strchr(backup, '\n') && read_size == BUFFER_SIZE)
+	while (!strchr(buf, '\n'))
 	{
 		read_size = read(fd, buf, BUFFER_SIZE);
 		if (read_size < 0)
@@ -74,7 +65,9 @@ char	*get_next_line(int fd)
 		else if (read_size == 0)
 			break ;
 		buf[read_size] = 0;
-		backup = ft_strjoin(backup, buf);
+		temp = backup;
+		backup = ft_strjoin(temp, buf);
+		free(temp);
 		if (!backup)
 		{
 			free(backup);
@@ -83,7 +76,14 @@ char	*get_next_line(int fd)
 			return (0);
 		}
 	}
-	line = strdup(backup);
+	line = backup;
+	if (strchr(line, '\n'))
+		*(strchr(line, '\n') + 1) = 0;
+	if (strchr(backup, '\n') && *(strchr(backup, '\n') + 1))
+		backup = strchr(backup, '\n') + 1;
+	else if (!*(strchr(backup, '\n') + 1))
+		backup = 0;
+	line = strdup(line);
 	if (!line)
 	{
 		free(backup);
@@ -91,22 +91,7 @@ char	*get_next_line(int fd)
 		free(buf);
 		return (0);
 	}
-	if (strchr(line, '\n'))
-		*(strchr(line, '\n') + 1) = 0;
-	if (strchr(backup, '\n'))
-	{
-		backup = strchr(backup, '\n') + 1;
-		line = strdup(line);
-		if (!line)
-		{
-			free(backup);
-			backup = 0;
-			free(buf);
-			return (0);
-		}
-	}
-	else
-		backup = 0;
+	free(buf);
 	return (line);
 }
 
