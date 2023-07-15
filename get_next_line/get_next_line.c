@@ -6,7 +6,7 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 18:43:00 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/07/15 21:15:15 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/07/16 01:58:58 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,12 @@ char	*get_next_line(int fd)
 		}
 	}
 // 읽어오는 단계
+	// printf("backup1: %s\n", backup);
 	read_size = 1;
 	while (!strchr(buf, '\n') && read_size != 0)
 	{
 		read_size = read(fd, buf, BUFFER_SIZE);
-		// printf("%d\n", read_size);
+		// printf("read_size: %d\n", read_size);
 		if (read_size < 0)
 		{
 			backup = 0;
@@ -70,14 +71,19 @@ char	*get_next_line(int fd)
 	// printf("buf: %s\n", buf);
 	free(buf);
 	buf = 0;
-	// printf("%s, ", backup);
+	// printf("backup2: %s\n", backup);
 // line에 backup값 다듬어서 저장하는 단계
 	if (*backup == 0)
 	{
 		backup = 0;
 		return (0);
 	}
-	line = backup;
+	line = strdup(backup);
+	if (!line)
+	{
+		backup = 0;
+		return (0);
+	}
 	if (strchr(line, '\n'))
 		*(strchr(line, '\n') + 1) = 0;
 	line = strdup(line);
@@ -87,10 +93,12 @@ char	*get_next_line(int fd)
 		return (0);
 	}
 // backup에서 반환한 부분 삭제하는 단계 -> 문제!
-	if (strchr(backup, '\n') && *(strchr(backup, '\n') + 1) != 0)
+	// printf("strchr: %s\n", strchr(backup, '\n'));
+	if (strchr(backup, '\n'))
 		backup = strchr(backup, '\n') + 1;
-	// else
-	// 	backup = 0;
-	// printf("%s", backup);
+	else
+		backup = 0;
+	// printf("backup3: %s\n", backup);
+
 	return (line);
 }

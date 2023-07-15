@@ -6,7 +6,7 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 18:43:27 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/07/15 20:44:57 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/07/16 02:02:03 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 # include	<stdlib.h>
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 3
+#  define BUFFER_SIZE 6
 # endif
 
 // # ifndef OPEN_MAX

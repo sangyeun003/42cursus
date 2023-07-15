@@ -22,9 +22,10 @@ char	*sss()
 	return (a++);
 }
 
-void	point(char *test)
+void	point(char *test)	// 주소 복사해서 free해도 적용됨
 {
-	test++;
+	// test++;
+	free(test);
 	return ;
 }
 #define BUFFERSIZE 4
@@ -33,9 +34,10 @@ int main(void)
 	int		check;
 	int		fd = open("a.txt", O_RDONLY);
 	char	buf[BUFFERSIZE + 1];
-	// char	*test = "abc";
+	// char	test[4] = "abc";
 	// char	*test2 = test;
-	// printf("%s\n", ++test2);
+	// *test2 = 48;
+	// printf("%s\n", test2);
 	// printf("%s\n", test);
 	// point(test);
 	// printf("%s\n", test);
@@ -48,8 +50,10 @@ int main(void)
 	// buf[BUFFERSIZE] = 0;
 	// printf("%s", buf);
 
-	printf("%s, ", get_next_line(fd));
-	printf("%s, ", get_next_line(fd));
+	printf("1st. %s\n", get_next_line(fd));
+	printf("2nd. %s\n", get_next_line(fd));
+	printf("3th. %s\n", get_next_line(1));
+	printf("4th. %s\n", get_next_line(-1));
 
 	// printf("%s", get_next_line(fd));
 	// printf("%d\n", read(fd, buf, 20));
