@@ -24,8 +24,8 @@ char	*sss()
 
 void	point(char *test)	// 주소 복사해서 free해도 적용됨
 {
-	// test++;
-	free(test);
+	test++;
+	// free(test);
 	return ;
 }
 #define BUFFERSIZE 4
@@ -52,8 +52,9 @@ int main(void)
 
 	printf("1st. %s\n", get_next_line(fd));
 	printf("2nd. %s\n", get_next_line(fd));
-	printf("3th. %s\n", get_next_line(1));
-	printf("4th. %s\n", get_next_line(-1));
+	printf("3th. %s\n", get_next_line(fd));
+	printf("4th. %s\n", get_next_line(fd));
+	printf("5th. %s\n", get_next_line(-1));
 
 	// printf("%s", get_next_line(fd));
 	// printf("%d\n", read(fd, buf, 20));

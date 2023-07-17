@@ -6,7 +6,7 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 18:43:27 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/07/16 02:02:03 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/07/17 14:46:09 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,8 @@
 # include	<stdlib.h>
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 6
+#  define BUFFER_SIZE 1
 # endif
-
-// # ifndef OPEN_MAX
-// #  define OPEN_MAX 8192
-// # endif
 
 char	*get_next_line(int fd);
 char	*ft_strjoin(char const *s1, char const *s2);
