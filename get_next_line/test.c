@@ -33,7 +33,7 @@ int main(void)
 {
 	int		check;
 	int		fd = open("a.txt", O_RDONLY);
-	char	buf[BUFFERSIZE + 1];
+	char	*buf;
 	// char	test[4] = "abc";
 	// char	*test2 = test;
 	// *test2 = 48;
@@ -42,9 +42,16 @@ int main(void)
 	// point(test);
 	// printf("%s\n", test);
 
+	buf = malloc((BUFFERSIZE + 1) * sizeof(char));
 	// check = read(fd, buf, BUFFERSIZE);
 	// buf[BUFFERSIZE] = 0;
-	// printf("%s", buf);
+	// printf("%s\n", buf);
+
+	// free(buf);
+	// printf("%s\n", buf);
+
+	// buf = 0;
+	// printf("%s\n", buf);
 
 	// check = read(fd, buf, BUFFERSIZE);
 	// buf[BUFFERSIZE] = 0;
