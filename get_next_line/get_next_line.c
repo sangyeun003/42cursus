@@ -6,18 +6,19 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 18:43:00 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/07/19 13:41:17 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/07/19 21:20:02 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include	"get_next_line.h"
-#include	<string.h>
-#include	<stdio.h>
-#include	<fcntl.h>
+// #include	<string.h>
+// #include	<stdio.h>
+// #include	<fcntl.h>
 
 char	*get_next_line(int fd)
 {
 	static char	*backup;
+	char		*temp;
 	char		*line;
 	char		*buf;
 	int			read_size;
@@ -48,13 +49,16 @@ char	*get_next_line(int fd)
 		backup = ft_strdup("");
 		if (!backup)
 		{
+			free(backup);
 			free(buf);
+			backup = 0;
 			return (0);
 		}
 	}
 // 읽어오는 단계
 	// printf("backup1: %s\n", backup);
 	read_size = 1;
+	*buf = 0;	// 이거 안해주면 while 조건에서 strchr할 때 heap-buffer-overflow 남.
 	while (!ft_strchr(buf, '\n') && read_size != 0)
 	{
 		read_size = read(fd, buf, BUFFER_SIZE);
@@ -62,12 +66,21 @@ char	*get_next_line(int fd)
 		if (read_size < 0)
 		{
 			free(backup);
-			backup = 0;
 			free(buf);
+			backup = 0;
 			return (0);
 		}
 		buf[read_size] = 0;
-		backup = ft_strjoin(backup, buf);
+		temp = ft_strdup(backup);
+		if (!temp)
+		{
+			free(backup);
+			free(buf);
+			backup = 0;
+			return (0);
+		}
+		backup = ft_strjoin(temp, buf);
+		free(temp);
 		if (!backup)
 		{
 			free(buf);
@@ -101,7 +114,7 @@ char	*get_next_line(int fd)
 		backup = 0;
 		return (0);
 	}
-// backup에서 반환한 부분 삭제하는 단계 -> 문제!
+// backup에서 반환한 부분 삭제하는 단계
 	// printf("ft_strchr: %s\n", ft_strchr(backup, '\n'));
 	if (ft_strchr(backup, '\n'))
 	{
@@ -114,10 +127,11 @@ char	*get_next_line(int fd)
 		}
 	}
 	else
+	{
+		free(backup);
 		backup = 0;
+	}
 	// printf("backup3: %s\n", backup);
 
 	return (line);
 }
-
-// a.txt에 개행 여러 개 && BUFFER_SIZE > 1일 때 오류
