@@ -42,9 +42,11 @@ int main(void)
 	// point(test);
 	// printf("%s\n", test);
 
-	buf = malloc((BUFFERSIZE + 1) * sizeof(char));
+	// buf = malloc((BUFFERSIZE + 1) * sizeof(char));
 	// check = read(fd, buf, BUFFERSIZE);
 	// buf[BUFFERSIZE] = 0;
+	// printf("%s\n", buf);
+	// buf = ft_strjoin(buf, "123");
 	// printf("%s\n", buf);
 
 	// free(buf);
@@ -56,12 +58,15 @@ int main(void)
 	// check = read(fd, buf, BUFFERSIZE);
 	// buf[BUFFERSIZE] = 0;
 	// printf("%s", buf);
-
-	printf("1st. %s\n", get_next_line(fd));
-	printf("2nd. %s\n", get_next_line(fd));
-	printf("3th. %s\n", get_next_line(fd));
-	printf("4th. %s\n", get_next_line(fd));
-	printf("5th. %s\n", get_next_line(-1));
+	int i = 1;
+	while (1)
+	{
+		buf = get_next_line(fd);
+		if (buf)
+			printf("%d. %s\n", i++, buf);
+		else
+			break ;
+	}
 
 	// printf("%s", get_next_line(fd));
 	// printf("%d\n", read(fd, buf, 20));
