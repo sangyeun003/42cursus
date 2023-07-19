@@ -6,7 +6,7 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 18:43:00 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/07/19 22:22:57 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/07/19 22:32:45 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ char	*get_next_line(int fd)
 	free(buf);
 	buf = 0;
 // line에 backup값 다듬어서 저장하는 단계
-	if (*backup == 0)
+	if (*backup == 0)	// read한게 NULL뿐인 경우
 	{
 		free(backup);
 		backup = 0;
