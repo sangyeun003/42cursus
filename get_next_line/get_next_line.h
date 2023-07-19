@@ -6,7 +6,7 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 18:43:27 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/07/19 21:53:32 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/07/20 01:11:29 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 # include	<stdlib.h>
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1000000000
+#  define BUFFER_SIZE 1
 # endif
 
 char	*get_next_line(int fd);

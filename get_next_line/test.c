@@ -58,16 +58,23 @@ int main(void)
 	// check = read(fd, buf, BUFFERSIZE);
 	// buf[BUFFERSIZE] = 0;
 	// printf("%s", buf);
-	int i = 1;
-	while (1)
-	{
-		buf = get_next_line(fd);
-		if (buf)
-			printf("%d. %s\n", i++, buf);
-		else
-			break ;
-	}
+	// int i = 1;
+	// while (1)
+	// {
+	// 	buf = get_next_line(fd);
+	// 	if (buf)
+	// 		printf("%d. %s\n", i++, buf);
+	// 	else
+	// 		break ;
+	// }
+	printf("1. %s\n", get_next_line(fd));
+	printf("2. %s\n", get_next_line(fd));
+	printf("3. %s\n", get_next_line(fd));
+	printf("4. %s\n", get_next_line(fd));
+	printf("5. %s\n", get_next_line(fd));
 
+	// system("leaks a.out");
+	
 	// printf("%s", get_next_line(fd));
 	// printf("%d\n", read(fd, buf, 20));
 	// printf("%d\n", read(fd, buf, 3));
