@@ -6,14 +6,11 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 18:43:00 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/07/19 21:20:02 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/07/19 22:22:57 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include	"get_next_line.h"
-// #include	<string.h>
-// #include	<stdio.h>
-// #include	<fcntl.h>
 
 char	*get_next_line(int fd)
 {
@@ -49,25 +46,23 @@ char	*get_next_line(int fd)
 		backup = ft_strdup("");
 		if (!backup)
 		{
-			free(backup);
 			free(buf);
-			backup = 0;
+			buf = 0;
 			return (0);
 		}
 	}
 // 읽어오는 단계
-	// printf("backup1: %s\n", backup);
 	read_size = 1;
 	*buf = 0;	// 이거 안해주면 while 조건에서 strchr할 때 heap-buffer-overflow 남.
 	while (!ft_strchr(buf, '\n') && read_size != 0)
 	{
 		read_size = read(fd, buf, BUFFER_SIZE);
-		// printf("read_size: %d\n", read_size);
 		if (read_size < 0)
 		{
 			free(backup);
 			free(buf);
 			backup = 0;
+			buf = 0;
 			return (0);
 		}
 		buf[read_size] = 0;
@@ -77,6 +72,7 @@ char	*get_next_line(int fd)
 			free(backup);
 			free(buf);
 			backup = 0;
+			buf = 0;
 			return (0);
 		}
 		backup = ft_strjoin(temp, buf);
@@ -84,13 +80,12 @@ char	*get_next_line(int fd)
 		if (!backup)
 		{
 			free(buf);
+			buf = 0;
 			return (0);
 		}
 	}
-	// printf("buf: %s\n", buf);
 	free(buf);
 	buf = 0;
-	// printf("backup2: %s\n", backup);
 // line에 backup값 다듬어서 저장하는 단계
 	if (*backup == 0)
 	{
@@ -101,7 +96,9 @@ char	*get_next_line(int fd)
 	line = ft_strdup(backup);
 	if (!line)
 	{
+		free(line);
 		free(backup);
+		line = 0;
 		backup = 0;
 		return (0);
 	}
@@ -110,19 +107,23 @@ char	*get_next_line(int fd)
 	line = ft_strdup(line);
 	if (!line)
 	{
+		free(line);
 		free(backup);
+		line = 0;
 		backup = 0;
 		return (0);
 	}
 // backup에서 반환한 부분 삭제하는 단계
-	// printf("ft_strchr: %s\n", ft_strchr(backup, '\n'));
 	if (ft_strchr(backup, '\n'))
 	{
-		backup = ft_strchr(backup, '\n') + 1;	// substr 이용?
+		backup = ft_strchr(backup, '\n') + 1;
 		backup = ft_strdup(backup);
 		if (!backup)
 		{
 			free(line);
+			free(backup);
+			line = 0;
+			backup = 0;
 			return (0);
 		}
 	}
@@ -131,7 +132,6 @@ char	*get_next_line(int fd)
 		free(backup);
 		backup = 0;
 	}
-	// printf("backup3: %s\n", backup);
 
 	return (line);
 }
