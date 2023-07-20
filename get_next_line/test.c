@@ -73,7 +73,7 @@ int main(void)
 	printf("4. %s\n", get_next_line(fd));
 	printf("5. %s\n", get_next_line(fd));
 
-	// system("leaks a.out");
+	system("leaks a.out");
 	
 	// printf("%s", get_next_line(fd));
 	// printf("%d\n", read(fd, buf, 20));

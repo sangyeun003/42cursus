@@ -6,11 +6,27 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 18:43:00 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/07/20 20:39:42 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/07/20 21:27:51 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include	"get_next_line.h"
+
+void	ft_free_one_str(char **str)
+{
+	free(*str);
+	*str = 0;
+
+	return ;
+}
+
+void	ft_free_two_str(char **str1, char **str2)
+{
+	free(*str1);
+	free(*str2);
+	*str1 = 0;
+	*str2 = 0;
+}
 
 char	*get_next_line(int fd)
 {
@@ -23,10 +39,7 @@ char	*get_next_line(int fd)
 	if (fd < 0 || fd > 8192 || BUFFER_SIZE <= 0)
 	{
 		if (backup)
-		{
-			free(backup);
-			backup = 0;
-		}
+			ft_free_one_str(&backup);
 		return (0);
 	}
 // buf 동적할당
@@ -34,10 +47,7 @@ char	*get_next_line(int fd)
 	if (!buf)
 	{
 		if (backup)
-		{
-			free(backup);
-			backup = 0;
-		}
+			ft_free_one_str(&backup);
 		return (0);
 	}
 // backup에 strjoin하기 위해 초기화해줌
@@ -46,8 +56,7 @@ char	*get_next_line(int fd)
 		backup = ft_strdup("");
 		if (!backup)
 		{
-			free(buf);
-			buf = 0;
+			ft_free_one_str(&buf);
 			return (0);
 		}
 	}
@@ -59,46 +68,36 @@ char	*get_next_line(int fd)
 		read_size = read(fd, buf, BUFFER_SIZE);
 		if (read_size < 0)
 		{
-			free(backup);
-			free(buf);
-			backup = 0;
-			buf = 0;
+			ft_free_two_str(&backup, &buf);
 			return (0);
 		}
 		buf[read_size] = 0;
 		temp = ft_strdup(backup);
+		ft_free_one_str(&backup);
 		if (!temp)
 		{
-			free(backup);
-			free(buf);
-			backup = 0;
-			buf = 0;
+			ft_free_two_str(&backup, &buf);
 			return (0);
 		}
-		free(backup);
 		backup = ft_strjoin(temp, buf);
-		free(temp);
 		if (!backup)
 		{
-			free(buf);
-			buf = 0;
+			ft_free_two_str(&temp, &buf);
 			return (0);
 		}
+		free(temp);
 	}
-	free(buf);
-	buf = 0;
+	ft_free_one_str(&buf);
 // line에 backup값 다듬어서 저장하는 단계
 	if (*backup == 0)	// read한게 NULL뿐인 경우
 	{
-		free(backup);
-		backup = 0;
+		ft_free_one_str(&backup);
 		return (0);
 	}
 	temp = ft_strdup(backup);
 	if (!temp)
 	{
-		free(backup);
-		backup = 0;
+		ft_free_one_str(&backup);
 		return (0);
 	}
 	if (ft_strchr(temp, '\n'))
@@ -106,10 +105,7 @@ char	*get_next_line(int fd)
 	line = ft_strdup(temp);
 	if (!line)
 	{
-		free(line);
-		free(backup);
-		line = 0;
-		backup = 0;
+		ft_free_two_str(&temp, &backup);
 		return (0);
 	}
 	free(temp);
@@ -119,27 +115,19 @@ char	*get_next_line(int fd)
 		temp = ft_strdup(ft_strchr(backup, '\n') + 1);
 		if (!temp)
 		{
-			free(line);
-			free(backup);
-			line = 0;
-			backup = 0;
+			ft_free_two_str(&backup, &line);
 			return (0);
 		}
+		free(backup);
 		backup = ft_strdup(temp);
+		free(temp);
 		if (!backup)
 		{
-			free(line);
-			free(backup);
-			line = 0;
-			backup = 0;
+			ft_free_one_str(&line);
 			return (0);
 		}
 	}
-	else
-	{
-		free(backup);
-		backup = 0;
-	}
-
+	else	// 끝에 개행 없고 EOF
+		ft_free_one_str(&backup);
 	return (line);
 }
