@@ -6,7 +6,7 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 18:43:00 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/07/20 22:17:46 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/07/20 22:30:25 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,45 +81,54 @@ int	ft_refine_backup(char **backup, char **line)
 	return (1);
 }
 
+int	ft_read(int fd, char **backup, char **buf)
+{
+	int		read_size;
+	char	*temp;
+
+	read_size = 1;
+	**buf = 0;
+	while (!ft_strchr(*buf, '\n') && read_size != 0)
+	{
+		read_size = read(fd, *buf, BUFFER_SIZE);
+		if (read_size < 0)
+		{
+			ft_free_two_str(backup, buf);
+			return (0);
+		}
+		(*buf)[read_size] = 0;
+		temp = ft_strdup(*backup);
+		ft_free_one_str(backup);
+		if (!temp)
+		{
+			ft_free_two_str(backup, buf);
+			return (0);
+		}
+		*backup = ft_strjoin(temp, *buf);
+		if (!*backup)
+		{
+			ft_free_two_str(&temp, buf);
+			return (0);
+		}
+		free(temp);
+	}
+	ft_free_one_str(buf);
+	return (1);
+}
+
 char	*get_next_line(int fd)
 {
 	static char	*backup;
 	char		*temp;
 	char		*line;
 	char		*buf;
-	int			read_size;
 
 // 초기 설정
 	if (!ft_initial_setting(fd, &backup, &buf))
 		return (0);
 // 읽어오는 단계
-	read_size = 1;
-	*buf = 0;	// 이거 안해주면 while 조건에서 strchr할 때 heap-buffer-overflow 남.
-	while (!ft_strchr(buf, '\n') && read_size != 0)
-	{
-		read_size = read(fd, buf, BUFFER_SIZE);
-		if (read_size < 0)
-		{
-			ft_free_two_str(&backup, &buf);
-			return (0);
-		}
-		buf[read_size] = 0;
-		temp = ft_strdup(backup);
-		ft_free_one_str(&backup);
-		if (!temp)
-		{
-			ft_free_two_str(&backup, &buf);
-			return (0);
-		}
-		backup = ft_strjoin(temp, buf);
-		if (!backup)
-		{
-			ft_free_two_str(&temp, &buf);
-			return (0);
-		}
-		free(temp);
-	}
-	ft_free_one_str(&buf);
+	if (!ft_read(fd, &backup, &buf))
+		return (0);
 // line에 backup값 다듬어서 저장하는 단계
 	if (*backup == 0)	// read한게 NULL뿐인 경우
 	{
