@@ -6,11 +6,37 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 18:43:33 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/07/19 21:53:39 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/07/20 22:35:14 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include	"get_next_line.h"
+
+int	ft_refine_backup(char **backup, char **line)
+{
+	char	*temp;
+
+	if (ft_strchr(*backup, '\n'))
+	{
+		temp = ft_strdup(ft_strchr(*backup, '\n') + 1);
+		if (!temp)
+		{
+			ft_free_two_str(backup, line);
+			return (0);
+		}
+		free(*backup);
+		*backup = ft_strdup(temp);
+		free(temp);
+		if (!*backup)
+		{
+			ft_free_one_str(line);
+			return (0);
+		}
+	}
+	else
+		ft_free_one_str(backup);
+	return (1);
+}
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {

@@ -6,7 +6,7 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 18:43:27 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/07/20 01:11:29 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/07/20 22:41:52 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,12 @@
 # endif
 
 char	*get_next_line(int fd);
+int		ft_initial_setting(int fd, char **backup, char **buf);
+int		ft_make_return_value(char **backup, char **line);
+int		ft_read(int fd, char **backup, char **buf);
+int		ft_refine_backup(char **backup, char **line);
+void	ft_free_one_str(char **str);
+void	ft_free_two_str(char **str1, char **str2);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strchr(const char *s, int c);
 char	*ft_strdup(const char *s1);

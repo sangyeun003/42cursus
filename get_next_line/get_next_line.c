@@ -6,7 +6,7 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 18:43:00 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/07/20 22:30:25 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/07/20 22:41:01 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,31 +55,6 @@ int	ft_initial_setting(int fd, char **backup, char **buf)
 	return (1);
 }
 
-int	ft_refine_backup(char **backup, char **line)
-{
-	char	*temp;
-
-	if (ft_strchr(*backup, '\n'))
-	{
-		temp = ft_strdup(ft_strchr(*backup, '\n') + 1);
-		if (!temp)
-		{
-			ft_free_two_str(backup, line);
-			return (0);
-		}
-		free(*backup);
-		*backup = ft_strdup(temp);
-		free(temp);
-		if (!*backup)
-		{
-			ft_free_one_str(line);
-			return (0);
-		}
-	}
-	else
-		ft_free_one_str(backup);
-	return (1);
-}
 
 int	ft_read(int fd, char **backup, char **buf)
 {
@@ -116,10 +91,36 @@ int	ft_read(int fd, char **backup, char **buf)
 	return (1);
 }
 
+int	ft_make_return_value(char **backup, char **line)
+{
+	char	*temp;
+
+	if (**backup == 0)
+	{
+		ft_free_one_str(backup);
+		return (0);
+	}
+	temp = ft_strdup(*backup);
+	if (!temp)
+	{
+		ft_free_one_str(backup);
+		return (0);
+	}
+	if (ft_strchr(temp, '\n'))
+		*(ft_strchr(temp, '\n') + 1) = 0;
+	*line = ft_strdup(temp);
+	if (!*line)
+	{
+		ft_free_two_str(&temp, backup);
+		return (0);
+	}
+	free(temp);
+	return (1);
+}
+
 char	*get_next_line(int fd)
 {
 	static char	*backup;
-	char		*temp;
 	char		*line;
 	char		*buf;
 
@@ -130,26 +131,8 @@ char	*get_next_line(int fd)
 	if (!ft_read(fd, &backup, &buf))
 		return (0);
 // line에 backup값 다듬어서 저장하는 단계
-	if (*backup == 0)	// read한게 NULL뿐인 경우
-	{
-		ft_free_one_str(&backup);
+	if (!ft_make_return_value(&backup, &line))
 		return (0);
-	}
-	temp = ft_strdup(backup);
-	if (!temp)
-	{
-		ft_free_one_str(&backup);
-		return (0);
-	}
-	if (ft_strchr(temp, '\n'))
-		*(ft_strchr(temp, '\n') + 1) = 0;
-	line = ft_strdup(temp);
-	if (!line)
-	{
-		ft_free_two_str(&temp, &backup);
-		return (0);
-	}
-	free(temp);
 // backup에서 반환한 부분 삭제하는 단계
 	if (!ft_refine_backup(&backup, &line))
 		return (0);
