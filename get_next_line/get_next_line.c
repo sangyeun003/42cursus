@@ -6,7 +6,7 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 18:43:00 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/07/19 22:32:45 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/07/20 20:39:42 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ char	*get_next_line(int fd)
 			buf = 0;
 			return (0);
 		}
+		free(backup);
 		backup = ft_strjoin(temp, buf);
 		free(temp);
 		if (!backup)
@@ -93,7 +94,16 @@ char	*get_next_line(int fd)
 		backup = 0;
 		return (0);
 	}
-	line = ft_strdup(backup);
+	temp = ft_strdup(backup);
+	if (!temp)
+	{
+		free(backup);
+		backup = 0;
+		return (0);
+	}
+	if (ft_strchr(temp, '\n'))
+		*(ft_strchr(temp, '\n') + 1) = 0;
+	line = ft_strdup(temp);
 	if (!line)
 	{
 		free(line);
@@ -102,22 +112,20 @@ char	*get_next_line(int fd)
 		backup = 0;
 		return (0);
 	}
-	if (ft_strchr(line, '\n'))
-		*(ft_strchr(line, '\n') + 1) = 0;
-	line = ft_strdup(line);
-	if (!line)
-	{
-		free(line);
-		free(backup);
-		line = 0;
-		backup = 0;
-		return (0);
-	}
+	free(temp);
 // backup에서 반환한 부분 삭제하는 단계
 	if (ft_strchr(backup, '\n'))
 	{
-		backup = ft_strchr(backup, '\n') + 1;
-		backup = ft_strdup(backup);
+		temp = ft_strdup(ft_strchr(backup, '\n') + 1);
+		if (!temp)
+		{
+			free(line);
+			free(backup);
+			line = 0;
+			backup = 0;
+			return (0);
+		}
+		backup = ft_strdup(temp);
 		if (!backup)
 		{
 			free(line);
