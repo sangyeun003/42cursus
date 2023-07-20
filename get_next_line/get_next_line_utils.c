@@ -6,7 +6,7 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 18:43:33 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/07/20 22:35:14 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/07/21 02:12:06 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,12 @@ int	ft_refine_backup(char **backup, char **line)
 		free(temp);
 		if (!*backup)
 		{
-			ft_free_one_str(line);
+			ft_free_two_str(line, line);
 			return (0);
 		}
 	}
 	else
-		ft_free_one_str(backup);
+		ft_free_two_str(backup, backup);
 	return (1);
 }
 

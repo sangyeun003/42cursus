@@ -6,26 +6,26 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 18:43:00 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/07/20 22:41:01 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/07/21 02:13:33 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include	"get_next_line.h"
 
-void	ft_free_one_str(char **str)
-{
-	free(*str);
-	*str = 0;
-
-	return ;
-}
-
 void	ft_free_two_str(char **str1, char **str2)
 {
-	free(*str1);
-	free(*str2);
-	*str1 = 0;
-	*str2 = 0;
+	if (str1 != str2)
+	{
+		free(*str1);
+		free(*str2);
+		*str1 = 0;
+		*str2 = 0;
+	}
+	else
+	{
+		free(*str1);
+		*str1 = 0;
+	}
 }
 
 int	ft_initial_setting(int fd, char **backup, char **buf)
@@ -33,14 +33,14 @@ int	ft_initial_setting(int fd, char **backup, char **buf)
 	if (fd < 0 || fd > 8192 || BUFFER_SIZE <= 0)
 	{
 		if (*backup)
-			ft_free_one_str(backup);
+			ft_free_two_str(backup, backup);
 		return (0);
 	}
 	*buf = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char));
 	if (!*buf)
 	{
 		if (*backup)
-			ft_free_one_str(backup);
+			ft_free_two_str(backup, backup);
 		return (0);
 	}
 	if (!*backup)
@@ -48,13 +48,12 @@ int	ft_initial_setting(int fd, char **backup, char **buf)
 		*backup = ft_strdup("");
 		if (!*backup)
 		{
-			ft_free_one_str(buf);
+			ft_free_two_str(buf, buf);
 			return (0);
 		}
 	}
 	return (1);
 }
-
 
 int	ft_read(int fd, char **backup, char **buf)
 {
@@ -62,7 +61,6 @@ int	ft_read(int fd, char **backup, char **buf)
 	char	*temp;
 
 	read_size = 1;
-	**buf = 0;
 	while (!ft_strchr(*buf, '\n') && read_size != 0)
 	{
 		read_size = read(fd, *buf, BUFFER_SIZE);
@@ -73,10 +71,10 @@ int	ft_read(int fd, char **backup, char **buf)
 		}
 		(*buf)[read_size] = 0;
 		temp = ft_strdup(*backup);
-		ft_free_one_str(backup);
+		ft_free_two_str(backup, backup);
 		if (!temp)
 		{
-			ft_free_two_str(backup, buf);
+			ft_free_two_str(buf, buf);
 			return (0);
 		}
 		*backup = ft_strjoin(temp, *buf);
@@ -87,7 +85,7 @@ int	ft_read(int fd, char **backup, char **buf)
 		}
 		free(temp);
 	}
-	ft_free_one_str(buf);
+	ft_free_two_str(buf, buf);
 	return (1);
 }
 
@@ -97,13 +95,13 @@ int	ft_make_return_value(char **backup, char **line)
 
 	if (**backup == 0)
 	{
-		ft_free_one_str(backup);
+		ft_free_two_str(backup, backup);
 		return (0);
 	}
 	temp = ft_strdup(*backup);
 	if (!temp)
 	{
-		ft_free_one_str(backup);
+		ft_free_two_str(backup, backup);
 		return (0);
 	}
 	if (ft_strchr(temp, '\n'))
@@ -124,16 +122,13 @@ char	*get_next_line(int fd)
 	char		*line;
 	char		*buf;
 
-// 초기 설정
 	if (!ft_initial_setting(fd, &backup, &buf))
 		return (0);
-// 읽어오는 단계
+	*buf = 0;
 	if (!ft_read(fd, &backup, &buf))
 		return (0);
-// line에 backup값 다듬어서 저장하는 단계
 	if (!ft_make_return_value(&backup, &line))
 		return (0);
-// backup에서 반환한 부분 삭제하는 단계
 	if (!ft_refine_backup(&backup, &line))
 		return (0);
 	return (line);
