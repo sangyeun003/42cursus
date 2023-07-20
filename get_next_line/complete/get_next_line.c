@@ -6,7 +6,7 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 18:43:00 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/07/21 02:13:33 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/07/21 02:23:03 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,12 +55,10 @@ int	ft_initial_setting(int fd, char **backup, char **buf)
 	return (1);
 }
 
-int	ft_read(int fd, char **backup, char **buf)
+int	ft_read(int fd, char **backup, char **buf, int read_size)
 {
-	int		read_size;
 	char	*temp;
 
-	read_size = 1;
 	while (!ft_strchr(*buf, '\n') && read_size != 0)
 	{
 		read_size = read(fd, *buf, BUFFER_SIZE);
@@ -73,10 +71,7 @@ int	ft_read(int fd, char **backup, char **buf)
 		temp = ft_strdup(*backup);
 		ft_free_two_str(backup, backup);
 		if (!temp)
-		{
-			ft_free_two_str(buf, buf);
 			return (0);
-		}
 		*backup = ft_strjoin(temp, *buf);
 		if (!*backup)
 		{
@@ -85,7 +80,6 @@ int	ft_read(int fd, char **backup, char **buf)
 		}
 		free(temp);
 	}
-	ft_free_two_str(buf, buf);
 	return (1);
 }
 
@@ -125,8 +119,12 @@ char	*get_next_line(int fd)
 	if (!ft_initial_setting(fd, &backup, &buf))
 		return (0);
 	*buf = 0;
-	if (!ft_read(fd, &backup, &buf))
+	if (!ft_read(fd, &backup, &buf, 1))
+	{
+		ft_free_two_str(&buf, &buf);
 		return (0);
+	}
+	ft_free_two_str(&buf, &buf);
 	if (!ft_make_return_value(&backup, &line))
 		return (0);
 	if (!ft_refine_backup(&backup, &line))
