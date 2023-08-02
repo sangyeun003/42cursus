@@ -6,7 +6,7 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 21:19:06 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/08/02 22:46:47 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/08/02 22:55:40 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	ft_list_insert(List *plist, Data data)	// stack이니까 head에 데이터 �
 	Node	*newnode;
 
 	newnode = (Node *)malloc(sizeof(Node));
-	if (!newnode)
+	if (!newnode || !data)
 		return (FALSE);
 	newnode->data = data;
 	newnode->next = plist->head->next;
