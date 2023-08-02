@@ -6,7 +6,7 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 18:28:03 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/08/02 21:48:15 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/08/02 22:28:21 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,30 +20,34 @@
 
 typedef int Data;
 
-typedef struct _node
+typedef struct s_node
 {
 	Data			data;
-	struct _node	*next;
-	struct _node	*prev;
-}	Node;
+	struct s_node	*next;
+	struct s_node	*prev;
+}	t_node;
 
-typedef struct _LinkedList
+typedef t_node Node;
+
+typedef struct s_linked_list
 {
 	Node	*head;
 	Node	*tail;
 	Node	*cur;
 	int		numOfData;
-} LinkedList;
+} t_linked_list;
 
-typedef LinkedList List;
+typedef t_linked_list List;
 
-void	ft_list_init(List *plist);
-void	ft_list_insert(List *plist, Data data);	// head에 노드 추가
+int		ft_list_init(List *plist);
+int		ft_list_insert(List *plist, Data data);	// head에 노드 추가
 int		ft_list_first(List *plist, Data *pdata);
 int		ft_list_next(List *plist, Data *pdata);
 int		ft_list_previous(List *plist, Data *pdata);
 Data	ft_list_remove(List *plist);
 int		ft_list_count(List *plist);
+
+int		ft_atoi(const char *str);
 
 int		main(int argc, char *argv[]);
 

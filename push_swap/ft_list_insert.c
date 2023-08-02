@@ -6,22 +6,27 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 21:19:06 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/08/02 21:38:20 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/08/02 22:46:47 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include	"push_swap.h"
 
-void	ft_list_insert(List *plist, Data data)	// stack이니까 head에 데이터 추가
+int	ft_list_insert(List *plist, Data data)	// stack이니까 head에 데이터 추가
 {
 	Node	*newnode;
 
 	newnode = (Node *)malloc(sizeof(Node));
+	if (!newnode)
+		return (FALSE);
 	newnode->data = data;
 	newnode->next = plist->head->next;
-	plist->head->next->prev = newnode;
+	
+	plist->head->next->prev = newnode;	// 이 문장 때문에 에러나는 듯
+	printf("통과\n");
+	
 	newnode->prev = plist->head;
 	plist->head->next = newnode;
 	plist->numOfData++;
-	return ;
+	return (TRUE);
 }
