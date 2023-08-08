@@ -6,7 +6,7 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 14:12:29 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/07/21 14:13:56 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/08/07 19:58:55 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	ft_free_two_str(char **str1, char **str2)
 
 int	ft_initial_setting(int fd, char **backup, char **buf)
 {
-	if (fd < 0 || fd > 8192 || BUFFER_SIZE <= 0)
+	if (fd < 0 || BUFFER_SIZE <= 0)
 	{
 		if (*backup)
 			ft_free_two_str(backup, backup);
