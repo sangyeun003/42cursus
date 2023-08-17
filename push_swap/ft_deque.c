@@ -6,7 +6,7 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 19:56:39 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/08/17 21:41:50 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/08/17 22:06:27 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void	ft_deque_add_first(t_deque *pdeq, int data)
 {
 	t_node	*newnode;
 
+	ft_is_overlaping(pdeq, data);
 	newnode = (t_node *)malloc(sizeof(t_node));
 	if (!newnode)
 		ft_error(pdeq);
@@ -48,6 +49,7 @@ void	ft_deque_add_last(t_deque *pdeq, int data)
 {
 	t_node	*newnode;
 
+	ft_is_overlaping(pdeq, data);
 	newnode = (t_node *)malloc(sizeof(t_node));
 	if (!newnode)
 		ft_error(pdeq);
