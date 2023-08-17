@@ -32,7 +32,8 @@ void	point(char *test)	// 주소 복사해서 free해도 적용됨
 int main(void)
 {
 	int		check;
-	int		fd = open("a.txt", O_RDONLY);
+	// int		fd = open("a.txt", O_RDONLY);
+	int		fd = 2;
 	char	*buf;
 	// char	test[4] = "abc";
 	// char	*test2 = test;
