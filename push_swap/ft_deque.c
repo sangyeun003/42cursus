@@ -6,7 +6,7 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 19:56:39 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/08/17 21:02:45 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/08/17 21:41:50 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,15 +32,14 @@ void	ft_deque_add_first(t_deque *pdeq, int data)
 	t_node	*newnode;
 
 	newnode = (t_node *)malloc(sizeof(t_node));
-
+	if (!newnode)
+		ft_error(pdeq);
 	newnode->data = data;
-
 	newnode->next = pdeq->head;
 	if (ft_deque_is_empty(pdeq))
 		pdeq->tail = newnode;
 	else
 		pdeq->head->previous = newnode;
-
 	newnode->previous = 0;
 	pdeq->head = newnode;
 }
@@ -50,9 +49,9 @@ void	ft_deque_add_last(t_deque *pdeq, int data)
 	t_node	*newnode;
 
 	newnode = (t_node *)malloc(sizeof(t_node));
-
+	if (!newnode)
+		ft_error(pdeq);
 	newnode->data = data;
-
 	newnode->previous = pdeq->tail;
 	if (ft_deque_is_empty(pdeq))
 		pdeq->head = newnode;
@@ -96,7 +95,6 @@ int	ft_deque_remove_last(t_deque *pdeq)
 	}
 	rnode = pdeq->tail;
 	rdata = rnode->data;
-
 	pdeq->tail = pdeq->tail->previous;
 	free(rnode);
 	if (pdeq->tail == 0)

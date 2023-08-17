@@ -6,13 +6,13 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 10:35:25 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/08/17 20:39:05 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/08/17 21:54:14 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include	"push_swap.h"
 
-int	ft_atoi(const char *str)
+int	ft_atoi(const char *str, t_deque *pdeq)
 {
 	int				i;
 	int				sign;
@@ -34,11 +34,11 @@ int	ft_atoi(const char *str)
 		result = result * 10 + str[i] - '0';
 		i++;
 	}
-	if ((str[i] < '0' || str[i] > '9') && str[i] != 0)
-		ft_error();
-	if (result > 9223372036854775807 && sign == 1)
-		return (-1);
-	else if (result - 1 > 9223372036854775807 && sign == -1)
-		return (0);
+	if (sign * (long)result > 2147483647 || sign * (long)result < -2147483648)
+		ft_error(pdeq);
+	// if (result > 9223372036854775807 && sign == 1)
+	// 	return (-1);
+	// else if (result - 1 > 9223372036854775807 && sign == -1)
+	// 	return (0);
 	return (sign * result);
 }

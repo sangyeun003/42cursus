@@ -6,7 +6,7 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 14:32:39 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/08/17 20:51:23 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/08/17 21:43:26 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,14 +95,14 @@ char	**ft_split(char *str, char *charset)
 	size = num_of_word(str, charset);
 	result = (char **)malloc((size + 1) * sizeof(char *));
 	if (!result)
-		ft_error();
+		return (FALSE);
 	if (!alloc_word(result, str, charset, size))
 	{
 		i = 0;
 		while (result[i])
 			free(result[i++]);
 		free(result);
-		ft_error();
+		return (FALSE);
 	}
 	return (result);
 }

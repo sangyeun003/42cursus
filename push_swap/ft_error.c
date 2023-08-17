@@ -6,14 +6,15 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 20:39:21 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/08/17 21:01:35 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/08/17 21:40:03 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include	"push_swap.h"
 
-void	ft_error(void)
+void	ft_error(t_deque *pdeq)
 {
+	ft_free_deque(pdeq);
 	write(1, "Error\n", 6);
 	exit(-1);
 }

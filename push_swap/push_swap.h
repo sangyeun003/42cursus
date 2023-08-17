@@ -6,7 +6,7 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 18:28:03 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/08/17 21:03:26 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/08/17 21:50:12 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,20 +34,21 @@ typedef struct s_deque
 
 void	ft_deque_init(t_deque *pdeq);
 int		ft_deque_is_empty(t_deque *pdeq);
-
 void	ft_deque_add_first(t_deque *pdeq, int data);
 void	ft_deque_add_last(t_deque *pdeq, int data);
-
 int		ft_deque_remove_first(t_deque *pdeq);
 int		ft_deque_remove_last(t_deque *pdeq);
-
 int		ft_deque_get_first(t_deque *pdeq);
 int		ft_deque_get_last(t_deque *pdeq);
 
-int		ft_atoi(const char *str);
+void	ft_free_deque(t_deque *pdeq);
+
+int		ft_atoi(const char *str, t_deque *pdeq);
+int		ft_isdigit(int c);
 char	**ft_split(char *str, char *charset);
+int		ft_check_invalid_input(int argc, char **argv);
 void	ft_parsing(int argc, char **argv, t_deque *pdeq);
-void	ft_error(void);
+void	ft_error(t_deque *pdeq);
 
 int		main(int argc, char *argv[]);
 
