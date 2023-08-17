@@ -6,42 +6,33 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 18:27:08 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/08/02 22:47:32 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/08/17 20:59:34 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+
+// i = 1;
+// while (i < argc)
+// {
+// 	char **split_result = ft_split(argv[i], " ");
+// 	int j = 0;
+// 	while (j < SPLIT_LEN)
+// 	{
+// 		PUSH(&stack, atoi(split_result[i])); 
+//			 단, atoi하는 도중에 숫자가 아닌게 나오면 무조건 ERROR
+// 		j++;
+// 	}
+// 	i++;
+// }
 #include	"push_swap.h"
 
 int	main(int argc, char *argv[])
 {
-	List	stack_a;
-	List	stack_b;
-	Data	data;
-	int		i;
-	char	*command;
+	t_deque	deq;
 
-	if (!ft_list_init(&stack_a) || !ft_list_init(&stack_b))
-	{
-		printf("Error\n");
-		return (0);
-	}
-	i = 1;
-	while (i < argc)
-	{
-		if (!ft_list_insert(&stack_a, ft_atoi(argv[i++])))
-		{
-			printf("Error\n");
-			return (0);
-		}
-	}
-	if (!ft_list_first(&stack_a, &data))
-	{
-		printf("Error\n");
-		return (0);
-	}
-	printf("%d ", data);
-	while (ft_list_next(&stack_a, &data))
-		printf("%d ", data);
-	
+	ft_deque_init(&deq);
+	ft_parsing(argc, argv, &deq);
+	while (!ft_deque_is_empty(&deq))
+		printf("%d ", ft_deque_remove_first(&deq));
 	return (0);
 }
