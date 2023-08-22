@@ -6,7 +6,7 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 19:56:39 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/08/17 22:06:27 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/08/22 21:27:14 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ void	ft_deque_add_first(t_deque *pdeq, int data)
 		pdeq->head->previous = newnode;
 	newnode->previous = 0;
 	pdeq->head = newnode;
+	pdeq->count++;
 }
 
 void	ft_deque_add_last(t_deque *pdeq, int data)
@@ -61,6 +62,7 @@ void	ft_deque_add_last(t_deque *pdeq, int data)
 		pdeq->tail->next = newnode;
 	newnode->next = 0;
 	pdeq->tail = newnode;
+	pdeq->count++;
 }
 
 int	ft_deque_remove_first(t_deque *pdeq)
@@ -69,10 +71,7 @@ int	ft_deque_remove_first(t_deque *pdeq)
 	int		rdata;
 
 	if (ft_deque_is_empty(pdeq))
-	{
-		printf("Deque Memory Error!(empty)\n");
-		exit (-1);
-	}
+		ft_error(pdeq);
 	rnode = pdeq->head;
 	rdata = rnode->data;
 
@@ -82,6 +81,7 @@ int	ft_deque_remove_first(t_deque *pdeq)
 		pdeq->tail = 0;
 	else
 		pdeq->head->previous = 0;
+	pdeq->count--;
 	return (rdata);
 }
 
@@ -91,10 +91,7 @@ int	ft_deque_remove_last(t_deque *pdeq)
 	int		rdata;
 
 	if (ft_deque_is_empty(pdeq))
-	{
-		printf("Deque Memory Error!(empty)\n");
-		exit (-1);
-	}
+		ft_error(pdeq);
 	rnode = pdeq->tail;
 	rdata = rnode->data;
 	pdeq->tail = pdeq->tail->previous;
@@ -103,25 +100,20 @@ int	ft_deque_remove_last(t_deque *pdeq)
 		pdeq->head = 0;
 	else
 		pdeq->tail->next = 0;
+	pdeq->count--;
 	return (rdata);
 }
 
 int	ft_deque_get_first(t_deque *pdeq)
 {
 	if (ft_deque_is_empty(pdeq))
-	{
-		printf("Deque Memory Error!(empty)\n");
-		exit (-1);
-	}
+		ft_error(pdeq);
 	return (pdeq->head->data);
 }
 
 int	ft_deque_get_last(t_deque *pdeq)
 {
 	if (ft_deque_is_empty(pdeq))
-	{
-		printf("Deque Memory Error!(empty)\n");
-		exit (-1);
-	}
+		ft_error(pdeq);
 	return (pdeq->tail->data);
 }

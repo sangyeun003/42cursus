@@ -1,42 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rotate.c                                           :+:      :+:    :+:   */
+/*   reverse_rotate.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/22 17:41:55 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/08/22 20:11:29 by sangyepa         ###   ########.fr       */
+/*   Created: 2023/08/22 20:10:43 by sangyepa          #+#    #+#             */
+/*   Updated: 2023/08/22 20:11:07 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include	"push_swap.h"
 
-void	ra(t_deque *a)
+void	rra(t_deque *a)
 {
 	int	data;
 
-	data = ft_deque_remove_first(a);
-	ft_deque_add_last(a, data);
-	write(1, "ra\n", 3);
+	data = ft_deque_remove_last(a);
+	ft_deque_add_first(a, data);
+	write(1, "rra\n", 4);
 }
 
-void	rb(t_deque *b)
+void	rrb(t_deque *b)
 {
 	int	data;
 
-	data = ft_deque_remove_first(b);
-	ft_deque_add_last(b, data);
-	write(1, "rb\n", 3);
+	data = ft_deque_remove_last(b);
+	ft_deque_add_first(b, data);
+	write(1, "rrb\n", 4);
 }
 
-void	rr(t_deque *a, t_deque *b)
+void	rrr(t_deque *a, t_deque *b)
 {
 	int	data;
 
-	data = ft_deque_remove_first(a);
-	ft_deque_add_last(a, data);
-	data = ft_deque_remove_first(b);
-	ft_deque_add_last(b, data);
-	write(1, "rr\n", 3);
+	data = ft_deque_remove_last(a);
+	ft_deque_add_first(a, data);
+	data = ft_deque_remove_last(b);
+	ft_deque_add_first(b, data);
+	write(1, "rrr\n", 4);
 }

@@ -10,9 +10,10 @@ int	main(int argc, char **argv)
 		{
 			if (argv[1][i] == ' ' || argv[1][i] == '\t')
 			{
-				write(1, " ", 1);
 				while (argv[1][i] == ' ' || argv[1][i] == '\t')
 					i++;
+				if (argv[1][i])
+					write(1, " ", 1);
 			}
 			if (!argv[1][i])
 				break ;

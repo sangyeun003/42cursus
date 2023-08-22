@@ -6,7 +6,7 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 18:28:03 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/08/17 22:06:11 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/08/22 20:12:17 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,20 @@ int		ft_check_invalid_input(int argc, char **argv);
 int		ft_is_overlaping(t_deque *pdeq, int data);
 void	ft_parsing(int argc, char **argv, t_deque *pdeq);
 void	ft_error(t_deque *pdeq);
+
+void	sa(t_deque *a);
+void	sb(t_deque *b);
+void	ss(t_deque *a, t_deque *b);
+
+void	pa(t_deque *a, t_deque *b);
+void	pb(t_deque *b, t_deque *a);
+
+void	ra(t_deque *a);
+void	rb(t_deque *b);
+void	rr(t_deque *a, t_deque *b);
+void	rra(t_deque *a);
+void	rrb(t_deque *b);
+void	rrr(t_deque *a, t_deque *b);
 
 int		main(int argc, char *argv[]);
 
