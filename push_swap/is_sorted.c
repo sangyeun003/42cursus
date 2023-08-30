@@ -1,31 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push.c                                             :+:      :+:    :+:   */
+/*   is_sorted.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/22 17:41:59 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/08/29 19:54:50 by sangyepa         ###   ########.fr       */
+/*   Created: 2023/08/29 15:10:12 by sangyepa          #+#    #+#             */
+/*   Updated: 2023/08/29 15:43:35 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include	"push_swap.h"
 
-void	pa(t_deque *a, t_deque *b)
+int	is_sorted(t_deque deq)
 {
-	int	data;
+	t_node	*node;
 
-	data = ft_deque_remove_first(b);
-	ft_deque_add_first(a, data);
-	write(1, "pa\n", 3);
-}
-
-void	pb(t_deque *a, t_deque *b)
-{
-	int	data;
-
-	data = ft_deque_remove_first(a);
-	ft_deque_add_first(b, data);
-	write(1, "pb\n", 3);
+	node = deq.head;
+	while (node->next)
+	{
+		if (node->data >= node->next->data)
+			return (0);
+		node = node->next;
+	}
+	return (1);
 }

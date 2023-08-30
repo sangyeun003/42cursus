@@ -1,0 +1,32 @@
+// ra
+	ft_parsing(argc, argv, &a);
+	ra(&a);
+	while (!ft_deque_is_empty(&a))
+		printf("%d ", ft_deque_remove_first(&a));
+	printf("\n");
+// rra
+	ft_parsing(argc, argv, &a);
+	rra(&a);
+	while (!ft_deque_is_empty(&a))
+		printf("%d ", ft_deque_remove_first(&a));
+	printf("\n");
+// rr
+	ft_parsing(argc, argv, &a);
+	ft_parsing(argc, argv, &b);
+	rr(&a, &b);
+	while (!ft_deque_is_empty(&a))
+		printf("%d ", ft_deque_remove_first(&a));
+	printf("\n");
+	while (!ft_deque_is_empty(&b))
+		printf("%d ", ft_deque_remove_first(&b));
+	printf("\n");
+// rrr
+	ft_parsing(argc, argv, &a);
+	ft_parsing(argc, argv, &b);
+	rrr(&a, &b);
+	while (!ft_deque_is_empty(&a))
+		printf("%d ", ft_deque_remove_first(&a));
+	printf("\n");
+	while (!ft_deque_is_empty(&b))
+		printf("%d ", ft_deque_remove_first(&b));
+	printf("\n");

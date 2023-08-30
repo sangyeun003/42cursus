@@ -6,7 +6,7 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 18:28:03 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/08/22 20:12:17 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/08/29 20:01:39 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	sb(t_deque *b);
 void	ss(t_deque *a, t_deque *b);
 
 void	pa(t_deque *a, t_deque *b);
-void	pb(t_deque *b, t_deque *a);
+void	pb(t_deque *a, t_deque *b);
 
 void	ra(t_deque *a);
 void	rb(t_deque *b);
@@ -64,6 +64,11 @@ void	rr(t_deque *a, t_deque *b);
 void	rra(t_deque *a);
 void	rrb(t_deque *b);
 void	rrr(t_deque *a, t_deque *b);
+
+int		is_sorted(t_deque deq);
+void	a_to_b(t_deque *a, t_deque *b);
+void	sort_2(t_deque *a);
+void	sort_3(t_deque *a);
 
 int		main(int argc, char *argv[]);
 

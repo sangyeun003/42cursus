@@ -1,31 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push.c                                             :+:      :+:    :+:   */
+/*   sort_2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/22 17:41:59 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/08/29 19:54:50 by sangyepa         ###   ########.fr       */
+/*   Created: 2023/08/29 19:59:53 by sangyepa          #+#    #+#             */
+/*   Updated: 2023/08/29 20:01:19 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include	"push_swap.h"
 
-void	pa(t_deque *a, t_deque *b)
+void	sort_2(t_deque *a)
 {
-	int	data;
+	int	n1;
+	int	n2;
 
-	data = ft_deque_remove_first(b);
-	ft_deque_add_first(a, data);
-	write(1, "pa\n", 3);
-}
-
-void	pb(t_deque *a, t_deque *b)
-{
-	int	data;
-
-	data = ft_deque_remove_first(a);
-	ft_deque_add_first(b, data);
-	write(1, "pb\n", 3);
+	n1 = a->head->data;
+	n2 = a->head->next->data;
+	if (n1 > n2)
+		ra(a);
 }
