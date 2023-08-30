@@ -6,7 +6,7 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 17:40:46 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/08/31 02:29:05 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/08/31 03:29:16 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ void	sa(t_deque *a)
 		temp->next->previous = temp;
 		a->head->next = temp;
 		a->head->previous = 0;
-		a->head->index++;
-		a->head->next->index--;
+		a->head->index--;
+		a->head->next->index++;
 	}
 	write(1, "sa\n", 3);
 }
@@ -43,8 +43,8 @@ void	sb(t_deque *b)
 		temp->next->previous = temp;
 		b->head->next = temp;
 		b->head->previous = 0;
-		b->head->index++;
-		b->head->next->index--;
+		b->head->index--;
+		b->head->next->index++;
 	}
 	write(1, "sb\n", 3);
 }
@@ -61,8 +61,8 @@ void	ss(t_deque *a, t_deque *b)
 		temp->next->previous = temp;
 		a->head->next = temp;
 		a->head->previous = 0;
-		a->head->index++;
-		a->head->next->index--;
+		a->head->index--;
+		a->head->next->index++;
 	}
 	if (b->count >= 2)
 	{
@@ -72,8 +72,8 @@ void	ss(t_deque *a, t_deque *b)
 		temp->next->previous = temp;
 		b->head->next = temp;
 		b->head->previous = 0;
-		b->head->index++;
-		b->head->next->index--;
+		b->head->index--;
+		b->head->next->index++;
 	}
 	write(1, "ss\n", 3);
 }

@@ -6,7 +6,7 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 19:56:39 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/08/31 03:04:53 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/08/31 03:38:18 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,26 +30,6 @@ int	ft_deque_is_empty(t_deque *pdeq)
 void	ft_deque_add_first(t_deque *pdeq, int data)
 {
 	t_node	*newnode;
-
-	ft_is_overlaping(pdeq, data);
-	newnode = (t_node *)malloc(sizeof(t_node));
-	if (!newnode)
-		ft_error(pdeq);
-	newnode->data = data;
-	newnode->next = pdeq->head;
-	if (ft_deque_is_empty(pdeq))
-		pdeq->tail = newnode;
-	else
-		pdeq->head->previous = newnode;
-	newnode->previous = 0;
-	newnode->index = pdeq->count + 1;
-	pdeq->head = newnode;
-	pdeq->count++;
-}
-
-void	ft_deque_add_last(t_deque *pdeq, int data)
-{
-	t_node	*newnode;
 	t_node	*idx_node;
 
 	ft_is_overlaping(pdeq, data);
@@ -57,26 +37,47 @@ void	ft_deque_add_last(t_deque *pdeq, int data)
 	if (!newnode)
 		ft_error(pdeq);
 	newnode->data = data;
+	newnode->index = 0;
+	newnode->next = pdeq->head;
+	if (ft_deque_is_empty(pdeq))
+		pdeq->tail = newnode;
+	else
+		pdeq->head->previous = newnode;
+	newnode->previous = 0;
+	pdeq->head = newnode;
+	pdeq->count++;
+	idx_node = pdeq->head->next;
+	while (idx_node)
+	{
+		idx_node->index++;
+		idx_node = idx_node->next;
+	}
+}
+
+void	ft_deque_add_last(t_deque *pdeq, int data)
+{
+	t_node	*newnode;
+
+	ft_is_overlaping(pdeq, data);
+	newnode = (t_node *)malloc(sizeof(t_node));
+	if (!newnode)
+		ft_error(pdeq);
+	newnode->data = data;
+	newnode->index = pdeq->count;
 	newnode->previous = pdeq->tail;
 	if (ft_deque_is_empty(pdeq))
 		pdeq->head = newnode;
 	else
 		pdeq->tail->next = newnode;
 	newnode->next = 0;
-	newnode->index = 0;
 	pdeq->tail = newnode;
 	pdeq->count++;
-	idx_node = pdeq->tail;
-	while (idx_node)
-	{
-		idx_node->index++;
-		idx_node = idx_node->previous;
-	}
 }
 
 int	ft_deque_remove_first(t_deque *pdeq)
 {
 	t_node	*rnode;
+	t_node	*idx_node;
 	int		rdata;
 
 	if (ft_deque_is_empty(pdeq))
@@ -90,13 +91,18 @@ int	ft_deque_remove_first(t_deque *pdeq)
 	else
 		pdeq->head->previous = 0;
 	pdeq->count--;
+	idx_node = pdeq->head;
+	while (idx_node)
+	{
+		idx_node->index--;
+		idx_node = idx_node->next;
+	}
 	return (rdata);
 }
 
 int	ft_deque_remove_last(t_deque *pdeq)
 {
 	t_node	*rnode;
-	t_node	*idx_node;
 	int		rdata;
 
 	if (ft_deque_is_empty(pdeq))
@@ -110,12 +116,6 @@ int	ft_deque_remove_last(t_deque *pdeq)
 	else
 		pdeq->tail->next = 0;
 	pdeq->count--;
-	idx_node = pdeq->head;
-	while (idx_node)
-	{
-		idx_node->index--;
-		idx_node = idx_node->next;
-	}
 	return (rdata);
 }
 
