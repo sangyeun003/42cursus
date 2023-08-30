@@ -6,7 +6,7 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 18:27:08 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/08/29 20:25:15 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/08/31 03:09:12 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,11 @@ int	main(int argc, char *argv[])
 	}
 
 	while (!ft_deque_is_empty(&a))
-		printf("%d ", ft_deque_remove_first(&a));
+		printf("index: %d, data: %d\n", a.head->index, ft_deque_remove_first(&a));
 	printf("\n\n");
 
 	while (!ft_deque_is_empty(&b))
-		printf("%d ", ft_deque_remove_first(&b));
+		printf("index: %d, data: %d\n", b.head->index, ft_deque_remove_first(&b));
 	printf("\n");
 	// write(1, "\n", 1);
 	return (0);

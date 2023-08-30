@@ -6,7 +6,7 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 15:09:49 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/08/29 21:25:21 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/08/31 03:11:50 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ printf("pivot1: %d, pivot2: %d\n",pivot1, pivot2);
 		num_a = a->count;
 		while (num_a-- > 0 && a->count > 3)
 		{
-			if (a->head->data < pivot1)
+			if (a->head->data <= pivot1)
 				pb(a, b);
 			else
 				ra(a);
@@ -55,14 +55,14 @@ printf("pivot1: %d, pivot2: %d\n",pivot1, pivot2);
 		num_a = a->count;
 		while (num_a-- > 0 && a->count > 3)
 		{
-			if (a->head->data < pivot2)
+			if (a->head->data <= pivot2)
 				pb(a, b);
 			else
 				ra(a);
 		}
+		while (a->count > 3)
+			pb(a, b);
 	}
-	while (a->count > 3)
-		pb(a, b);
 	if (a->count == 3)
 		sort_3(a);
 	else if (a->count == 2)
