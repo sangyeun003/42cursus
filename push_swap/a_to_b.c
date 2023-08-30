@@ -6,7 +6,7 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 15:09:49 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/08/31 04:45:18 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/08/31 05:37:08 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ void	make_pivot(t_deque *a, int *pivot1, int *pivot2, int *max)
 	}
 	*pivot1 = min + (*max - min) / 3;
 	*pivot2 = *max - (*max - min) / 3;
-printf("min: %d, max: %d, ", min, *max);
 }
 
 void	a_to_b(t_deque *a, t_deque *b)
@@ -43,7 +42,6 @@ void	a_to_b(t_deque *a, t_deque *b)
 	if (a->count > 3)
 	{
 		make_pivot(a, &pivot1, &pivot2, &max);
-printf("pivot1: %d, pivot2: %d\n",pivot1, pivot2);
 		num_a = a->count;
 		while (num_a-- > 0 && a->count > 1)
 		{
