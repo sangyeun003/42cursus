@@ -6,7 +6,7 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 18:28:03 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/08/31 04:20:29 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/08/31 22:52:16 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,6 @@ typedef struct s_deque
 	t_node	*tail;
 	int		count;
 }	t_deque;
-
-typedef struct	s_command_num
-{
-	int	a_command_num;
-	int	b_command_num;
-	int	total_command_num;
-}	t_command_num;
-
 
 void	ft_deque_init(t_deque *pdeq);
 int		ft_deque_is_empty(t_deque *pdeq);
@@ -80,8 +72,11 @@ void	b_to_a(t_deque *a, t_deque *b);
 void	sort_2(t_deque *a);
 void	sort_3(t_deque *a);
 
+int		find_min_idx(t_deque *pdeq);
+int		find_max_idx(t_deque *pdeq);
+int		index_to_data(t_deque *pdeq, int index);
 int		find_location_in_a(t_deque *a, int b_num);
-int		find_location_in_b(t_deque *b, int b_index);
+int		return_index(t_deque *pdeq, int index);
 int		cal_total_command_num(int a_command_num, int b_command_num);
 int		greedy(t_deque *a, t_deque *b);
 

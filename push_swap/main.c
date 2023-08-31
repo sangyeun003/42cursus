@@ -6,11 +6,56 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 18:27:08 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/08/31 05:15:38 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/09/01 00:25:14 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include	"push_swap.h"
+
+int	find_min_idx(t_deque *pdeq)
+{
+	int		min;
+	int		min_idx;
+	t_node	*node;
+
+	min = pdeq->head->data;
+	min_idx = pdeq->head->index;
+	node = pdeq->head;
+	while (node)
+	{
+		if (node->data < min)
+		{
+			min = node->data;
+			min_idx = node->index;
+		}
+		node = node->next;
+	}
+	return (min_idx);
+}
+
+void	final_sort(t_deque	*a)
+{
+	int		min_idx;
+	t_node	*node;
+
+	min_idx = find_min_idx(a);
+	if (min_idx >= a->count / 2)
+	{
+		while (min_idx < a->count)
+		{
+			rra(a);
+			min_idx++;
+		}
+	}
+	else
+	{
+		while (min_idx > 0)
+		{
+			ra(a);
+			min_idx--;
+		}
+	}
+}
 
 int	main(int argc, char *argv[])
 {
@@ -18,10 +63,11 @@ int	main(int argc, char *argv[])
 	t_deque	b;
 	t_node	*node_a;
 	t_node	*node_b;
-
+	
+	if (argc < 2)
+		return (0);
 	ft_deque_init(&a);
 	ft_deque_init(&b);
-
 	ft_parsing(argc, argv, &a);
 
 	if (a.count > 0 && !is_sorted(a))
@@ -40,36 +86,16 @@ int	main(int argc, char *argv[])
 	// 	printf("index: %d, data: %d\n", node_b->index, node_b->data);
 	// 	node_b = node_b->next;
 	// }
-	
-	// printf("\n\n");
-	
-	// while (b.count != 0)
-	{
+	// printf("==================\n\n");
+	while (b.count != 0)
 		b_to_a(&a, &b);
-		while (!is_sorted(a))	// a는 항상 정렬된 상태!
-			ra(&a);
-	}
+	final_sort(&a);
 	// node_a = a.head;
-	// node_b = b.head;
 	// while (node_a)
 	// {
 	// 	printf("index: %d, data: %d\n", node_a->index, node_a->data);
 	// 	node_a = node_a->next;
 	// }
-	// printf("\n\n");
-	// while (node_b)
-	// {
-	// 	printf("index: %d, data: %d\n", node_b->index, node_b->data);
-	// 	node_b = node_b->next;
-	// }
-
-	// while (!ft_deque_is_empty(&a))
-	// 	printf("index: %d, data: %d\n", a.head->index, ft_deque_remove_first(&a));
-	// printf("\n\n");
-
-	// while (!ft_deque_is_empty(&b))
-	// 	printf("index: %d, data: %d\n", b.head->index, ft_deque_remove_first(&b));
-	// printf("\n");
-	// write(1, "\n", 1);
+	// system("leaks push_swap");
 	return (0);
 }

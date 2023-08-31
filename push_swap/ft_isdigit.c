@@ -6,9 +6,11 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 13:47:43 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/03/19 13:50:02 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/08/31 05:43:27 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include	"push_swap.h"
 
 int	ft_isdigit(int c)
 {

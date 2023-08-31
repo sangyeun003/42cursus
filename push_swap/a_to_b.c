@@ -6,7 +6,7 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 15:09:49 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/08/31 05:37:08 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/08/31 23:22:10 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,21 @@ void	make_pivot(t_deque *a, int *pivot1, int *pivot2, int *max)
 	}
 	*pivot1 = min + (*max - min) / 3;
 	*pivot2 = *max - (*max - min) / 3;
+	// printf("pv1: %d, pv2: %d, min: %d, max: %d\n", *pivot1, *pivot2, min, *max);
+}
+
+void	a_to_b_by_pivot(t_deque *a, t_deque *b, int pivot)
+{
+	int	num_a;
+	
+	num_a = a->count;
+	while (num_a-- > 0 && a->count > 3)
+	{
+		if (a->head->data <= pivot)
+			pb(a, b);
+		else
+			ra(a);
+	}
 }
 
 void	a_to_b(t_deque *a, t_deque *b)
@@ -42,29 +57,10 @@ void	a_to_b(t_deque *a, t_deque *b)
 	if (a->count > 3)
 	{
 		make_pivot(a, &pivot1, &pivot2, &max);
-		num_a = a->count;
-		while (num_a-- > 0 && a->count > 1)
-		{
-			if (a->head->data <= pivot1)
-				pb(a, b);
-			else
-				ra(a);
-		}
-		num_a = a->count;
-		while (num_a-- > 0 && a->count > 1)
-		{
-			if (a->head->data <= pivot2)
-				pb(a, b);
-			else
-				ra(a);
-		}
+		a_to_b_by_pivot(a, b, pivot1);
+		a_to_b_by_pivot(a, b, pivot2);
 		while (a->count > 3)
-		{
-			if (a->head->data != max)
-				pb(a, b);
-			else
-				ra(a);
-		}
+			pb(a, b);
 	}
 	if (a->count == 3)
 		sort_3(a);

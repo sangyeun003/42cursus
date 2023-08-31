@@ -6,7 +6,7 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 17:40:46 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/08/31 03:29:16 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/08/31 22:26:41 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	sa(t_deque *a)
 		a->head = a->head->next;
 		temp->next = temp->next->next;
 		temp->next->previous = temp;
+		temp->previous = a->head;
 		a->head->next = temp;
 		a->head->previous = 0;
 		a->head->index--;
@@ -41,6 +42,7 @@ void	sb(t_deque *b)
 		b->head = b->head->next;
 		temp->next = temp->next->next;
 		temp->next->previous = temp;
+		temp->previous = b->head;
 		b->head->next = temp;
 		b->head->previous = 0;
 		b->head->index--;
@@ -59,6 +61,7 @@ void	ss(t_deque *a, t_deque *b)
 		a->head = a->head->next;
 		temp->next = temp->next->next;
 		temp->next->previous = temp;
+		temp->previous = a->head;
 		a->head->next = temp;
 		a->head->previous = 0;
 		a->head->index--;
@@ -70,6 +73,7 @@ void	ss(t_deque *a, t_deque *b)
 		b->head = b->head->next;
 		temp->next = temp->next->next;
 		temp->next->previous = temp;
+		temp->previous = b->head;
 		b->head->next = temp;
 		b->head->previous = 0;
 		b->head->index--;
