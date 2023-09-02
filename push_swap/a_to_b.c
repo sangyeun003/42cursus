@@ -6,7 +6,7 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 15:09:49 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/08/31 23:22:10 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/09/01 17:13:52 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	a_to_b_by_pivot(t_deque *a, t_deque *b, int pivot)
 		if (a->head->data <= pivot)
 			pb(a, b);
 		else
-			ra(a);
+			ra(a, b);
 	}
 }
 
@@ -63,7 +63,7 @@ void	a_to_b(t_deque *a, t_deque *b)
 			pb(a, b);
 	}
 	if (a->count == 3)
-		sort_3(a);
+		sort_3(a, b);
 	else if (a->count == 2)
-		sort_2(a);
+		sort_2(a, b);
 }

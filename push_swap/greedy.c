@@ -6,7 +6,7 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 03:18:16 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/08/31 23:04:55 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/09/01 17:15:35 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ int	find_max_idx(t_deque *pdeq)
 		}
 		node = node->next;
 	}
+	// free(node);
 	return (max_idx);
 }
 
@@ -53,6 +54,7 @@ int	find_location_in_a(t_deque *a, int b_num)
 	}
 	if (!node)	// a_max보다 큰 수
 	{
+		// free(node);
 		if (a->head->index == find_min_idx(a) && a->tail->index == find_max_idx(a))
 			return (0);
 		if (find_max_idx(a) + 1 == find_min_idx(a))

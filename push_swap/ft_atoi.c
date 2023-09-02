@@ -6,13 +6,13 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 10:35:25 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/08/17 21:54:14 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/09/01 16:47:56 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include	"push_swap.h"
 
-int	ft_atoi(const char *str, t_deque *pdeq)
+int	ft_atoi(const char *str, t_deque *pdeq1, t_deque *pdeq2)
 {
 	int				i;
 	int				sign;
@@ -35,7 +35,7 @@ int	ft_atoi(const char *str, t_deque *pdeq)
 		i++;
 	}
 	if (sign * (long)result > 2147483647 || sign * (long)result < -2147483648)
-		ft_error(pdeq);
+		ft_error(pdeq1, pdeq2);
 	// if (result > 9223372036854775807 && sign == 1)
 	// 	return (-1);
 	// else if (result - 1 > 9223372036854775807 && sign == -1)

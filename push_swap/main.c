@@ -6,7 +6,7 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 18:27:08 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/09/01 00:25:14 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/09/01 17:14:42 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,11 @@ int	find_min_idx(t_deque *pdeq)
 		}
 		node = node->next;
 	}
+	// free(node);
 	return (min_idx);
 }
 
-void	final_sort(t_deque	*a)
+void	final_sort(t_deque	*a, t_deque *b)
 {
 	int		min_idx;
 	t_node	*node;
@@ -43,7 +44,7 @@ void	final_sort(t_deque	*a)
 	{
 		while (min_idx < a->count)
 		{
-			rra(a);
+			rra(a, b);
 			min_idx++;
 		}
 	}
@@ -51,7 +52,7 @@ void	final_sort(t_deque	*a)
 	{
 		while (min_idx > 0)
 		{
-			ra(a);
+			ra(a, b);
 			min_idx--;
 		}
 	}
@@ -61,18 +62,22 @@ int	main(int argc, char *argv[])
 {
 	t_deque	a;
 	t_deque	b;
-	t_node	*node_a;
-	t_node	*node_b;
+	// t_node	*node_a;
+	// t_node	*node_b;
 	
 	if (argc < 2)
 		return (0);
 	ft_deque_init(&a);
 	ft_deque_init(&b);
-	ft_parsing(argc, argv, &a);
+	ft_parsing(argc, argv, &a, &b);
 
 	if (a.count > 0 && !is_sorted(a))
+	{
 		a_to_b(&a, &b);
-
+		while (b.count != 0)
+			b_to_a(&a, &b);
+		final_sort(&a, &b);
+	}
 	// node_a = a.head;
 	// node_b = b.head;
 	// while (node_a)
@@ -87,9 +92,7 @@ int	main(int argc, char *argv[])
 	// 	node_b = node_b->next;
 	// }
 	// printf("==================\n\n");
-	while (b.count != 0)
-		b_to_a(&a, &b);
-	final_sort(&a);
+	
 	// node_a = a.head;
 	// while (node_a)
 	// {

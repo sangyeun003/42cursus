@@ -6,7 +6,7 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 18:28:03 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/08/31 22:52:16 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/09/01 16:48:22 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,22 +35,23 @@ typedef struct s_deque
 
 void	ft_deque_init(t_deque *pdeq);
 int		ft_deque_is_empty(t_deque *pdeq);
-void	ft_deque_add_first(t_deque *pdeq, int data);
-void	ft_deque_add_last(t_deque *pdeq, int data);
+void	ft_deque_add_first(t_deque *pdeq1, t_deque *pdeq2, int data);
+void	ft_deque_add_last(t_deque *pdeq1, t_deque *pdeq2, int data);
 int		ft_deque_remove_first(t_deque *pdeq);
 int		ft_deque_remove_last(t_deque *pdeq);
-int		ft_deque_get_first(t_deque *pdeq);
-int		ft_deque_get_last(t_deque *pdeq);
+// int		ft_deque_get_first(t_deque *pdeq);
+// int		ft_deque_get_last(t_deque *pdeq);
 
-void	ft_free_deque(t_deque *pdeq);
 
-int		ft_atoi(const char *str, t_deque *pdeq);
+int		ft_atoi(const char *str, t_deque *pdeq1, t_deque *pdeq2);
 int		ft_isdigit(int c);
 char	**ft_split(char *str, char *charset);
 int		ft_check_invalid_input(int argc, char **argv);
-int		ft_is_overlaping(t_deque *pdeq, int data);
-void	ft_parsing(int argc, char **argv, t_deque *pdeq);
-void	ft_error(t_deque *pdeq);
+int		ft_is_overlaping(t_deque *pdeq1, t_deque *pdeq2, int data);
+void	ft_parsing(int argc, char **argv, t_deque *pdeq1, t_deque *pdeq2);
+void	ft_error(t_deque *pdeq1, t_deque *pdeq2);
+void	ft_free_deque(t_deque *pdeq1, t_deque *pdeq2);
+
 
 void	sa(t_deque *a);
 void	sb(t_deque *b);
@@ -59,18 +60,18 @@ void	ss(t_deque *a, t_deque *b);
 void	pa(t_deque *a, t_deque *b);
 void	pb(t_deque *a, t_deque *b);
 
-void	ra(t_deque *a);
-void	rb(t_deque *b);
+void	ra(t_deque *a, t_deque *b);
+void	rb(t_deque *b, t_deque *a);
 void	rr(t_deque *a, t_deque *b);
-void	rra(t_deque *a);
-void	rrb(t_deque *b);
+void	rra(t_deque *a, t_deque *b);
+void	rrb(t_deque *b, t_deque *a);
 void	rrr(t_deque *a, t_deque *b);
 
 int		is_sorted(t_deque deq);
 void	a_to_b(t_deque *a, t_deque *b);
 void	b_to_a(t_deque *a, t_deque *b);
-void	sort_2(t_deque *a);
-void	sort_3(t_deque *a);
+void	sort_2(t_deque *a, t_deque *b);
+void	sort_3(t_deque *a, t_deque *b);
 
 int		find_min_idx(t_deque *pdeq);
 int		find_max_idx(t_deque *pdeq);

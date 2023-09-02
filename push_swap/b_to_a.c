@@ -6,7 +6,7 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 15:03:44 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/08/31 23:27:27 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/09/01 17:12:02 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,26 +29,13 @@ void	b_to_a(t_deque *a, t_deque *b)
 	int	b_command_num;
 
 	target_b_index = greedy(a, b);
-	// printf("target_b: %d\n", target_b_index);
 	a_command_num = return_index(a, find_location_in_a(a, index_to_data(b, target_b_index)));
 	b_command_num = return_index(b, target_b_index);
-	// printf("a_cmd: %d, b_cmd: %d\n", a_command_num, b_command_num);
-	// if (a_command_num == 1 && b_command_num == 1)
-	// {
-	// 	ss(a, b);
-	// 	a_command_num--;
-	// 	b_command_num--;
-	// }
-	// if (a_command_num == 1)
-	// {
-	// 	sa(a);
-	// 	a_command_num--;
-	// }
-	// if (b_command_num == 1)
-	// {
-	// 	sb(b);
-	// 	b_command_num--;
-	// }
+	if (b_command_num == 1)		// 고민
+	{
+		sb(b);
+		b_command_num--;
+	}
 	while (a_command_num && b_command_num && (a_command_num > 0 && b_command_num > 0))
 	{
 		rr(a, b);
@@ -63,22 +50,22 @@ void	b_to_a(t_deque *a, t_deque *b)
 	}
 	while (a_command_num > 0)
 	{
-		ra(a);
+		ra(a, b);
 		a_command_num--;
 	}
 	while (a_command_num < 0)
 	{
-		rra(a);
+		rra(a, b);
 		a_command_num++;
 	}
 	while (b_command_num > 0)
 	{
-		rb(b);
+		rb(b, a);
 		b_command_num--;
 	}
 	while (b_command_num < 0)
 	{
-		rrb(b);
+		rrb(b, a);
 		b_command_num++;
 	}
 	pa(a, b);
