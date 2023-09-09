@@ -6,7 +6,7 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 18:27:08 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/09/06 12:17:38 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/09/09 21:18:24 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,15 +62,12 @@ int	main(int argc, char *argv[])
 {
 	t_deque	a;
 	t_deque	b;
-	// t_node	*node_a;
-	// t_node	*node_b;
-	
+
 	if (argc < 2)
 		return (0);
 	ft_deque_init(&a);
 	ft_deque_init(&b);
 	ft_parsing(argc, argv, &a, &b);
-
 	if (a.count > 0 && !is_sorted(a))
 	{
 		a_to_b(&a, &b);
@@ -78,27 +75,5 @@ int	main(int argc, char *argv[])
 			b_to_a(&a, &b);
 		final_sort(&a, &b);
 	}
-	// node_a = a.head;
-	// node_b = b.head;
-	// while (node_a)
-	// {
-	// 	printf("index: %d, data: %d\n", node_a->index, node_a->data);
-	// 	node_a = node_a->next;
-	// }
-	// printf("\n\n");
-	// while (node_b)
-	// {
-	// 	printf("index: %d, data: %d\n", node_b->index, node_b->data);
-	// 	node_b = node_b->next;
-	// }
-	// printf("==================\n\n");
-	
-	// node_a = a.head;
-	// while (node_a)
-	// {
-	// 	printf("index: %d, data: %d\n", node_a->index, node_a->data);
-	// 	node_a = node_a->next;
-	// }
-	system("leaks push_swap");
-	return (0);
+	exit(0);
 }

@@ -1,0 +1,21 @@
+	node_a = a.head;
+	node_b = b.head;
+	while (node_a)
+	{
+		printf("index: %d, data: %d\n", node_a->index, node_a->data);
+		node_a = node_a->next;
+	}
+	printf("\n\n");
+	while (node_b)
+	{
+		printf("index: %d, data: %d\n", node_b->index, node_b->data);
+		node_b = node_b->next;
+	}
+	printf("==================\n\n");
+	
+	node_a = a.head;
+	while (node_a)
+	{
+		printf("index: %d, data: %d\n", node_a->index, node_a->data);
+		node_a = node_a->next;
+	}

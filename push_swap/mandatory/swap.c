@@ -6,7 +6,7 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 17:40:46 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/09/06 12:22:43 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/09/09 19:51:40 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	sb(t_deque *b)
 	write(1, "sb\n", 3);
 }
 
-void	ss(t_deque *a, t_deque *b)
+void	swap_a(t_deque *a)
 {
 	t_node	*temp;
 
@@ -68,6 +68,12 @@ void	ss(t_deque *a, t_deque *b)
 		a->head->index--;
 		a->head->next->index++;
 	}
+}
+
+void	swap_b(t_deque *b)
+{
+	t_node	*temp;
+
 	if (b->count >= 2)
 	{
 		temp = b->head;
@@ -80,6 +86,11 @@ void	ss(t_deque *a, t_deque *b)
 		b->head->index--;
 		b->head->next->index++;
 	}
-	temp = 0;
+}
+
+void	ss(t_deque *a, t_deque *b)
+{
+	swap_a(a);
+	swap_b(b);
 	write(1, "ss\n", 3);
 }

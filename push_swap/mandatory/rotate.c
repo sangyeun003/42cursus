@@ -1,42 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   reverse_rotate.c                                   :+:      :+:    :+:   */
+/*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/22 20:10:43 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/09/01 16:38:52 by sangyepa         ###   ########.fr       */
+/*   Created: 2023/08/22 17:41:55 by sangyepa          #+#    #+#             */
+/*   Updated: 2023/09/09 19:55:08 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include	"push_swap.h"
 
-void	rra(t_deque *a, t_deque *b)
+void	ra(t_deque *a, t_deque *b)
 {
 	int	data;
 
-	data = ft_deque_remove_last(a);
-	ft_deque_add_first(a, b, data);
-	write(1, "rra\n", 4);
+	data = ft_deque_remove_first(a, b);
+	ft_deque_add_last(a, b, data);
+	write(1, "ra\n", 3);
 }
 
-void	rrb(t_deque *b, t_deque *a)
+void	rb(t_deque *b, t_deque *a)
 {
 	int	data;
 
-	data = ft_deque_remove_last(b);
-	ft_deque_add_first(b, a, data);
-	write(1, "rrb\n", 4);
+	data = ft_deque_remove_first(b, a);
+	ft_deque_add_last(b, a, data);
+	write(1, "rb\n", 3);
 }
 
-void	rrr(t_deque *a, t_deque *b)
+void	rr(t_deque *a, t_deque *b)
 {
 	int	data;
 
-	data = ft_deque_remove_last(a);
-	ft_deque_add_first(a, b, data);
-	data = ft_deque_remove_last(b);
-	ft_deque_add_first(b, a, data);
-	write(1, "rrr\n", 4);
+	data = ft_deque_remove_first(a, b);
+	ft_deque_add_last(a, b, data);
+	data = ft_deque_remove_first(b, a);
+	ft_deque_add_last(b, a, data);
+	write(1, "rr\n", 3);
 }

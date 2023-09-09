@@ -6,7 +6,7 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 03:18:16 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/09/06 12:18:23 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/09/09 19:57:47 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,10 @@ int	find_location_in_a(t_deque *a, int b_num)
 		}
 		node = node->next;
 	}
-	if (!node)	// a_max보다 큰 수
+	if (!node) // a_max보다 큰 수
 	{
-		if (a->head->index == find_min_idx(a) && a->tail->index == find_max_idx(a))
+		if (a->head->index == find_min_idx(a)
+			&& a->tail->index == find_max_idx(a))
 			return (0);
 		if (find_max_idx(a) + 1 == find_min_idx(a))
 			return (find_min_idx(a));
@@ -87,17 +88,17 @@ int	greedy(t_deque *a, t_deque *b)
 
 	node = b->head;
 	target_b_index = 0;
-	min_total_command_num = cal_total_command_num(find_location_in_a(a, b->head->data), 0);
+	min_total_command_num
+		= cal_total_command_num(find_location_in_a(a, b->head->data), 0);
 	while (node && b->count >= 2)
 	{
-		if (min_total_command_num >
-				cal_total_command_num(return_index(a, find_location_in_a(a, node->data)),
-									return_index(b, node->index)))
+		if (min_total_command_num
+			> cal_total_command_num(return_index(a, find_location_in_a
+					(a, node->data)), return_index(b, node->index)))
 		{
-			min_total_command_num =
-				cal_total_command_num(return_index(a, node->data),
-									return_index(b, node->index));
-			
+			min_total_command_num
+				= cal_total_command_num(return_index(a, find_location_in_a
+						(a, node->data)), return_index(b, node->index));
 			target_b_index = node->index;
 		}
 		node = node->next;

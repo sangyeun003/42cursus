@@ -1,40 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_3.c                                           :+:      :+:    :+:   */
+/*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/29 16:16:59 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/09/01 16:40:58 by sangyepa         ###   ########.fr       */
+/*   Created: 2023/08/22 17:41:59 by sangyepa          #+#    #+#             */
+/*   Updated: 2023/09/09 19:54:28 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include	"push_swap.h"
 
-void	sort_3(t_deque *a, t_deque *b)
+void	pa(t_deque *a, t_deque *b)
 {
-	int	n1;
-	int	n2;
-	int	n3;
+	int	data;
 
-	n1 = a->head->data;
-	n2 = a->head->next->data;
-	n3 = a->head->next->next->data;
-	if (n1 > n2 && n1 < n3)		// 2 1 3
-		sa(a);
-	else if (n2 < n1 && n2 > n3)	// 3 2 1
-	{
-		sa(a);
-		rra(a, b);
-	}
-	else if (n3 < n1 && n3 > n2)	// 3 1 2
-		ra(a, b);
-	else if (n3 > n1 && n3 < n2)	// 1 3 2
-	{
-		sa(a);
-		ra(a, b);
-	}
-	else if (n1 < n2 && n1 > n3)	// 2 3 1
-		rra(a, b);
+	data = ft_deque_remove_first(b, a);
+	ft_deque_add_first(a, b, data);
+	write(1, "pa\n", 3);
+}
+
+void	pb(t_deque *a, t_deque *b)
+{
+	int	data;
+
+	data = ft_deque_remove_first(a, b);
+	ft_deque_add_first(b, a, data);
+	write(1, "pb\n", 3);
 }
