@@ -1,29 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_sorted.c                                        :+:      :+:    :+:   */
+/*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/29 15:10:12 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/09/06 12:17:44 by sangyepa         ###   ########.fr       */
+/*   Created: 2023/09/03 21:30:32 by sangyepa          #+#    #+#             */
+/*   Updated: 2023/09/03 21:36:54 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include	"push_swap.h"
+#include	"../push_swap.h"
 
-int	is_sorted(t_deque deq)
+int	main(int argc, char **argv)
 {
-	t_node	*node;
+	t_deque	a;
+	t_deque	b;
+	char	*cmd;
 
-	node = deq.head;
-	while (node->next)
+	if (argc < 2)
+		return (0);
+	ft_deque_init(&a);
+	ft_deque_init(&b);
+	ft_parsing(argc, argv, &a, &b);
+	while (1)
 	{
-		if (node->data >= node->next->data)
-			return (0);
-		node = node->next;
+		
 	}
-	if (node)
-		free(node);
-	return (1);
+	return (0);
 }

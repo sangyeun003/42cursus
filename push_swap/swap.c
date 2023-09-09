@@ -6,7 +6,7 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 17:40:46 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/09/01 17:16:08 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/09/06 12:22:43 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 void	sa(t_deque *a)
 {
 	t_node	*temp;
-	int		idx_tmp;
 
 	if (a->count >= 2)
 	{
@@ -29,7 +28,7 @@ void	sa(t_deque *a)
 		a->head->index--;
 		a->head->next->index++;
 	}
-	// free(temp);
+	temp = 0;
 	write(1, "sa\n", 3);
 }
 
@@ -49,7 +48,7 @@ void	sb(t_deque *b)
 		b->head->index--;
 		b->head->next->index++;
 	}
-	// free(temp);
+	temp = 0;
 	write(1, "sb\n", 3);
 }
 
@@ -81,6 +80,6 @@ void	ss(t_deque *a, t_deque *b)
 		b->head->index--;
 		b->head->next->index++;
 	}
-	// free(temp);
+	temp = 0;
 	write(1, "ss\n", 3);
 }

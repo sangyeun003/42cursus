@@ -6,7 +6,7 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 18:27:08 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/09/01 17:14:42 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/09/06 12:17:38 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,14 @@ int	find_min_idx(t_deque *pdeq)
 		}
 		node = node->next;
 	}
-	// free(node);
+	if (node)
+		free(node);
 	return (min_idx);
 }
 
 void	final_sort(t_deque	*a, t_deque *b)
 {
 	int		min_idx;
-	t_node	*node;
 
 	min_idx = find_min_idx(a);
 	if (min_idx >= a->count / 2)
@@ -99,6 +99,6 @@ int	main(int argc, char *argv[])
 	// 	printf("index: %d, data: %d\n", node_a->index, node_a->data);
 	// 	node_a = node_a->next;
 	// }
-	// system("leaks push_swap");
+	system("leaks push_swap");
 	return (0);
 }

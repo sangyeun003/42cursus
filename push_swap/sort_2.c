@@ -6,13 +6,13 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 19:59:53 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/09/01 16:39:56 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/09/06 12:05:21 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include	"push_swap.h"
 
-void	sort_2(t_deque *a, t_deque *b)
+void	sort_2(t_deque *a)
 {
 	int	n1;
 	int	n2;
@@ -20,5 +20,5 @@ void	sort_2(t_deque *a, t_deque *b)
 	n1 = a->head->data;
 	n2 = a->head->next->data;
 	if (n1 > n2)
-		ra(a, b);
+		sa(a);
 }

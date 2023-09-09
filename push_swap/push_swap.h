@@ -6,7 +6,7 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 18:28:03 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/09/01 16:48:22 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/09/06 12:05:39 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	rrr(t_deque *a, t_deque *b);
 int		is_sorted(t_deque deq);
 void	a_to_b(t_deque *a, t_deque *b);
 void	b_to_a(t_deque *a, t_deque *b);
-void	sort_2(t_deque *a, t_deque *b);
+void	sort_2(t_deque *a);
 void	sort_3(t_deque *a, t_deque *b);
 
 int		find_min_idx(t_deque *pdeq);
