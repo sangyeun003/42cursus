@@ -1,31 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker.c                                          :+:      :+:    :+:   */
+/*   ft_free_deque_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/03 21:30:32 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/09/09 20:46:54 by sangyepa         ###   ########.fr       */
+/*   Created: 2023/08/17 21:35:34 by sangyepa          #+#    #+#             */
+/*   Updated: 2023/09/09 23:02:51 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include	"../push_swap.h"
+#include	"push_swap_bonus.h"
 
-int	main(int argc, char **argv)
+void	ft_free_deque(t_deque *pdeq1, t_deque *pdeq2)
 {
-	t_deque	a;
-	t_deque	b;
-	char	*cmd;
-
-	if (argc < 2)
-		return (0);
-	ft_deque_init(&a);
-	ft_deque_init(&b);
-	ft_parsing(argc, argv, &a, &b);
-	while (1)
-	{
-		
-	}
-	return (0);
+	if (!pdeq1 || !pdeq2)
+		return ;
+	while (!ft_deque_is_empty(pdeq1))
+		ft_deque_remove_first(pdeq1, pdeq2);
+	while (!ft_deque_is_empty(pdeq2))
+		ft_deque_remove_first(pdeq2, pdeq1);
 }

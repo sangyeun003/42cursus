@@ -1,20 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_error.c                                         :+:      :+:    :+:   */
+/*   sort_2_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/17 20:39:21 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/09/09 23:05:01 by sangyepa         ###   ########.fr       */
+/*   Created: 2023/08/29 19:59:53 by sangyepa          #+#    #+#             */
+/*   Updated: 2023/09/09 22:37:20 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include	"push_swap.h"
+#include	"push_swap_bonus.h"
 
-void	ft_error(t_deque *pdeq1, t_deque *pdeq2)
+void	sort_2(t_deque *a)
 {
-	ft_free_deque(pdeq1, pdeq2);
-	write(0, "Error\n", 6);
-	exit(-1);
+	int	n1;
+	int	n2;
+
+	n1 = a->head->data;
+	n2 = a->head->next->data;
+	if (n1 > n2)
+		sa(a);
 }

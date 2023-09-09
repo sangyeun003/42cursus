@@ -1,20 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_error.c                                         :+:      :+:    :+:   */
+/*   is_sorted_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/17 20:39:21 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/09/09 23:05:01 by sangyepa         ###   ########.fr       */
+/*   Created: 2023/08/29 15:10:12 by sangyepa          #+#    #+#             */
+/*   Updated: 2023/09/09 22:37:06 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include	"push_swap.h"
+#include	"push_swap_bonus.h"
 
-void	ft_error(t_deque *pdeq1, t_deque *pdeq2)
+int	is_sorted(t_deque deq)
 {
-	ft_free_deque(pdeq1, pdeq2);
-	write(0, "Error\n", 6);
-	exit(-1);
+	t_node	*node;
+
+	node = deq.head;
+	while (node->next)
+	{
+		if (node->data >= node->next->data)
+			return (0);
+		node = node->next;
+	}
+	if (node)
+		free(node);
+	return (1);
 }

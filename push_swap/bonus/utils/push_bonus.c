@@ -1,20 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_error.c                                         :+:      :+:    :+:   */
+/*   push_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/17 20:39:21 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/09/09 23:05:01 by sangyepa         ###   ########.fr       */
+/*   Created: 2023/08/22 17:41:59 by sangyepa          #+#    #+#             */
+/*   Updated: 2023/09/09 22:47:34 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include	"push_swap.h"
+#include	"push_swap_bonus.h"
 
-void	ft_error(t_deque *pdeq1, t_deque *pdeq2)
+void	pa(t_deque *a, t_deque *b)
 {
-	ft_free_deque(pdeq1, pdeq2);
-	write(0, "Error\n", 6);
-	exit(-1);
+	int	data;
+
+	data = ft_deque_remove_first(b, a);
+	ft_deque_add_first(a, b, data);
+}
+
+void	pb(t_deque *a, t_deque *b)
+{
+	int	data;
+
+	data = ft_deque_remove_first(a, b);
+	ft_deque_add_first(b, a, data);
 }

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    push_swap_tester.bash                              :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: youngkpa <youngkpa@student.42.fr>          +#+  +:+       +#+         #
+#    By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/14 18:07:27 by minckim           #+#    #+#              #
-#    Updated: 2023/09/09 21:20:52 by sangyepa         ###   ########.fr        #
+#    Updated: 2023/09/09 22:53:02 by sangyepa         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 

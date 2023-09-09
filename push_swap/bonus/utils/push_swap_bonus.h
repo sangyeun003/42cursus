@@ -1,20 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   push_swap_bonus.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 18:28:03 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/09/09 23:23:37 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/09/09 23:23:23 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
+#ifndef PUSH_SWAP_BONUS_H
 # define TRUE	1
 # define FALSE	0
+# define SUCCESS 1
+# define FAIL 0
+# define ERROR -1
 # include	<unistd.h>
 # include	<stdlib.h>
+# include	"../get_next_line/get_next_line.h"
 
 typedef struct s_node
 {
@@ -74,6 +78,8 @@ int		find_location_in_a(t_deque *a, int b_num);
 int		return_index(t_deque *pdeq, int index);
 int		cal_total_command_num(int a_command_num, int b_command_num);
 int		greedy(t_deque *a, t_deque *b);
+
+int		ft_strcmp(char *s1, char *s2);
 
 int		main(int argc, char *argv[]);
 

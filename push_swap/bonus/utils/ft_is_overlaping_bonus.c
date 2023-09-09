@@ -1,20 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_error.c                                         :+:      :+:    :+:   */
+/*   ft_is_overlaping_bonus.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/17 20:39:21 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/09/09 23:05:01 by sangyepa         ###   ########.fr       */
+/*   Created: 2023/08/17 21:59:35 by sangyepa          #+#    #+#             */
+/*   Updated: 2023/09/09 22:58:44 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include	"push_swap.h"
+#include	"push_swap_bonus.h"
 
-void	ft_error(t_deque *pdeq1, t_deque *pdeq2)
+void	ft_is_overlaping(t_deque *pdeq1, t_deque *pdeq2, int data)
 {
-	ft_free_deque(pdeq1, pdeq2);
-	write(0, "Error\n", 6);
-	exit(-1);
+	t_node	*cmp;
+
+	cmp = pdeq1->head;
+	while (cmp)
+	{
+		if (cmp->data == data)
+			ft_error(pdeq1, pdeq2);
+		cmp = cmp->next;
+	}
+	if (cmp)
+		free(cmp);
 }

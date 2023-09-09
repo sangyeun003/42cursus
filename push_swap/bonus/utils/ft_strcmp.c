@@ -1,20 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_error.c                                         :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/17 20:39:21 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/09/09 23:05:01 by sangyepa         ###   ########.fr       */
+/*   Created: 2023/02/15 17:05:21 by sangyepa          #+#    #+#             */
+/*   Updated: 2023/09/09 23:22:23 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include	"push_swap.h"
+#include	"push_swap_bonus.h"
 
-void	ft_error(t_deque *pdeq1, t_deque *pdeq2)
+int	ft_strcmp(char *s1, char *s2)
 {
-	ft_free_deque(pdeq1, pdeq2);
-	write(0, "Error\n", 6);
-	exit(-1);
+	int	i;
+
+	i = 0;
+	while (s1[i] && s2[i])
+	{
+		if (s1[i] == s2[i])
+			i++;
+		else
+			return (s1[i] - s2[i]);
+	}
+	return (s1[i] - s2[i]);
 }
