@@ -1,0 +1,57 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    harkim_Makefile                                    :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/06/06 16:59:51 by harkim            #+#    #+#              #
+#    Updated: 2023/09/10 13:02:44 by sangyepa         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+CC = cc
+CFLAGS = -Wall -Wextra -Werror -g3
+NAME = push_swap
+BONUS_NAME = checker
+SRCS = push_swap.c ft_atoi.c argc_under_5.c ft_split.c \
+	init_deque.c main_function.c push_swap_algorithm.c \
+	subject_command_a.c subject_command_b.c subject_command_common.c \
+	utils_deque.c utils.c
+SRCS_BONUS = push_swap_bonus.c get_next_line_bonus.c get_next_line_utils_bonus.c \
+			ft_atoi_bonus.c ft_split_bonus.c init_deque_bonus.c main_function_bonus.c \
+			subject_command_a_bonus.c subject_command_b_bonus.c subject_command_common_bonus.c \
+			utils_deque_bonus.c utils_bonus.c
+OBJS = $(SRCS:.c=.o)
+OBJS_BONUS = $(SRCS_BONUS:.c=.o)
+
+ifdef WITH_BONUS
+	FILE_NAME = $(BONUS_NAME)
+	OBJ_FILES = $(OBJS_BONUS)
+else
+	FILE_NAME = $(NAME)
+	OBJ_FILES = $(OBJS)
+endif
+
+all : $(FILE_NAME)
+
+$(FILE_NAME): $(OBJ_FILES)
+	$(CC) $(CFLAGS) -o $(FILE_NAME) $(OBJ_FILES)
+
+.c.o:
+	$(CC) $(CFLAGS) -c $< -o $@
+
+clean :
+	rm -f $(OBJS) $(OBJS_BONUS)
+
+fclean : clean
+	rm -f $(NAME) $(BONUS_NAME)
+
+re :
+	make fclean
+	make all
+
+bonus:
+	make WITH_BONUS=1 all
+
+.PHONY = all clean fclean re bonus
