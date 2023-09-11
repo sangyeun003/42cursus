@@ -1,0 +1,66 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    youngkpa                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/05/27 16:29:52 by youngkpa          #+#    #+#              #
+#    Updated: 2023/09/11 09:56:36 by sangyepa         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+NAME = push_swap
+CC = cc
+RM = rm -f
+FLAGS = -Wall -Wextra -Werror
+LIBFTDIR = libft/
+BONUS = checker
+
+SRC =	srcs/push_swap/parsing.c \
+		srcs/push_swap/lst_utils.c \
+		srcs/push_swap/lst_utils_push_pop.c \
+		srcs/push_swap/command_swap_push.c \
+		srcs/push_swap/command_rotate.c \
+		srcs/push_swap/command_rev_rotate.c \
+		srcs/push_swap/error_check.c \
+		srcs/push_swap/algorithm.c \
+		srcs/push_swap/algorithm_execute_rotate.c \
+		srcs/push_swap/algorithm_get_value.c \
+
+MANDATORY_SRC = srcs/push_swap/push_swap.c \
+		
+BONUS_SRC = srcs/checker/checker.c \
+
+OBJ = ${SRC:.c=.o}
+MANDATORY_OBJ = ${MANDATORY_SRC:.c=.o}
+BONUS_OBJ =${BONUS_SRC:.c=.o}
+
+INCLUDE = -L ./libft -lft
+
+.c.o:
+	${CC} -c $< -o ${<:.c=.o}
+
+${NAME}: ${MANDATORY_OBJ} ${OBJ}
+	make -C $(LIBFTDIR)
+	${CC} ${FLAGS} ${MANDATORY_OBJ} ${OBJ} -o ${NAME} ${INCLUDE}
+
+${BONUS}: ${OBJ} ${BONUS_OBJ} 
+	make -C $(LIBFTDIR)
+	${CC} ${FLAGS} ${BONUS_OBJ} ${OBJ} -o ${BONUS} ${INCLUDE}
+
+all: ${NAME} ${BONUS}
+
+bonus: ${BONUS} 
+
+clean:
+	${RM} ${MANDATORY_OBJ} ${OBJ} ${BONUS_OBJ}
+	@cd $(LIBFTDIR) && $(MAKE) clean
+
+fclean: clean
+	${RM} ${NAME} ${BONUS}
+	@cd $(LIBFTDIR) && $(MAKE) fclean
+
+re: clean all
+
+.PHONY: all clean fclean re bonus
