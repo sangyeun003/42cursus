@@ -6,7 +6,7 @@
 #    By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/11 10:53:46 by sangyepa          #+#    #+#              #
-#    Updated: 2023/09/11 16:14:51 by sangyepa         ###   ########.fr        #
+#    Updated: 2023/09/15 15:19:40 by sangyepa         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,12 +14,11 @@ SRCS=ft_check_invalid_input.c ft_parsing.c sort_3.c a_to_b.c ft_deque1.c ft_dequ
 					b_to_a.c ft_error.c greedy.c is_sorted.c reverse_rotate.c \
 					ft_is_overlaping.c push_swap.c rotate.c ft_atoi.c ft_isdigit.c push.c sort_2.c
 OBJS=$(SRCS:.c=.o)
-SRCS_BONUS=ft_check_invalid_input_bonus.c ft_parsing_bonus.c sort_3_bonus.c a_to_b_bonus.c ft_deque1_bonus.c \
-				ft_deque2_bonus.c ft_split_bonus.c swap_bonus.c b_to_a_bonus.c ft_error_bonus.c greedy_bonus.c \
-				is_sorted_bonus.c reverse_rotate_bonus.c ft_is_overlaping_bonus.c \
-				push_swap_bonus.c rotate_bonus.c ft_atoi_bonus.c ft_isdigit_bonus.c push_bonus.c sort_2_bonus.c \
-				get_next_line_bonus.c get_next_line_utils_bonus.c \
-				checker_bonus.c ft_strcmp_bonus.c
+SRCS_BONUS=checker_bonus.c ft_atoi_bonus.c ft_check_invalid_input_bonus.c ft_deque1_bonus.c \
+			ft_deque2_bonus.c ft_error_bonus.c ft_is_overlaping_bonus.c ft_isdigit_bonus.c \
+			ft_parsing_bonus.c ft_split_bonus.c ft_strcmp_bonus.c get_next_line_bonus.c \
+			get_next_line_utils_bonus.c is_sorted_bonus.c push_bonus.c reverse_rotate_bonus.c \
+			rotate_bonus.c swap_bonus.c
 OBJS_BONUS=$(SRCS_BONUS:.c=.o)
 CC=cc
 WFLAGS=-Wall -Wextra -Werror
