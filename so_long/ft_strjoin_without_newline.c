@@ -6,7 +6,7 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 16:14:59 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/09/19 20:01:36 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/09/20 18:37:07 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,9 @@ char	*ft_strjoin_without_newline(char *s1, char *s2)
 	char	*result;
 
 	len = ft_strlen(s1) + ft_strlen(s2);
-	result = (char *)malloc(len * sizeof(char));
+	if (s2[ft_strlen(s2) - 1] == '\n')
+		len--;
+	result = (char *)malloc((len + 1) * sizeof(char));
 	if (!result)
 		exit(1);
 	i = 0;
@@ -30,12 +32,8 @@ char	*ft_strjoin_without_newline(char *s1, char *s2)
 		i++;
 	}
 	j = 0;
-	while (s2[j] != '\n')
-	{
-		result[i] = s2[j];
-		i++;
-		j++;
-	}
+	while (i < len)
+		result[i++] = s2[j++];
 	result[i] = 0;
 	return (result);
 }

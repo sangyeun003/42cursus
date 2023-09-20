@@ -6,7 +6,7 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 19:33:56 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/09/19 20:28:34 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/09/20 21:00:00 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,7 @@
 
 typedef struct s_img
 {
-	void	*up;
-	void	*down;
-	void	*left;
-	void	*right;
+	void	*character;
 	void	*background;
 	void	*wall;
 	void	*goal;
@@ -53,22 +50,29 @@ typedef struct s_game
 	int		height;
 	int		x;
 	int		y;
+	int		collection;
+	int		total_collection;
+	int		step;
 	char	*map_str;
 	void	*mlx;
 	void	*window;
 }	t_game;
-
-
 
 void	img_init(t_img *img, t_game *game);
 char	*ft_strjoin_without_newline(char *s1, char *s2);
 char	*ft_strdup_without_newline(char *str);
 
 void	read_map(char *file_name, t_game *game);
-void	set_img_to_map(t_img img, t_game *game);
+void	set_img(t_img *img, t_game *game);
+void	set_game(t_game *game);
 
 void	pos_init(t_game *game);
 int		close_window(void);
 int		press_key(int keycode, t_game *game);
+
+void	move_w(t_game *game);
+void	move_a(t_game *game);
+void	move_s(t_game *game);
+void	move_d(t_game *game);
 
 #endif
