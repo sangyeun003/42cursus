@@ -6,7 +6,7 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 16:03:20 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/09/16 16:21:45 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/09/20 11:26:42 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,17 +23,22 @@ void	read_map(char *file_name, t_game *game)
 	game->map_str = ft_strdup_without_newline(line);
 	game->width = ft_strlen(line);
 	game->height = 1;
+	printf("map width: %d, map height: %d\n", game->width, game->height);
 	free(line);
-	while (line)
+	while (1)
 	{
 		line = get_next_line(fd);
-		if (line)
-			game->height++;
-		temp = game->map_str;
-		free(game->map_str);
+		if (!line)
+			return ;
+		game->height++;
+		temp = ft_strdup(game->map_str);
+		if (!temp)
+			exit(1);
+		// free(game->map_str);
 		game->map_str = ft_strjoin_without_newline(temp, line);
-		free(temp);
-		free(line);
+		// free(temp);
+		// free(line);
+		printf("map width: %d, map height: %d\n", game->width, game->height);
 	}
 	close(fd);
 }
