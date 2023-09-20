@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   img_init.c                                         :+:      :+:    :+:   */
+/*   init_img.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 15:47:55 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/09/20 18:54:23 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/09/20 22:01:33 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include	"so_long.h"
 
-void	img_init(t_img *img, t_game *game)
+void	init_img(t_img *img, t_game *game)
 {
 	img->background = mlx_xpm_file_to_image(game->mlx, \
 				"./images/background.xpm", &(img->width), &(img->height));

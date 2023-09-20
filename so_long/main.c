@@ -6,7 +6,7 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 19:33:07 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/09/20 20:42:47 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/09/20 22:14:20 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ int	main(int argc, char **argv)
 		exit(1);
 	game.window = mlx_new_window(game.mlx, 32 * game.width, \
 		32 * game.height, "so_long"); // 윈도우 띄우기
-	img_init(&img, &game);
-	set_img_to_map(&img, &game);
-	set_game(&game);
+	init_img(&img, &game);
+	set_img(&img, &game);
+	init_game(&game);
 	mlx_hook(game.window, X_EVENT_DESTROY_NOTIFY, 0, &close_window, &game);
 	mlx_hook(game.window, X_EVENT_KEY_PRESS, 0, &press_key, &game);
 	mlx_loop(game.mlx);
