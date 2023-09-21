@@ -6,7 +6,7 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 16:14:13 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/09/19 20:00:39 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/09/20 18:37:28 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,11 @@ char	*ft_strdup_without_newline(char *str)
 	char	*result;
 
 	len = ft_strlen((char *)str);
-	result = (char *)malloc(len * sizeof(char));
+	if (str[len - 1] == '\n')
+		len--;
+	result = (char *)malloc(sizeof(char) * (len + 1));
 	if (result == 0)
-		exit(1);
+		return (0);
 	i = 0;
 	while (i < len)
 	{
