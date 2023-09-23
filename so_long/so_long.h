@@ -6,7 +6,7 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 19:33:56 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/09/20 21:59:15 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/09/23 15:32:09 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,22 +56,23 @@ typedef struct s_game
 	char	*map_str;
 	void	*mlx;
 	void	*window;
+	t_img	*img;
 }	t_game;
 
-void	init_img(t_img *img, t_game *game);
+void	init_img(t_game *game);
 char	*ft_strjoin_without_newline(char *s1, char *s2);
 char	*ft_strdup_without_newline(char *str);
 
 void	read_map(char *file_name, t_game *game);
-void	set_img(t_img *img, t_game *game);
+void	set_img(t_game *game);
 void	init_game(t_game *game);
 
 int		close_window(void);
-int		press_key(int keycode, t_game *game, t_img *img);
+int		press_key(int keycode, t_game *game);
 
-void	move_w(t_game *game, t_img *img);
-void	move_a(t_game *game, t_img *img);
-void	move_s(t_game *game, t_img *img);
-void	move_d(t_game *game, t_img *img);
+void	move_w(t_game *game);
+void	move_a(t_game *game);
+void	move_s(t_game *game);
+void	move_d(t_game *game);
 
 #endif
