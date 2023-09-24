@@ -6,7 +6,7 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 19:33:07 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/09/24 21:32:49 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/09/24 22:33:53 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	main(int argc, char **argv)
 	t_game	game;
 
 	if (argc != 2)
-		exit(1);
+		print_error("Invalid argument!");
 	read_map(argv[1], &game);
 	check_map(&game);
 	game.mlx = mlx_init();

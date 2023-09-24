@@ -6,7 +6,7 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 19:33:56 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/09/24 21:36:32 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/09/24 22:15:01 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,9 @@ typedef struct s_game
 	int		height;
 	int		x;
 	int		y;
-	int		collection;
+	int		exit_num;
+	int		character_num;
+	int		got_collection;
 	int		total_collection;
 	int		step;
 	char	*map_str;

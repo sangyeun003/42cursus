@@ -6,7 +6,7 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 21:46:09 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/09/24 18:20:42 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/09/24 22:16:01 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,17 +21,17 @@ void	move_w(t_game *game)
 		i++;
 	if (game->map_str[i - game->width] == '1' || \
 		(game->map_str[i - game->width] == 'E' && \
-		(game->total_collection != game->collection)))
+		(game->total_collection != game->got_collection)))
 		return ;
 	else if (game->map_str[i - game->width] == 'C')
 	{
-		game->collection++;
+		game->got_collection++;
 		game->step++;
 		game->map_str[i - game->width] = 'P';
 		game->map_str[i] = '0';
 	}
 	else if (game->map_str[i - game->width] == 'E' && \
-		game->total_collection == game->collection)
+		game->total_collection == game->got_collection)
 		exit(0);
 	else
 	{
@@ -50,17 +50,17 @@ void	move_a(t_game *game)
 		i++;
 	if (game->map_str[i - 1] == '1' || \
 		(game->map_str[i - 1] == 'E' && \
-		(game->total_collection != game->collection)))
+		(game->total_collection != game->got_collection)))
 		return ;
 	else if (game->map_str[i - 1] == 'C')
 	{
-		game->collection++;
+		game->got_collection++;
 		game->step++;
 		game->map_str[i - 1] = 'P';
 		game->map_str[i] = '0';
 	}
 	else if (game->map_str[i - 1] == 'E' && \
-		game->total_collection == game->collection)
+		game->total_collection == game->got_collection)
 		exit(0);
 	else
 	{
@@ -79,17 +79,17 @@ void	move_s(t_game *game)
 		i++;
 	if (game->map_str[i + game->width] == '1' || \
 		(game->map_str[i + game->width] == 'E' && \
-		(game->total_collection != game->collection)))
+		(game->total_collection != game->got_collection)))
 		return ;
 	else if (game->map_str[i + game->width] == 'C')
 	{
-		game->collection++;
+		game->got_collection++;
 		game->step++;
 		game->map_str[i + game->width] = 'P';
 		game->map_str[i] = '0';
 	}
 	else if (game->map_str[i + game->width] == 'E' && \
-		game->total_collection == game->collection)
+		game->total_collection == game->got_collection)
 		exit(0);
 	else
 	{
@@ -108,17 +108,17 @@ void	move_d(t_game *game)
 		i++;
 	if (game->map_str[i + 1] == '1' || \
 		(game->map_str[i + 1] == 'E' && \
-		(game->total_collection != game->collection)))
+		(game->total_collection != game->got_collection)))
 		return ;
 	else if (game->map_str[i + 1] == 'C')
 	{
-		game->collection++;
+		game->got_collection++;
 		game->step++;
 		game->map_str[i + 1] = 'P';
 		game->map_str[i] = '0';
 	}
 	else if (game->map_str[i + 1] == 'E' && \
-		game->total_collection == game->collection)
+		game->total_collection == game->got_collection)
 		exit(0);
 	else
 	{
