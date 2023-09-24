@@ -1,34 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_game.c                                        :+:      :+:    :+:   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/20 20:41:54 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/09/24 18:08:57 by sangyepa         ###   ########.fr       */
+/*   Created: 2023/06/27 21:44:18 by sangyepa          #+#    #+#             */
+/*   Updated: 2023/07/01 00:36:24 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include	"so_long.h"
+#include	"ft_printf.h"
 
-void	init_game(t_game *game)
+int	ft_printf(const	char *format, ...)
 {
-	int	i;
+	int		result;
+	int		past_result;
+	va_list	ap;
 
-	game->img = (t_img *)malloc(sizeof(t_img));
-	if (!game->img)
-		exit(1);
-	init_img(game);
-	set_img(game);
-	game->step = 0;
-	game->collection = 0;
-	game->total_collection = 0;
-	i = 0;
-	while (game->map_str[i])
+	result = 0;
+	va_start(ap, format);
+	while (*format)
 	{
-		if (game->map_str[i] == 'C')
-			game->total_collection++;
-		i++;
+		past_result = result;
+		if (*format == '%')
+		{
+			format++;
+			ft_check(&ap, format, &result);
+		}
+		else
+			result += write(1, format, 1);
+		if (result < past_result)
+		{
+			va_end(ap);
+			return (-1);
+		}
+		format++;
 	}
+	va_end(ap);
+	return (result);
 }

@@ -1,34 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_game.c                                        :+:      :+:    :+:   */
+/*   ft_putunsignedint.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/20 20:41:54 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/09/24 18:08:57 by sangyepa         ###   ########.fr       */
+/*   Created: 2023/06/27 22:09:49 by sangyepa          #+#    #+#             */
+/*   Updated: 2023/07/01 00:04:13 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include	"so_long.h"
+#include	"ft_printf.h"
 
-void	init_game(t_game *game)
+void	ft_putunsignedint(unsigned int n, int *result)
 {
-	int	i;
+	char	a;
+	int		check;
 
-	game->img = (t_img *)malloc(sizeof(t_img));
-	if (!game->img)
-		exit(1);
-	init_img(game);
-	set_img(game);
-	game->step = 0;
-	game->collection = 0;
-	game->total_collection = 0;
-	i = 0;
-	while (game->map_str[i])
+	a = 0;
+	if (n < 10)
 	{
-		if (game->map_str[i] == 'C')
-			game->total_collection++;
-		i++;
+		a = n + '0';
+		check = write(1, &a, 1);
+		if (check < 0)
+			*result = check;
+		else
+			*result += check;
+		return ;
 	}
+	ft_putunsignedint(n / 10, result);
+	if (*result < 0)
+		return ;
+	ft_putunsignedint(n % 10, result);
+	return ;
 }

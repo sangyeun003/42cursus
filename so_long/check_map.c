@@ -6,17 +6,28 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 16:22:25 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/09/23 16:13:53 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/09/24 22:00:44 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include	"so_long.h"
 
-int	check_map(t_game game)
+void	check_map(t_game *game)
 {
-	if (game.width * game.height != (int)ft_strlen(game.map_str))
-		return (FALSE);
-	// 첫 width개, 마지막 width개 모두 벽(1)이어야 함.
-	// 각 행의 처음과 마지막 벽(0)이어야 함.
-	return (TRUE);
+	// int	i;
+	// int	j;
+
+	if (game->width <= 2 || game->height <= 2)
+		print_error("Invalid Map!");
+	
+	// i = 0;
+	// j = 2 * game->width - 1;
+	// while (i < game->height - 2)
+	// {
+	// 	if (game->map_str[j] != '1' || \
+	// 		game->map_str[j - game->width + 1] != '1')
+	// 		print_error("Invalid Map!");
+	// 	i++;
+	// 	j += game->width;
+	// }
 }

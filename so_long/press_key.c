@@ -6,7 +6,7 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 21:46:09 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/09/24 15:03:36 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/09/24 18:20:42 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,6 +146,6 @@ int	press_key(int keycode, t_game *game)
 	else
 		return (0);
 	set_img(game);
-	printf("Step: %d\n", game->step);
+	ft_printf("Step: %d\n", game->step);
 	return (0);
 }

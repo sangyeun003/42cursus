@@ -6,7 +6,7 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 15:47:55 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/09/23 18:04:05 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/09/24 18:06:37 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,6 @@
 
 void	init_img(t_game *game)
 {
-	game->img = malloc(sizeof(t_img));
-	if (!game->img)
-		exit(1);
 	game->img->background = mlx_xpm_file_to_image(game->mlx, \
 		"./images/background.xpm", &(game->img->width), &(game->img->height));
 	if (!game->img->background)
