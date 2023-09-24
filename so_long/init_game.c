@@ -6,7 +6,7 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 20:41:54 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/09/20 22:15:24 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/09/23 15:45:46 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,6 @@ void	init_game(t_game *game)
 	{
 		if (game->map_str[i] == 'C')
 			game->total_collection++;
-		else if (game->map_str[i] == 'P')
-			game->map_str[i] = '0';
 		i++;
 	}
 }
