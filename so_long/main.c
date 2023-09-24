@@ -6,13 +6,12 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 19:33:07 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/09/20 22:14:20 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/09/21 22:06:43 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 // gcc -lmlx -framework OpenGl -framework AppKit -Imlx main.c
-// gcc -I . *.c -L mlx/ -lmlx -framework OpenGL -framework AppKit
-// gcc -I . *.c -L mlx/ -lmlx -framework OpenGL -framework AppKit -arch x86_64
+// arch -x86_64 gcc *.c -I. -Lmlx -lmlx -framework Metal -framework Metalkit
 #include	"so_long.h"
 
 int	main(int argc, char **argv)
@@ -30,7 +29,7 @@ int	main(int argc, char **argv)
 	set_img(&img, &game);
 	init_game(&game);
 	mlx_hook(game.window, X_EVENT_DESTROY_NOTIFY, 0, &close_window, &game);
-	mlx_hook(game.window, X_EVENT_KEY_PRESS, 0, &press_key, &game);
+	// mlx_hook(game.window, X_EVENT_KEY_PRESS, 0, &press_key, &game);
 	mlx_loop(game.mlx);
 	exit(0);
 }
