@@ -6,14 +6,14 @@
 #    By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/15 19:29:17 by sangyepa          #+#    #+#              #
-#    Updated: 2023/10/02 17:20:42 by sangyepa         ###   ########.fr        #
+#    Updated: 2023/10/06 18:55:31 by sangyepa         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRCS=./mandatory/get_next_line_utils.c ./mandatory/check_map.c \
 	./mandatory/press_key.c ./mandatory/close_window.c ./mandatory/init_game.c \
 	./mandatory/ft_strdup_without_newline.c ./mandatory/init_img.c \
-	./mandatory/set_img.c ./mandatory/get_next_line.c \
+	./mandatory/set_img.c ./mandatory/get_next_line.c ./mandatory/display.c \
 	./mandatory/ft_strjoin_without_newline.c ./mandatory/main.c \
 	./mandatory/read_map.c ./mandatory/print_error.c
 SRCS_BONUS=./bonus/check_map_bonus.c ./bonus/get_next_line_utils_bonus.c \

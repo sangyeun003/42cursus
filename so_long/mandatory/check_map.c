@@ -6,7 +6,7 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 16:22:25 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/10/02 23:08:56 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/10/06 17:41:12 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ char	*ft_strndup(char *s, int n)
 		result[i] = s[i];
 		i++;
 	}
-	s[i] = 0;
+	result[i] = 0;
 	return (result);
 }
 
@@ -57,10 +57,4 @@ void	check_map(t_game *game)
 	game->map_2d = make_2d_map(game);
 	if (!game->map_2d)
 		print_error("Malloc failed!");
-	int i = 0;
-	while (i < game->height)
-	{
-		printf("%s\n", game->map_2d[i]);
-		i++;
-	}
 }

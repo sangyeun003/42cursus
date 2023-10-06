@@ -6,7 +6,7 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 20:41:54 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/09/24 22:32:35 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/10/06 17:53:02 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,15 +37,29 @@ void	check_map_component(t_game *game)
 
 void	init_game(t_game *game)
 {
-	game->img = (t_img *)malloc(sizeof(t_img));
-	if (!game->img)
-		print_error("Malloc failed!");
-	init_img(game);
-	set_img(game);
+	int	i;
+	int	j;
+
 	game->step = 0;
 	game->exit_num = 0;
 	game->character_num = 0;
 	game->got_collection = 0;
 	game->total_collection = 0;
 	check_map_component(game);
+	i = 1;
+	while (i < game->height - 1)
+	{
+		j = 1;
+		while (j < game->width - 1)
+		{
+			if (game->map_2d[i][j] == 'P')
+			{
+				game->x = j;
+				game->y = i;
+				return ;
+			}
+			j++;
+		}
+		i++;
+	}
 }

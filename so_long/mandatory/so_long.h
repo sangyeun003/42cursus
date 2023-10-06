@@ -6,7 +6,7 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 19:33:56 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/10/02 23:03:42 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/10/06 18:48:59 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ void	read_map(char *file_name, t_game *game);
 void	check_map(t_game *game);
 void	set_img(t_game *game);
 void	init_game(t_game *game);
+void	display(t_game *game);
 
 int		close_window(void);
 int		press_key(int keycode, t_game *game);
