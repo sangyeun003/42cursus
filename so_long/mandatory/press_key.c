@@ -6,7 +6,7 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 21:46:09 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/09/24 22:16:01 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/10/02 17:25:10 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,9 +130,6 @@ void	move_d(t_game *game)
 
 int	press_key(int keycode, t_game *game)
 {
-	t_img	*img;
-
-	img = game->img;
 	if (keycode == W_KEY)
 		move_w(game);
 	else if (keycode == A_KEY)

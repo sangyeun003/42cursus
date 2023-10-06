@@ -6,14 +6,23 @@
 #    By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/15 19:29:17 by sangyepa          #+#    #+#              #
-#    Updated: 2023/09/24 21:38:07 by sangyepa         ###   ########.fr        #
+#    Updated: 2023/10/02 17:20:42 by sangyepa         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS=get_next_line_utils.c check_map.c press_key.c close_window.c init_game.c \
-		ft_strdup_without_newline.c init_img.c set_img.c get_next_line.c \
-		ft_strjoin_without_newline.c main.c read_map.c print_error.c
-SRCS_BONUS=
+SRCS=./mandatory/get_next_line_utils.c ./mandatory/check_map.c \
+	./mandatory/press_key.c ./mandatory/close_window.c ./mandatory/init_game.c \
+	./mandatory/ft_strdup_without_newline.c ./mandatory/init_img.c \
+	./mandatory/set_img.c ./mandatory/get_next_line.c \
+	./mandatory/ft_strjoin_without_newline.c ./mandatory/main.c \
+	./mandatory/read_map.c ./mandatory/print_error.c
+SRCS_BONUS=./bonus/check_map_bonus.c ./bonus/get_next_line_utils_bonus.c \
+	./bonus/press_key_bonus.c ./bonus/close_window_bonus.c \
+	./bonus/print_error_bonus.c ./bonus/init_game_bonus.c \
+	./bonus/read_map_bonus.c ./bonus/ft_strdup_without_newline_bonus.c \
+	./bonus/init_img_bonus.c ./bonus/set_img_bonus.c \
+	./bonus/ft_strjoin_without_newline_bonus.c ./bonus/main_bonus.c \
+	./bonus/get_next_line_bonus.c
 OBJS=$(SRCS:.c=.o)
 OBJS_BONUS=$(SRCS_BONUS:.c=.o)
 MLX=./mlx/libmlx.dylib
@@ -41,7 +50,7 @@ all: $(FILE_NAME)
 $(FILE_NAME): $(MLX) $(PRINTF) $(OBJS_FILES)
 	cp $(MLX) "./"
 	cp $(PRINTF) "./"
-	$(CC) $(WFLAGS) -o $(FILE_NAME) $(OBJS_FILES) $(MLX_LIB) $(PRINTF_LIB)
+	arch -x86_64 $(CC) $(WFLAGS) -o $(FILE_NAME) $(OBJS_FILES) $(MLX_LIB) $(PRINTF_LIB)	# 수정 필요
 
 $(MLX):
 	make -C $(MLX_DIR) all
@@ -50,7 +59,7 @@ $(PRINTF):
 	make -C $(PRINTF_DIR) all
 
 %.o: %.c
-	$(CC) $(WFLAGS) -c $^ -o $@ -I $(HEADER)
+	arch -x86_64 $(CC) $(WFLAGS) -c $^ -o $@ -I $(HEADER)	# 수정 필요
 
 clean:
 	rm -f $(OBJS)
