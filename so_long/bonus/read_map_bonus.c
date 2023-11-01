@@ -6,7 +6,7 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 16:03:20 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/11/01 19:35:58 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/11/01 23:01:21 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,12 @@ void	check_and_read_first_line(int fd, t_game *game)
 	int		i;
 
 	line = get_next_line(fd);
+	if (!line)
+		print_error("Malloc failed!");
 	game->map_str = ft_strdup_without_newline(line);
 	if (!game->map_str)
 		print_error("Malloc failed!");
+	// free(line);
 	i = 0;
 	while (game->map_str[i])
 	{
@@ -76,6 +79,7 @@ void	check_line(char *line, t_game *game)
 		print_error("Map is not rectangular!");
 	if (just_line[0] != '1' || just_line[len - 1] != '1')
 		print_error("Invalid edge!");
+	free(just_line);
 }
 
 void	read_map(char *file_name, t_game *game)

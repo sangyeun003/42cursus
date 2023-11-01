@@ -6,7 +6,7 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 18:48:34 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/11/01 19:36:56 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/11/01 21:03:23 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	display(t_game *game)
 	if (!game->mlx)
 		print_error("MLX init failed!");
 	game->window = mlx_new_window(game->mlx, 32 * game->width, \
-		32 * game->height, "[so_long]");
+		32 * game->height, "[so_long_bonus]");
 	if (!game->window)
 		print_error("Window opening failed!");
 	game->img = (t_img *)malloc(sizeof(t_img));

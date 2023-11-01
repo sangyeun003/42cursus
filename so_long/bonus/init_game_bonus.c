@@ -6,7 +6,7 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 20:41:54 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/11/01 19:36:31 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/11/01 21:48:29 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ void	check_map_component(t_game *game)
 			game->exit_num++;
 		else if (game->map_str[i] == 'P')
 			game->character_num++;
+		else if (game->map_str[i] == 'M')
+			game->monster_num++;
 		else if (game->map_str[i] != '0' && game->map_str[i] != '1')
 			print_error("Invalid character exists!");
 		i++;
@@ -34,16 +36,22 @@ void	check_map_component(t_game *game)
 		print_error("Invalid component!");
 }
 
+void	init_num_to_zero(t_game *game)
+{
+	game->step = 0;
+	game->exit_num = 0;
+	game->character_num = 0;
+	game->monster_num = 0;
+	game->got_collection = 0;
+	game->total_collection = 0;
+}
+
 void	init_game(t_game *game)
 {
 	int	i;
 	int	j;
 
-	game->step = 0;
-	game->exit_num = 0;
-	game->character_num = 0;
-	game->got_collection = 0;
-	game->total_collection = 0;
+	init_num_to_zero(game);
 	check_map_component(game);
 	i = 1;
 	while (i < game->height - 1)

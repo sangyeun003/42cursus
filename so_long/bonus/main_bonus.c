@@ -6,7 +6,7 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 19:33:07 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/11/01 19:36:24 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/11/01 22:54:34 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ int	dfs_for_collection(t_game *game, int x, int y, char **map)
 	count = 0;
 	if (x < 0 || y < 0 || x >= game->width || y >= game->height)
 		return (0);
-	if (map[y][x] == '1' || map[y][x] == 'E' || map[y][x] == 'V')
+	if (map[y][x] == '1' || map[y][x] == 'E' || map[y][x] == 'V' \
+		|| map[y][x] == 'M')
 		return (0);
 	if (map[y][x] == 'C')
 		count++;
@@ -38,7 +39,7 @@ int	dfs_for_exit(t_game *game, int x, int y, char **map)
 	count = 0;
 	if (x < 0 || y < 0 || x >= game->width || y >= game->height)
 		return (0);
-	if (map[y][x] == '1' || map[y][x] == '0')
+	if (map[y][x] == '1' || map[y][x] == '0' || map[y][x] == 'M')
 		return (0);
 	if (map[y][x] == 'E')
 		count++;
@@ -63,35 +64,47 @@ char	**map_dup(t_game *game)
 	{
 		result[i] = ft_strdup(game->map_2d[i]);
 		if (!result[i])
+		{
+			i--;
+			while (i >= 0)
+				free(result[i--]);
+			free(result);
 			print_error("Malloc failed!");
+		}
 		i++;
 	}
 	result[i] = 0;
 	return (result);
 }
 
-int	escapable(t_game *game)
+void	escapable(t_game *game)
 {
-	int		x;
-	int		y;
+	int		i;
 	int		collection_num;
 	int		exit_num;
 	char	**real_map;
 
-	x = game->x;
-	y = game->y;
 	real_map = map_dup(game);
 	if (!real_map)
 		print_error("Malloc failed!");
-	collection_num = dfs_for_collection(game, x, y, real_map);
-	exit_num = dfs_for_exit(game, x, y, real_map);
+	collection_num = dfs_for_collection(game, game->x, game->y, real_map);
+	exit_num = dfs_for_exit(game, game->x, game->y, real_map);
+	i = 0;
+	while (real_map[i])
+		free(real_map[i++]);
+	free(real_map);
 	if (collection_num != game->total_collection || exit_num != 1)
 		print_error("Cannot escape!");
-	return (1);
+}
+
+void	check(void)
+{
+	system("leaks --list -- so_long_bonus");
 }
 
 int	main(int argc, char **argv)
 {
+	atexit(check);
 	t_game	game;
 
 	if (argc != 2)

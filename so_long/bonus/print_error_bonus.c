@@ -6,7 +6,7 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 18:12:44 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/11/01 19:41:17 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/11/01 22:20:10 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,5 +16,5 @@ void	print_error(char *s)
 {
 	ft_printf("Error\n");
 	perror(s);
-	exit(1);
+	exit(-1);
 }

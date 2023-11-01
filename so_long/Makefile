@@ -6,7 +6,7 @@
 #    By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/15 19:29:17 by sangyepa          #+#    #+#              #
-#    Updated: 2023/11/01 19:39:18 by sangyepa         ###   ########.fr        #
+#    Updated: 2023/11/01 21:56:13 by sangyepa         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,8 @@ SRCS_BONUS=./bonus/check_map_bonus.c ./bonus/get_next_line_utils_bonus.c \
 	./bonus/ft_strdup_without_newline_bonus.c ./bonus/display_bonus.c \
 	./bonus/init_img_bonus.c ./bonus/set_img_bonus.c \
 	./bonus/ft_strjoin_without_newline_bonus.c ./bonus/main_bonus.c \
-	./bonus/get_next_line_bonus.c ./bonus/print_error_bonus.c
+	./bonus/get_next_line_bonus.c ./bonus/print_error_bonus.c \
+	./bonus/wasd_bonus.c ./bonus/meet_monster.c
 OBJS=$(SRCS:.c=.o)
 OBJS_BONUS=$(SRCS_BONUS:.c=.o)
 MLX=./mlx/libmlx.dylib

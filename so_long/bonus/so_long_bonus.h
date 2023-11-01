@@ -6,7 +6,7 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 19:33:56 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/11/01 19:38:31 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/11/01 21:55:51 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,12 @@
 
 typedef struct s_img
 {
-	void	*character;
+	void	*up;
+	void	*down;
+	void	*left;
+	void	*right;
 	void	*background;
+	void	*monster;
 	void	*wall;
 	void	*goal;
 	void	*exit;
@@ -52,6 +56,7 @@ typedef struct s_game
 	int		y;
 	int		exit_num;
 	int		character_num;
+	int		monster_num;
 	int		got_collection;
 	int		total_collection;
 	int		step;
@@ -75,6 +80,7 @@ void	display(t_game *game);
 int		close_window(void);
 void	print_error(char *s);
 int		press_key(int keycode, t_game *game);
+void	meet_monster(char c);
 
 void	move_w(t_game *game);
 void	move_a(t_game *game);
