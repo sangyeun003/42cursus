@@ -6,13 +6,12 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 20:41:54 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/10/06 17:53:02 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/11/01 19:30:25 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include	"so_long.h"
 
-// 맵 구성 요소 개수 검사
 void	check_map_component(t_game *game)
 {
 	int	i;

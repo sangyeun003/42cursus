@@ -6,7 +6,7 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 21:46:09 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/10/02 17:22:57 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/11/01 19:36:19 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	move_w(t_game *game)
 	{
 		game->got_collection++;
 		game->step++;
-		game->map_str[i - game->width] = 'U';
+		game->map_str[i - game->width] = 'P';
 		game->map_str[i] = '0';
 	}
 	else if (game->map_str[i - game->width] == 'E' && \
@@ -36,7 +36,7 @@ void	move_w(t_game *game)
 	else
 	{
 		game->step++;
-		game->map_str[i - game->width] = 'U';
+		game->map_str[i - game->width] = 'P';
 		game->map_str[i] = '0';
 	}
 }
@@ -56,7 +56,7 @@ void	move_a(t_game *game)
 	{
 		game->got_collection++;
 		game->step++;
-		game->map_str[i - 1] = 'L';
+		game->map_str[i - 1] = 'P';
 		game->map_str[i] = '0';
 	}
 	else if (game->map_str[i - 1] == 'E' && \
@@ -65,7 +65,7 @@ void	move_a(t_game *game)
 	else
 	{
 		game->step++;
-		game->map_str[i - 1] = 'L';
+		game->map_str[i - 1] = 'P';
 		game->map_str[i] = '0';
 	}
 }
@@ -85,7 +85,7 @@ void	move_s(t_game *game)
 	{
 		game->got_collection++;
 		game->step++;
-		game->map_str[i + game->width] = 'D';
+		game->map_str[i + game->width] = 'P';
 		game->map_str[i] = '0';
 	}
 	else if (game->map_str[i + game->width] == 'E' && \
@@ -94,7 +94,7 @@ void	move_s(t_game *game)
 	else
 	{
 		game->step++;
-		game->map_str[i + game->width] = 'D';
+		game->map_str[i + game->width] = 'P';
 		game->map_str[i] = '0';
 	}
 }
@@ -114,7 +114,7 @@ void	move_d(t_game *game)
 	{
 		game->got_collection++;
 		game->step++;
-		game->map_str[i + 1] = 'R';
+		game->map_str[i + 1] = 'P';
 		game->map_str[i] = '0';
 	}
 	else if (game->map_str[i + 1] == 'E' && \
@@ -123,16 +123,13 @@ void	move_d(t_game *game)
 	else
 	{
 		game->step++;
-		game->map_str[i + 1] = 'R';
+		game->map_str[i + 1] = 'P';
 		game->map_str[i] = '0';
 	}
 }
 
 int	press_key(int keycode, t_game *game)
 {
-	// t_img	*img;
-
-	// img = game->img;
 	if (keycode == W_KEY)
 		move_w(game);
 	else if (keycode == A_KEY)

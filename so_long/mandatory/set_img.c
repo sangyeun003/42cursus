@@ -6,11 +6,16 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 15:41:16 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/09/23 15:30:20 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/11/01 18:37:37 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include	"so_long.h"
+
+void	put_image_to_window(t_game *game, void *where, int i, int j)
+{
+	mlx_put_image_to_window(game->mlx, game->window, where, i * 32, j * 32);
+}
 
 void	set_img(t_game *game)
 {
@@ -24,20 +29,15 @@ void	set_img(t_game *game)
 		j = 0;
 		while (j < game->height)
 		{
-			mlx_put_image_to_window(game->mlx, game->window, \
-				game->img->background, i * 32, j * 32);
+			put_image_to_window(game, game->img->background, i, j);
 			if (game->map_str[i + j * game->width] == '1')
-				mlx_put_image_to_window(game->mlx, game->window, \
-					game->img->wall, i * 32, j * 32);
+				put_image_to_window(game, game->img->wall, i, j);
 			else if (game->map_str[i + j * game->width] == 'C')
-				mlx_put_image_to_window(game->mlx, game->window, \
-					game->img->goal, i * 32, j * 32);
+				put_image_to_window(game, game->img->goal, i, j);
 			else if (game->map_str[i + j * game->width] == 'E')
-				mlx_put_image_to_window(game->mlx, game->window, \
-					game->img->exit, i * 32, j * 32);
+				put_image_to_window(game, game->img->exit, i, j);
 			else if (game->map_str[i + j * game->width] == 'P')
-				mlx_put_image_to_window(game->mlx, game->window, \
-					game->img->character, i * 32, j * 32);
+				put_image_to_window(game, game->img->character, i, j);
 			j++;
 		}
 		i++;

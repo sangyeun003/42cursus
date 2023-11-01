@@ -6,7 +6,7 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 15:47:55 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/10/02 17:22:49 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/11/01 19:36:27 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,25 +22,9 @@ void	init_img(t_game *game)
 		"./images/wall.xpm", &(game->img->width), &(game->img->height));
 	if (!game->img->wall)
 		exit(1);
-	game->img->up = mlx_xpm_file_to_image(game->mlx, \
-		"./images/up.xpm", &(game->img->width), &(game->img->height));
-	if (!game->img->up)
-		exit(1);
-	game->img->down = mlx_xpm_file_to_image(game->mlx, \
+	game->img->character = mlx_xpm_file_to_image(game->mlx, \
 		"./images/down.xpm", &(game->img->width), &(game->img->height));
-	if (!game->img->down)
-		exit(1);
-	game->img->left = mlx_xpm_file_to_image(game->mlx, \
-		"./images/left.xpm", &(game->img->width), &(game->img->height));
-	if (!game->img->left)
-		exit(1);
-	game->img->right = mlx_xpm_file_to_image(game->mlx, \
-		"./images/right.xpm", &(game->img->width), &(game->img->height));
-	if (!game->img->right)
-		exit(1);
-	game->img->monster = mlx_xpm_file_to_image(game->mlx, \
-		"./images/monster.xpm", &(game->img->width), &(game->img->height));
-	if (!game->img->monster)
+	if (!game->img->character)
 		exit(1);
 	game->img->goal = mlx_xpm_file_to_image(game->mlx, \
 		"./images/goal.xpm", &(game->img->width), &(game->img->height));

@@ -6,11 +6,11 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 18:43:27 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/10/02 17:22:32 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/11/01 19:35:21 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_BONUS_H
+#ifndef GET_NEXT_LINE_BOUNS_H
 # include	<unistd.h>
 # include	<stdlib.h>
 

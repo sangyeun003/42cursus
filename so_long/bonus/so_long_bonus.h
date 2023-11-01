@@ -6,11 +6,11 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 19:33:56 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/10/02 17:21:14 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/11/01 19:38:31 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
+#ifndef SO_LONG_BONUS_H
 
 # include	<stdio.h>
 # include	<stdlib.h>
@@ -35,15 +35,11 @@
 
 typedef struct s_img
 {
-	void	*up;
-	void	*down;
-	void	*left;
-	void	*right;
+	void	*character;
 	void	*background;
 	void	*wall;
 	void	*goal;
 	void	*exit;
-	void	*monster;
 	int		width;
 	int		height;
 }	t_img;
@@ -60,6 +56,7 @@ typedef struct s_game
 	int		total_collection;
 	int		step;
 	char	*map_str;
+	char	**map_2d;
 	void	*mlx;
 	void	*window;
 	t_img	*img;
@@ -73,10 +70,11 @@ void	read_map(char *file_name, t_game *game);
 void	check_map(t_game *game);
 void	set_img(t_game *game);
 void	init_game(t_game *game);
+void	display(t_game *game);
 
 int		close_window(void);
-int		press_key(int keycode, t_game *game);
 void	print_error(char *s);
+int		press_key(int keycode, t_game *game);
 
 void	move_w(t_game *game);
 void	move_a(t_game *game);
