@@ -6,7 +6,7 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 19:33:07 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/10/06 22:44:12 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/11/02 14:04:47 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,6 @@ printf("%d, %d\n", x, y);
 	// 	print_error("Cannot escape!");
 	return (1);
 }
-
 int	main(int argc, char **argv)
 {
 	t_game	game;
