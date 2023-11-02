@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   close_window_bonus.c                               :+:      :+:    :+:   */
+/*   print_error_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/15 21:49:03 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/11/01 19:36:58 by sangyepa         ###   ########.fr       */
+/*   Created: 2023/09/24 18:12:44 by sangyepa          #+#    #+#             */
+/*   Updated: 2023/10/02 17:22:59 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include	"so_long_bonus.h"
 
-int	close_window(void)
+void	print_error(char *s)
 {
-	exit(0);
-	return (0);
+	ft_printf("%s\n", s);
+	exit(1);
 }

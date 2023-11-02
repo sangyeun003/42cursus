@@ -1,19 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   close_window_bonus.c                               :+:      :+:    :+:   */
+/*   meet_monster.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/15 21:49:03 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/11/01 19:36:58 by sangyepa         ###   ########.fr       */
+/*   Created: 2023/11/01 21:53:08 by sangyepa          #+#    #+#             */
+/*   Updated: 2023/11/01 21:56:32 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include	"so_long_bonus.h"
 
-int	close_window(void)
+void	meet_monster(char c)
 {
+	if (c == 'M')
+		ft_printf("Meet monster!\n");
 	exit(0);
-	return (0);
 }

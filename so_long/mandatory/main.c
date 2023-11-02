@@ -6,49 +6,47 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 19:33:07 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/11/02 14:04:47 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/11/02 14:05:52 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// gcc -lmlx -framework OpenGl -framework AppKit -Imlx main.c
-// arch -x86_64 gcc *.c -I. -Lmlx -lmlx -framework Metal -framework Metalkit
 #include	"so_long.h"
 
-int	dfs_for_collection(int x, int y, char **map)
+int	dfs_for_collection(t_game *game, int x, int y, char **map)
 {
 	int	count;
 
 	count = 0;
-	if (map[y][x] == '1')
+	if (x < 0 || y < 0 || x >= game->width || y >= game->height)
+		return (0);
+	if (map[y][x] == '1' || map[y][x] == 'E' || map[y][x] == 'V')
 		return (0);
 	if (map[y][x] == 'C')
 		count++;
 	map[y][x] = 'V';
-	count += dfs_for_collection(x + 1, y, map);
-	printf("1\n");
-	count += dfs_for_collection(x - 1, y, map);
-	printf("2\n");
-	// count += dfs_for_collection(x, y + 1, map);
-	// printf("3\n");
-	// count += dfs_for_collection(x, y - 1, map);
-	// printf("4\n");
+	count += dfs_for_collection(game, x + 1, y, map);
+	count += dfs_for_collection(game, x - 1, y, map);
+	count += dfs_for_collection(game, x, y + 1, map);
+	count += dfs_for_collection(game, x, y - 1, map);
 	return (count);
 }
 
-int	dfs_for_exit(int x, int y, char **map)
+int	dfs_for_exit(t_game *game, int x, int y, char **map)
 {
 	int	count;
 
 	count = 0;
-	if (map[y][x] == '1')
+	if (x < 0 || y < 0 || x >= game->width || y >= game->height)
+		return (0);
+	if (map[y][x] == '1' || map[y][x] == '0')
 		return (0);
 	if (map[y][x] == 'E')
 		count++;
-	map[y][x] = 'V';
-	count += dfs_for_collection(x + 1, y, map);
-	count += dfs_for_collection(x - 1, y, map);
-	count += dfs_for_collection(x, y + 1, map);
-	count += dfs_for_collection(x, y - 1, map);
+	map[y][x] = '0';
+	count += dfs_for_exit(game, x + 1, y, map);
+	count += dfs_for_exit(game, x - 1, y, map);
+	count += dfs_for_exit(game, x, y + 1, map);
+	count += dfs_for_exit(game, x, y - 1, map);
 	return (count);
 }
 
@@ -66,10 +64,8 @@ char	**map_dup(t_game *game)
 		result[i] = ft_strdup(game->map_2d[i]);
 		if (!result[i])
 			print_error("Malloc failed!");
-		// printf("%s\n", result[i]);
 		i++;
 	}
-	// printf("%s\n", game->map_str);
 	result[i] = 0;
 	return (result);
 }
@@ -80,20 +76,17 @@ int	escapable(t_game *game)
 	int		y;
 	int		collection_num;
 	int		exit_num;
-	char	**dfs_map;
+	char	**real_map;
 
 	x = game->x;
 	y = game->y;
-printf("%d, %d\n", x, y);
-	collection_num = 0;
-	exit_num = 0;
-	dfs_map = map_dup(game);
-	if (!dfs_map)
+	real_map = map_dup(game);
+	if (!real_map)
 		print_error("Malloc failed!");
-	collection_num += dfs_for_collection(x, y, dfs_map);
-	// exit_num += dfs_for_exit(x, y, dfs_map);
-	// if (collection_num != game->total_collection || exit_num != 1)
-	// 	print_error("Cannot escape!");
+	collection_num = dfs_for_collection(game, x, y, real_map);
+	exit_num = dfs_for_exit(game, x, y, real_map);
+	if (collection_num != game->total_collection || exit_num != 1)
+		print_error("Cannot escape!");
 	return (1);
 }
 int	main(int argc, char **argv)

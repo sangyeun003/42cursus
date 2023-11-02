@@ -6,7 +6,7 @@
 #    By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/15 19:29:17 by sangyepa          #+#    #+#              #
-#    Updated: 2023/10/06 18:55:31 by sangyepa         ###   ########.fr        #
+#    Updated: 2023/11/01 21:56:13 by sangyepa         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,11 +18,12 @@ SRCS=./mandatory/get_next_line_utils.c ./mandatory/check_map.c \
 	./mandatory/read_map.c ./mandatory/print_error.c
 SRCS_BONUS=./bonus/check_map_bonus.c ./bonus/get_next_line_utils_bonus.c \
 	./bonus/press_key_bonus.c ./bonus/close_window_bonus.c \
-	./bonus/print_error_bonus.c ./bonus/init_game_bonus.c \
-	./bonus/read_map_bonus.c ./bonus/ft_strdup_without_newline_bonus.c \
+	./bonus/init_game_bonus.c ./bonus/read_map_bonus.c \
+	./bonus/ft_strdup_without_newline_bonus.c ./bonus/display_bonus.c \
 	./bonus/init_img_bonus.c ./bonus/set_img_bonus.c \
 	./bonus/ft_strjoin_without_newline_bonus.c ./bonus/main_bonus.c \
-	./bonus/get_next_line_bonus.c
+	./bonus/get_next_line_bonus.c ./bonus/print_error_bonus.c \
+	./bonus/wasd_bonus.c ./bonus/meet_monster.c
 OBJS=$(SRCS:.c=.o)
 OBJS_BONUS=$(SRCS_BONUS:.c=.o)
 MLX=./mlx/libmlx.dylib
@@ -50,7 +51,7 @@ all: $(FILE_NAME)
 $(FILE_NAME): $(MLX) $(PRINTF) $(OBJS_FILES)
 	cp $(MLX) "./"
 	cp $(PRINTF) "./"
-	arch -x86_64 $(CC) $(WFLAGS) -o $(FILE_NAME) $(OBJS_FILES) $(MLX_LIB) $(PRINTF_LIB)	# 수정 필요
+	$(CC) $(WFLAGS) -o $(FILE_NAME) $(OBJS_FILES) $(MLX_LIB) $(PRINTF_LIB)
 
 $(MLX):
 	make -C $(MLX_DIR) all
@@ -59,7 +60,7 @@ $(PRINTF):
 	make -C $(PRINTF_DIR) all
 
 %.o: %.c
-	arch -x86_64 $(CC) $(WFLAGS) -c $^ -o $@ -I $(HEADER)	# 수정 필요
+	$(CC) $(WFLAGS) -c $^ -o $@ -I $(HEADER)
 
 clean:
 	rm -f $(OBJS)
