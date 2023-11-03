@@ -6,7 +6,7 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 19:33:56 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/11/01 19:31:39 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/11/03 18:00:36 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 # include	<stdio.h>
 # include	<stdlib.h>
-# include	<string.h>
 # include	<fcntl.h>
 # include	<unistd.h>
 # include	"../mlx/mlx.h"

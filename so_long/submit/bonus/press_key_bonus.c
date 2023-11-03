@@ -6,7 +6,7 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 21:46:09 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/11/03 17:32:54 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/11/03 17:58:28 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	view_step(t_game *game)
 	if (!result)
 		print_error("Malloc failed!");
 	mlx_string_put(game->mlx, game->window, 0, \
-		game->height * 32 + 16, 0x0000FF00, result);
+		game->height * 32 + 16, 0x00FFFFFF, result);
 	free(result);
 }
 
