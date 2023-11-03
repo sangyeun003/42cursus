@@ -6,7 +6,7 @@
 #    By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/15 19:29:17 by sangyepa          #+#    #+#              #
-#    Updated: 2023/11/03 16:50:18 by sangyepa         ###   ########.fr        #
+#    Updated: 2023/11/03 17:48:26 by sangyepa         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -67,6 +67,10 @@ clean:
 	rm -f $(OBJS_BONUS)
 	rm -f $(MLX_LIB)
 	rm -f $(PRINTF_LIB)
+	rm -f $(PRINTF_DIR)$(PRINTF_LIB)
+	rm -f $(MLX_DIR)$(MLX_LIB)
+	rm -f $(PRINTF_DIR)*.o
+	rm -f $(MLX_DIR)*.o
 
 fclean: clean
 	rm -f $(FILE_NAME)
