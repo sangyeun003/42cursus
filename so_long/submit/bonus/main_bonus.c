@@ -6,7 +6,7 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 19:33:07 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/11/03 17:34:33 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/11/08 18:02:27 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,8 +97,14 @@ void	escapable(t_game *game)
 		print_error("Cannot escape!");
 }
 
+void	check()
+{
+	system("leaks --list -- so_long_bonus");
+}
+
 int	main(int argc, char **argv)
 {
+	atexit(check);
 	t_game	game;
 
 	if (argc != 2)

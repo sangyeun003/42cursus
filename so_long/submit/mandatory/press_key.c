@@ -6,7 +6,7 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 21:46:09 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/10/02 17:25:10 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/11/08 17:40:32 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,7 +139,7 @@ int	press_key(int keycode, t_game *game)
 	else if (keycode == D_KEY)
 		move_d(game);
 	else if (keycode == ESC_KEY)
-		exit(0);
+		close_window(game);
 	else
 		return (0);
 	set_img(game);
