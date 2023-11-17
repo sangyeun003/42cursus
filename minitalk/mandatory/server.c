@@ -5,21 +5,46 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/15 17:03:23 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/11/15 17:48:08 by sangyepa         ###   ########.fr       */
+/*   Created: 2023/11/17 23:16:49 by sangyepa          #+#    #+#             */
+/*   Updated: 2023/11/17 23:30:34 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// gcc server.c -L ../ft_printf -lftprintf
-#include	<unistd.h>
 #include	<signal.h>
-#include	<stdlib.h>
-#include	<stdio.h>
 #include	"../ft_printf/ft_printf.h"
+#include	"../libft/libft.h"
 
-int	main(void)
+void	get_bit(int signal)
 {
+	static int	bit = 0;
+	static char	c = 0;
+
+	if (signal == SIGUSR1)
+		c |= (1 << bit);
+	bit++;
+	if (bit == 8)
+	{
+		write(1, &c, 1);
+		bit = 0;
+		c = 0;
+	}
+}
+
+int	main(int argc, char *argv[])
+{
+	pid_t	pid;
+
+	argv = 0;
+	if (argc != 1)
+	{
+		ft_printf("Invalid argument!\nTry: ./server\n");
+		exit(-1);
+	}
+	pid = getpid();
+	ft_printf("PID: %d\nWaiting for a message..\n", pid);
+	signal(SIGUSR1, get_bit);
+	signal(SIGUSR2, get_bit);
 	while (1)
-		printf("%d\n", getpid());
+		pause();
 	return (0);
 }
