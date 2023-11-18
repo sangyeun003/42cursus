@@ -6,7 +6,7 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 23:16:49 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/11/18 11:40:21 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/11/18 15:35:34 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,12 @@ int	main(int argc, char *argv[])
 	argv = 0;
 	if (argc != 1)
 	{
-		ft_printf("Invalid Argument!\nTry: ./server\n");
+		ft_printf("Invalid Argument!\nTry \"./server\"\n");
 		exit(-1);
 	}
 	pid = getpid();
 	ft_printf("PID: %d\nWaiting for a message..\n", pid);
-	signal(SIGUSR1, get_bit);	// signal 오면 실행할 함수 매핑
+	signal(SIGUSR1, get_bit);
 	signal(SIGUSR2, get_bit);
 	while (1)
 		pause();

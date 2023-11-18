@@ -6,7 +6,7 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 10:54:44 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/11/18 11:32:04 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/11/18 15:50:13 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include	"../ft_printf/ft_printf.h"
 #include	"../libft/libft.h"
 
-void	send_bit(pid_t pid, unsigned char c)
+void	send_byte(pid_t pid, unsigned char c)
 {
 	int	bit;
 
@@ -25,7 +25,8 @@ void	send_bit(pid_t pid, unsigned char c)
 			kill(pid, SIGUSR1);
 		else
 			kill(pid, SIGUSR2);
-		usleep(100);	// for delay 왜?
+		usleep(100);
+		usleep(100);
 		bit++;
 	}
 }
@@ -37,18 +38,23 @@ void	send_str(pid_t pid, char *str)
 	i = 0;
 	while (str[i])
 	{
-		send_bit(pid, str[i]);
+		send_byte(pid, str[i]);
 		i++;
 	}
-	send_bit(pid, '\n');
-	send_bit(pid, 0);	// 왜 보낼까?
+	send_byte(pid, '\n');
+	send_byte(pid, 0);
+	while (1)
+		pause();
 }
 
 void	check_ack(int signal)
 {
 	if (signal == SIGUSR1)
+	{
+		ft_printf("Client PID: %d\n", getpid());
 		ft_printf("Sending Success!\n");
-	exit(0);	// ACK 받고 client 종료
+		exit(0);
+	}
 }
 
 int	main(int argc, char *argv[])
@@ -61,7 +67,7 @@ int	main(int argc, char *argv[])
 		return (-1);
 	}
 	pid = ft_atoi(argv[1]);
-	if (pid < 100 || pid > 99999)
+	if (pid < 100 || pid > 99998)
 	{
 		ft_printf("Wrong PID!\n");
 		return (-1);
