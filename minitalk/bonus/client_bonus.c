@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   client_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/17 23:17:00 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/11/18 11:24:56 by sangyepa         ###   ########.fr       */
+/*   Created: 2023/11/18 10:54:44 by sangyepa          #+#    #+#             */
+/*   Updated: 2023/11/18 11:32:04 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,13 @@ void	send_str(pid_t pid, char *str)
 	send_bit(pid, 0);	// 왜 보낼까?
 }
 
+void	check_ack(int signal)
+{
+	if (signal == SIGUSR1)
+		ft_printf("Sending Success!\n");
+	exit(0);	// ACK 받고 client 종료
+}
+
 int	main(int argc, char *argv[])
 {
 	pid_t	pid;
@@ -59,6 +66,7 @@ int	main(int argc, char *argv[])
 		ft_printf("Wrong PID!\n");
 		return (-1);
 	}
+	signal(SIGUSR1, check_ack);
 	send_str(pid, argv[2]);
 	return (0);
 }
