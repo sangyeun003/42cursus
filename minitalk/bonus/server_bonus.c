@@ -6,7 +6,7 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 10:54:42 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/11/18 15:34:19 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/11/18 16:56:43 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	main(int argc, char *argv[])
 		ft_printf("Invalid argument!\nTry \"./server\"\n");
 		exit(-1);
 	}
-	sig.sa_flags = SA_SIGINFO;
+	sig.sa_flags = SA_SIGINFO;	// sa_handler가 아니라 sa_sigaction을 사용하기 위해
 	sig.sa_sigaction = &get_bit;
 	sigemptyset(&sig.sa_mask);
 	pid = getpid();
