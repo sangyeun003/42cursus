@@ -1,37 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell_util.c                                   :+:      :+:    :+:   */
+/*   ft_index.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/11 18:24:26 by youngkpa          #+#    #+#             */
-/*   Updated: 2023/12/24 13:42:57 by sangyepa         ###   ########.fr       */
+/*   Created: 2023/12/24 14:39:08 by sangyepa          #+#    #+#             */
+/*   Updated: 2023/12/24 14:39:08 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include "libft.h"
 
-char	*ft_str_double_join(char *str1, char *str2, char *str3)
+int	ft_index_str(char *str, char c)
 {
-	char	*tmp;
-	char	*res;
+	int	idx;
 
-	tmp = ft_strjoin(str1, str2);
-	check_malloc_error(tmp);
-	res = ft_strjoin(tmp, str3);
-	free(tmp);
-	check_malloc_error(res);
-	return (res);
-}
-
-int	all_isspace(char *line)
-{
-	while (*line)
+	idx = 0;
+	while (str[idx] != c)
 	{
-		if (ft_isspace(*line) == FALSE)
-			return (FALSE);
-		line++;
+		if (str[idx] == '\0')
+			return (-1);
+		idx++;
 	}
-	return (TRUE);
+	return (idx);
 }

@@ -5,21 +5,24 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/13 17:28:05 by youngkpa          #+#    #+#             */
-/*   Updated: 2023/12/24 13:30:23 by sangyepa         ###   ########.fr       */
+/*   Created: 2023/12/24 14:40:12 by sangyepa          #+#    #+#             */
+/*   Updated: 2023/12/24 14:40:23 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
+
 # define LIBFT_H
 # include <unistd.h>
 # include <stdlib.h>
 # include <fcntl.h>
 # include <ctype.h>
 # include <stdarg.h>
+
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 1023
 # endif
+
 # define OPEN_MAXI 256
 # define TRUE 1
 # define FALSE 0

@@ -1,37 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell_util.c                                   :+:      :+:    :+:   */
+/*   signal.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/11 18:24:26 by youngkpa          #+#    #+#             */
-/*   Updated: 2023/12/24 13:42:57 by sangyepa         ###   ########.fr       */
+/*   Created: 2023/12/24 14:30:12 by sangyepa          #+#    #+#             */
+/*   Updated: 2023/12/24 14:30:12 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-char	*ft_str_double_join(char *str1, char *str2, char *str3)
+void	hdoc_sigint_handler(int signo)
 {
-	char	*tmp;
-	char	*res;
-
-	tmp = ft_strjoin(str1, str2);
-	check_malloc_error(tmp);
-	res = ft_strjoin(tmp, str3);
-	free(tmp);
-	check_malloc_error(res);
-	return (res);
+	(void)signo;
+	ft_putendl_fd("", STDOUT_FILENO);
+	exit(FAIL);
 }
 
-int	all_isspace(char *line)
+void	ignore_signal(void)
 {
-	while (*line)
-	{
-		if (ft_isspace(*line) == FALSE)
-			return (FALSE);
-		line++;
-	}
-	return (TRUE);
+	signal(SIGINT, SIG_IGN);
+	signal(SIGQUIT, SIG_IGN);
+}
+
+void	default_signal(void)
+{
+	signal(SIGINT, SIG_DFL);
+	signal(SIGQUIT, SIG_DFL);
 }

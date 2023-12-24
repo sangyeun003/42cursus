@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/11 18:24:26 by youngkpa          #+#    #+#             */
-/*   Updated: 2023/12/24 13:42:57 by sangyepa         ###   ########.fr       */
+/*   Created: 2023/12/24 14:29:57 by sangyepa          #+#    #+#             */
+/*   Updated: 2023/12/24 14:29:57 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ char	*ft_str_double_join(char *str1, char *str2, char *str3)
 	return (res);
 }
 
-int	all_isspace(char *line)
+int	isspace_all(char *line)
 {
 	while (*line)
 	{

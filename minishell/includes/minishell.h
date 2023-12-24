@@ -1,37 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell_util.c                                   :+:      :+:    :+:   */
+/*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/11 18:24:26 by youngkpa          #+#    #+#             */
-/*   Updated: 2023/12/24 13:42:57 by sangyepa         ###   ########.fr       */
+/*   Created: 2023/12/24 13:49:39 by sangyepa          #+#    #+#             */
+/*   Updated: 2023/12/24 13:49:40 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#ifndef MINISHELL_H
+# define MINISHELL_H
+# include <stdio.h>
+# include <unistd.h>
+# include <stdlib.h>
+# include <termios.h>
+# include <readline/readline.h>
+# include <readline/history.h>
+# include <sys/stat.h>
+# include <errno.h>
+# include <limits.h>
+# include "../libft/libft.h"
+# include "struct.h"
+# include "util.h"
+# include "parse.h"
+# include "execute.h"
 
-char	*ft_str_double_join(char *str1, char *str2, char *str3)
-{
-	char	*tmp;
-	char	*res;
+extern t_info	g_info;
 
-	tmp = ft_strjoin(str1, str2);
-	check_malloc_error(tmp);
-	res = ft_strjoin(tmp, str3);
-	free(tmp);
-	check_malloc_error(res);
-	return (res);
-}
-
-int	all_isspace(char *line)
-{
-	while (*line)
-	{
-		if (ft_isspace(*line) == FALSE)
-			return (FALSE);
-		line++;
-	}
-	return (TRUE);
-}
+#endif

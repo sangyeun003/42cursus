@@ -1,37 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell_util.c                                   :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/11 18:24:26 by youngkpa          #+#    #+#             */
-/*   Updated: 2023/12/24 13:42:57 by sangyepa         ###   ########.fr       */
+/*   Created: 2023/12/24 14:30:21 by sangyepa          #+#    #+#             */
+/*   Updated: 2023/12/24 14:30:21 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include "../includes/minishell.h"
 
-char	*ft_str_double_join(char *str1, char *str2, char *str3)
+t_info	g_info;
+
+int	main(int argc, char **argv, char **envp)
 {
-	char	*tmp;
-	char	*res;
+	t_argv	*argvs;
 
-	tmp = ft_strjoin(str1, str2);
-	check_malloc_error(tmp);
-	res = ft_strjoin(tmp, str3);
-	free(tmp);
-	check_malloc_error(res);
-	return (res);
-}
-
-int	all_isspace(char *line)
-{
-	while (*line)
+	(void)argv;
+	if (argc != 1)
+		exit_shell_by_error("invalid argv");
+	g_info.pid = getpid();
+	init_env(envp);
+	while (TRUE)
 	{
-		if (ft_isspace(*line) == FALSE)
-			return (FALSE);
-		line++;
+		argvs = NULL;
+		unset_echoctl();
+		register_signal_handler();
+		parse(&argvs);
+		execute(argvs);
 	}
-	return (TRUE);
 }

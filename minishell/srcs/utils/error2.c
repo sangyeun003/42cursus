@@ -1,37 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell_util.c                                   :+:      :+:    :+:   */
+/*   error2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/11 18:24:26 by youngkpa          #+#    #+#             */
-/*   Updated: 2023/12/24 13:42:57 by sangyepa         ###   ########.fr       */
+/*   Created: 2023/12/24 14:29:43 by sangyepa          #+#    #+#             */
+/*   Updated: 2023/12/24 14:29:43 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-char	*ft_str_double_join(char *str1, char *str2, char *str3)
+void	print_error(char *cmd, char *msg, int err_num)
 {
-	char	*tmp;
-	char	*res;
-
-	tmp = ft_strjoin(str1, str2);
-	check_malloc_error(tmp);
-	res = ft_strjoin(tmp, str3);
-	free(tmp);
-	check_malloc_error(res);
-	return (res);
+	ft_putstr_fd(cmd, STDERR_FILENO);
+	ft_putstr_fd(": ", STDERR_FILENO);
+	ft_putendl_fd(msg, STDERR_FILENO);
+	g_info.last_exit_status = err_num;
 }
 
-int	all_isspace(char *line)
+void	print_error_exit(char *cmd, char *msg, int exit_num)
 {
-	while (*line)
-	{
-		if (ft_isspace(*line) == FALSE)
-			return (FALSE);
-		line++;
-	}
-	return (TRUE);
+	print_error(cmd, msg, exit_num);
+	exit(exit_num);
 }

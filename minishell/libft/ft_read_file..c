@@ -1,37 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell_util.c                                   :+:      :+:    :+:   */
+/*   ft_read_file..c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/11 18:24:26 by youngkpa          #+#    #+#             */
-/*   Updated: 2023/12/24 13:42:57 by sangyepa         ###   ########.fr       */
+/*   Created: 2023/12/24 14:39:35 by sangyepa          #+#    #+#             */
+/*   Updated: 2023/12/24 14:39:35 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include "libft.h"
 
-char	*ft_str_double_join(char *str1, char *str2, char *str3)
+char	*ft_read_file(int fd)
 {
-	char	*tmp;
-	char	*res;
+	char	buf[BUFFER_SIZE + 1];
+	int		read_size;
+	char	*str;
 
-	tmp = ft_strjoin(str1, str2);
-	check_malloc_error(tmp);
-	res = ft_strjoin(tmp, str3);
-	free(tmp);
-	check_malloc_error(res);
-	return (res);
-}
-
-int	all_isspace(char *line)
-{
-	while (*line)
+	str = ft_strdup("");
+	if (str == FT_NULL)
+		return (FT_NULL);
+	while (TRUE)
 	{
-		if (ft_isspace(*line) == FALSE)
-			return (FALSE);
-		line++;
+		read_size = read(fd, buf, BUFFER_SIZE);
+		if (read_size < 0)
+		{
+			free(str);
+			return (FT_NULL);
+		}
+		if (read_size == 0)
+			break ;
+		buf[read_size] = 0;
+		str = gnl_strjoin_and_free(str, buf);
 	}
-	return (TRUE);
+	return (str);
 }

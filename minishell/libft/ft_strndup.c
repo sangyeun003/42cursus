@@ -1,37 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell_util.c                                   :+:      :+:    :+:   */
+/*   ft_strndup.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/11 18:24:26 by youngkpa          #+#    #+#             */
-/*   Updated: 2023/12/24 13:42:57 by sangyepa         ###   ########.fr       */
+/*   Created: 2023/12/24 14:39:55 by sangyepa          #+#    #+#             */
+/*   Updated: 2023/12/24 14:39:55 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include "libft.h"
 
-char	*ft_str_double_join(char *str1, char *str2, char *str3)
+char	*ft_strndup(char *src, int len)
 {
-	char	*tmp;
-	char	*res;
+	char	*string;
+	int		idx;
 
-	tmp = ft_strjoin(str1, str2);
-	check_malloc_error(tmp);
-	res = ft_strjoin(tmp, str3);
-	free(tmp);
-	check_malloc_error(res);
-	return (res);
-}
-
-int	all_isspace(char *line)
-{
-	while (*line)
+	string = (char *)malloc(len + 1);
+	if (!string)
+		return (FT_NULL);
+	idx = 0;
+	while (src[idx] && idx < len)
 	{
-		if (ft_isspace(*line) == FALSE)
-			return (FALSE);
-		line++;
+		string[idx] = src[idx];
+		idx++;
 	}
-	return (TRUE);
+	string[idx] = '\0';
+	return (string);
 }

@@ -1,37 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell_util.c                                   :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/11 18:24:26 by youngkpa          #+#    #+#             */
-/*   Updated: 2023/12/24 13:42:57 by sangyepa         ###   ########.fr       */
+/*   Created: 2023/12/24 14:29:32 by sangyepa          #+#    #+#             */
+/*   Updated: 2023/12/24 14:29:32 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-char	*ft_str_double_join(char *str1, char *str2, char *str3)
+void	shell_error(char *str, int exit_status)
 {
-	char	*tmp;
-	char	*res;
-
-	tmp = ft_strjoin(str1, str2);
-	check_malloc_error(tmp);
-	res = ft_strjoin(tmp, str3);
-	free(tmp);
-	check_malloc_error(res);
-	return (res);
+	ft_putendl_fd(str, STDERR_FILENO);
+	g_info.last_exit_status = exit_status;
 }
 
-int	all_isspace(char *line)
+void	exit_shell(char *str)
 {
-	while (*line)
-	{
-		if (ft_isspace(*line) == FALSE)
-			return (FALSE);
-		line++;
-	}
-	return (TRUE);
+	ft_putendl_fd(str, STDOUT_FILENO);
+	exit(0);
+}
+
+void	exit_shell_by_error(char *str)
+{
+	ft_putendl_fd(str, STDERR_FILENO);
+	exit(-1);
+}
+
+void	check_malloc_error(void *target)
+{
+	if (!target)
+		exit_shell_by_error("malloc failed");
 }
