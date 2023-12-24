@@ -3,30 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   execute.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dohyunki <dohyunki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: suacho <suacho@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/11 18:24:15 by youngkpa          #+#    #+#             */
-/*   Updated: 2023/08/16 16:56:04 by dohyunki         ###   ########.fr       */
+/*   Created: 2023/12/24 13:39:24 by suacho            #+#    #+#             */
+/*   Updated: 2023/12/24 14:18:05 by suacho           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
-
-static int	init_execute(int *cnt, pid_t **pids, int ***pipes, t_argv *argv)
-{
-	*pids = NULL;
-	*pipes = NULL;
-	set_pipe_cnt(cnt, argv);
-	*pids = (pid_t *)malloc(sizeof(pid_t) * (*cnt + 1));
-	if (!(*pids))
-		exit_shell_by_error("malloc failed");
-	if (*cnt > 0)
-	{
-		if (set_pipes(pipes, *cnt) == FAIL)
-			return (FAIL);
-	}
-	return (SUCCESS);
-}
 
 static void	end_execute(pid_t *pids, int **pipes, t_argv *argv)
 {
@@ -36,13 +20,30 @@ static void	end_execute(pid_t *pids, int **pipes, t_argv *argv)
 	free_argv(argv);
 }
 
+static int	init_execute(int *cnt_pipe, pid_t **pids, int ***pipes, \
+t_argv *argv)
+{
+	*pids = NULL;
+	*pipes = NULL;
+	set_cnt_pipe(cnt_pipe, argv);
+	*pids = (pid_t *)malloc(sizeof(pid_t) * (*cnt_pipe + 1));
+	if (!(*pids))
+		exit_shell_by_error("malloc failed");
+	if (*cnt_pipe > 0)
+	{
+		if (set_pipes(pipes, *cnt_pipe) == FAIL)
+			return (FAIL);
+	}
+	return (SUCCESS);
+}
+
 void	execute(t_argv *argv)
 {
-	int		cnt_pipe;
-	int		**pipes;
 	pid_t	*pids;
+	int		**pipes;
+	int		cnt_pipe;
 
-	if (check_heredoc(argv) == FAIL)
+	if (check_hdoc(argv) == FAIL)
 		return (free_argv(argv));
 	set_echoctl();
 	if (init_execute(&cnt_pipe, &pids, &pipes, argv) == FAIL)
@@ -51,8 +52,8 @@ void	execute(t_argv *argv)
 		return (end_execute(pids, pipes, argv));
 	}
 	if (cnt_pipe == 0 && is_builtin(argv->cmd) == TRUE)
-		single_process(argv);
+		run_single_process(argv);
 	else
-		multi_process(argv, pids, pipes, cnt_pipe);
+		run_multi_process(argv, pids, pipes, cnt_pipe);
 	end_execute(pids, pipes, argv);
 }

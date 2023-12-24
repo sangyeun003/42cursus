@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_redir.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dohyunki <dohyunki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: suacho <suacho@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/16 16:42:30 by dohyunki          #+#    #+#             */
-/*   Updated: 2023/08/16 16:42:30 by dohyunki         ###   ########.fr       */
+/*   Created: 2023/12/24 13:59:56 by suacho            #+#    #+#             */
+/*   Updated: 2023/12/24 14:01:03 by suacho           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,7 @@ int	set_stdin_redir(t_argv *argv)
 		if (tmp)
 			close(fd);
 	}
-	dup2(fd, STDIN_FILENO);
-	close(fd);
+	reset_stdin(fd);
 	return (SUCCESS);
 }
 
@@ -66,7 +65,6 @@ int	set_stdout_redir(t_argv *argv)
 		if (tmp)
 			close(fd);
 	}
-	dup2(fd, STDOUT_FILENO);
-	close(fd);
+	reset_stdout(fd);
 	return (SUCCESS);
 }

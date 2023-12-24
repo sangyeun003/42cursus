@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_execute.c                                     :+:      :+:    :+:   */
+/*   init_pipes.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dohyunki <dohyunki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: suacho <suacho@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/11 22:24:34 by dohyunki          #+#    #+#             */
-/*   Updated: 2023/08/16 16:44:52 by dohyunki         ###   ########.fr       */
+/*   Created: 2023/12/24 13:49:48 by suacho            #+#    #+#             */
+/*   Updated: 2023/12/24 13:50:59 by suacho           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-void	set_pipe_cnt(int *cnt_pipe, t_argv *argv)
+void	set_cnt_pipe(int *cnt_pipe, t_argv *argv)
 {
 	t_argv	*tmp;
 	int		cnt;
@@ -36,11 +36,11 @@ int	set_pipes(int ***pipes, int cnt_pipe)
 {
 	int	idx;
 
+	idx = 0;
 	*pipes = (int **)malloc(sizeof(int *) * (cnt_pipe + 1));
 	if (!(*pipes))
 		exit_shell_by_error("malloc failed");
 	(*pipes)[cnt_pipe] = NULL;
-	idx = 0;
 	while (idx < cnt_pipe)
 	{
 		(*pipes)[idx] = (int *)malloc(sizeof(int) * 2);

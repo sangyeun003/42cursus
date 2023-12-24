@@ -6,7 +6,7 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 14:26:14 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/12/24 14:26:15 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/12/24 14:55:17 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,26 +28,10 @@ static void	init_argvs(t_argv **argvs, t_cmd **cmd, t_type **type)
 	ft_argv_add_back(argvs, argv);
 }
 
-void	free_lst_only(t_list **lst)
-{
-	t_list	*to_free;
-	t_list	*seek;
-
-	seek = *lst;
-	while (seek)
-	{
-		to_free = seek;
-		seek = seek->next;
-		if (to_free)
-			free(to_free);
-	}
-	*lst = NULL;
-}
-
 void	create_argvs(t_argv **argvs, t_list *tokens, t_cmd **cmd, t_type **type)
 {
 	init_argvs(argvs, cmd, type);
-	while (tokens)
+	while (tokens != NULL)
 	{
 		add_argv(argvs, tokens->content, *cmd, *type);
 		tokens = tokens->next;

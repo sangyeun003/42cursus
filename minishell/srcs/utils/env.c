@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: suacho <suacho@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/24 14:29:18 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/12/24 14:29:24 by sangyepa         ###   ########.fr       */
+/*   Created: 2023/12/24 16:05:20 by suacho            #+#    #+#             */
+/*   Updated: 2023/12/24 16:05:23 by suacho           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,34 +45,32 @@ t_env	*get_env(char *key)
 	return (NULL);
 }
 
-t_env	*make_env(char *env_str)
+t_env	*make_env(char *env_line)
 {
 	t_env	*new_env;
 	int		seperator_idx;
 	char	*value;
 
 	new_env = (t_env *)malloc(sizeof(t_env));
-	check_malloc_error(new_env);
-	seperator_idx = ft_index_str(env_str, '=');
-	new_env->key = ft_strndup(env_str, seperator_idx);
-	value = env_str + seperator_idx + 1;
+	seperator_idx = ft_index_str(env_line, '=');
+	new_env->key = ft_strndup(env_line, seperator_idx);
+	value = env_line + seperator_idx + 1;
 	if (ft_strcmp(new_env->key, "SHLVL") == 0)
 		new_env->value = ft_strdup(ft_itoa(ft_atoi(value) + 1));
 	else
-		new_env->value = ft_strdup(env_str + seperator_idx + 1);
+		new_env->value = ft_strdup(env_line + seperator_idx + 1);
 	new_env->next = NULL;
 	new_env->prev = NULL;
 	return (new_env);
 }
 
-void	add_env(t_env **lst, char *env_str)
+void	add_env(t_env **lst, char *env_line)
 {
 	t_env	*new_env;
 	t_env	*tmp;
 
 	tmp = *lst;
-	new_env = make_env(env_str);
-	check_malloc_error(new_env);
+	new_env = make_env(env_line);
 	if (!(*lst))
 		(*lst) = new_env;
 	else

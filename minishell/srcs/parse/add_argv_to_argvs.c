@@ -6,7 +6,7 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 14:07:27 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/12/24 14:11:57 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/12/24 16:25:16 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@ static void	add_word(t_argv **argvs, t_cmd *cmd, char *value, t_type *type)
 	t_list	*new_cmd;
 
 	if (type->redir == RD_T_OUT || type->redir == RD_A_OUT)
-		ft_redirlast((*argvs)->out)->value = value;
+		ft_redir_last((*argvs)->out)->value = value;
 	else if (type->redir == RD_IN)
-		ft_redirlast((*argvs)->in)->value = value;
+		ft_redir_last((*argvs)->in)->value = value;
 	else if (type->redir == RD_HDOC)
 	{
-		(ft_redirlast((*argvs)->in)->value) = ft_strjoin("/tmp/.0", value);
-		(ft_redirlast((*argvs)->hdoc)->value) = ft_strjoin("/tmp/.0", value);
+		(ft_redir_last((*argvs)->in)->value) = ft_strjoin("/tmp/.0", value);
+		(ft_redir_last((*argvs)->hdoc)->value) = ft_strjoin("/tmp/.0", value);
 		free(value);
 	}
 	else
@@ -39,7 +39,7 @@ static void	add_word(t_argv **argvs, t_cmd *cmd, char *value, t_type *type)
 
 void	add_cmd_to_argvs(t_cmd *cmd, t_argv **argvs)
 {
-	t_list	*cmd_free;
+	t_list	*cmd_temp;
 	char	**cmds;
 	int		idx;
 
@@ -48,7 +48,7 @@ void	add_cmd_to_argvs(t_cmd *cmd, t_argv **argvs)
 	cmds = malloc(sizeof(char *) * (cmd->cnt + 1));
 	check_malloc_error(cmds);
 	ft_argv_last(*argvs)->cmd = cmds;
-	cmd_free = cmd->cmds;
+	cmd_temp = cmd->cmds;
 	idx = 0;
 	while (idx < cmd->cnt)
 	{
@@ -58,7 +58,7 @@ void	add_cmd_to_argvs(t_cmd *cmd, t_argv **argvs)
 		idx++;
 	}
 	cmds[idx] = NULL;
-	ft_lstclear(&cmd_free, free_content);
+	ft_lstclear(&cmd_temp, free_content);
 	cmd->cnt = 0;
 }
 
@@ -97,13 +97,13 @@ static void	add_redir(t_argv **argvs, char *value, t_type *type)
 
 void	add_argv(t_argv **argvs, t_token *token, t_cmd *cmd, t_type *type)
 {
-	t_argv	*argv_last;
+	t_argv	*last;
 
-	argv_last = ft_argv_last(*argvs);
+	last = ft_argv_last(*argvs);
 	if (token->type == TK_WORD)
-		add_word(&argv_last, cmd, token->value, type);
+		add_word(&last, cmd, token->value, type);
 	else if (token->type == TK_PIPE)
 		add_pipe(argvs, token->value, cmd, type);
 	else if (token->type == TK_REDIR)
-		add_redir(&argv_last, token->value, type);
+		add_redir(&last, token->value, type);
 }

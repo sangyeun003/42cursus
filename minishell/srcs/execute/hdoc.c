@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   heredoc.c                                          :+:      :+:    :+:   */
+/*   hdoc.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/24 14:25:34 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/12/24 14:25:34 by sangyepa         ###   ########.fr       */
+/*   Created: 2023/08/11 21:09:39 by dohyunki          #+#    #+#             */
+/*   Updated: 2023/12/24 16:13:32 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ static int	make_hdoc(t_argv *argv)
 	return (status);
 }
 
-int	check_heredoc(t_argv *argv)
+int	check_hdoc(t_argv *argv)
 {
 	t_argv	*tmp;
 	int		ishdoc;

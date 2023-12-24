@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   run_echo.c                                         :+:      :+:    :+:   */
+/*   echo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dohyunki <dohyunki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: suacho <suacho@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/16 16:42:06 by dohyunki          #+#    #+#             */
-/*   Updated: 2023/08/16 16:46:30 by dohyunki         ###   ########.fr       */
+/*   Created: 2023/12/24 14:05:07 by suacho            #+#    #+#             */
+/*   Updated: 2023/12/24 14:06:33 by suacho           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static void	check_option(char ***cmd, int *flag)
 	change_flag(cmd, flag, tmp, idx1);
 }
 
-void	run_echo(char **cmd)
+void	exec_echo(char **cmd)
 {
 	int		idx;
 	int		flag;

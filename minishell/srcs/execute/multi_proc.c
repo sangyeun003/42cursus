@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   multi_proc.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dohyunki <dohyunki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: suacho <suacho@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/15 15:35:43 by dohyunki          #+#    #+#             */
-/*   Updated: 2023/08/16 17:42:42 by dohyunki         ###   ########.fr       */
+/*   Created: 2023/12/24 14:15:21 by suacho            #+#    #+#             */
+/*   Updated: 2023/12/24 14:17:01 by suacho           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ static void	run_child_process(t_argv *argv, int **pipes, int i)
 		run_execve_process(argv->cmd);
 }
 
-void	multi_process(t_argv *argv, pid_t *pids, int **pipes, int cnt_pipe)
+void	run_multi_process(t_argv *argv, pid_t *pids, int **pipes, int cnt_pipe)
 {
 	int		idx;
 	t_argv	*tmp;

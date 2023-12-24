@@ -1,15 +1,14 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   input_to_line.c                                    :+:      :+:    :+:   */
+/*   add_input_to_line.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 13:46:27 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/12/24 13:55:09 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/12/24 15:08:37 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "../../includes/minishell.h"
 
@@ -87,7 +86,7 @@ void	update_env(char **line, char *input)
 	}
 }
 
-int	input_to_line(t_parse *info)
+int	add_input_to_line(t_parse *info)
 {
 	info->input = readline("minishell > ");
 	if (!(info->input))

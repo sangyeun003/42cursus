@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   builtin.c                                          :+:      :+:    :+:   */
+/*   single_proc.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dohyunki <dohyunki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: suacho <suacho@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/16 16:41:25 by dohyunki          #+#    #+#             */
-/*   Updated: 2023/08/16 16:43:39 by dohyunki         ###   ########.fr       */
+/*   Created: 2023/12/24 13:51:59 by suacho            #+#    #+#             */
+/*   Updated: 2023/12/24 14:14:33 by suacho           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 int	is_builtin(char **cmd)
 {
 	int			idx;
-	const char	*builtins_cmd[7] = {"echo", "cd", "pwd", "export",
-		"unset", "env", "exit"};
+	const char	*builtins_cmd[7] = {"echo", "cd", "pwd", "export", "unset", \
+	"env", "exit"};
 
 	if (!cmd)
 		return (FALSE);
@@ -33,26 +33,26 @@ int	is_builtin(char **cmd)
 void	run_builtin_process(char **cmd)
 {
 	if (ft_strcmp(cmd[0], "echo") == 0)
-		run_echo(cmd);
+		exec_echo(cmd);
 	else if (ft_strcmp(cmd[0], "cd") == 0)
-		run_cd(cmd);
+		exec_cd(cmd);
 	else if (ft_strcmp(cmd[0], "pwd") == 0)
-		run_pwd(cmd);
+		exec_pwd(cmd);
 	else if (ft_strcmp(cmd[0], "export") == 0)
-		run_export(cmd);
+		exec_export(cmd);
 	else if (ft_strcmp(cmd[0], "unset") == 0)
-		run_unset(cmd);
+		exec_unset(cmd);
 	else if (ft_strcmp(cmd[0], "env") == 0)
-		run_env(cmd);
+		exec_env(cmd);
 	else if (ft_strcmp(cmd[0], "exit") == 0)
-		run_exit(cmd);
+		exec_exit(cmd);
 	if (g_info.pid != getpid())
 		exit(EXIT_STATUS_SUCCESS);
 	else
 		g_info.last_exit_status = EXIT_STATUS_SUCCESS;
 }
 
-void	single_process(t_argv *argv)
+void	run_single_process(t_argv *argv)
 {
 	int	origin_stdin;
 	int	origin_stdout;

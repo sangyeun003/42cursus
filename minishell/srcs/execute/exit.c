@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   run_exit.c                                         :+:      :+:    :+:   */
+/*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dohyunki <dohyunki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: suacho <suacho@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/16 16:42:13 by dohyunki          #+#    #+#             */
-/*   Updated: 2023/08/16 16:47:00 by dohyunki         ###   ########.fr       */
+/*   Created: 2023/12/24 14:14:50 by suacho            #+#    #+#             */
+/*   Updated: 2023/12/24 14:14:51 by suacho           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static int	ft_atouc(char *str)
 	return ((unsigned char)(ret * sign));
 }
 
-void	run_exit(char **cmd)
+void	exec_exit(char **cmd)
 {
 	int	exit_num;
 

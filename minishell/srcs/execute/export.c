@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   run_export.c                                       :+:      :+:    :+:   */
+/*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dohyunki <dohyunki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: suacho <suacho@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/16 16:42:17 by dohyunki          #+#    #+#             */
-/*   Updated: 2023/08/16 16:47:14 by dohyunki         ###   ########.fr       */
+/*   Created: 2023/12/24 14:11:12 by suacho            #+#    #+#             */
+/*   Updated: 2023/12/24 14:11:15 by suacho           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static void	is_update_env(char *cmd)
 	}
 }
 
-void	run_export(char **cmd)
+void	exec_export(char **cmd)
 {
 	int		idx;
 	char	*msg;

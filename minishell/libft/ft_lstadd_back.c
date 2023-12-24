@@ -1,30 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   run_pwd.c                                          :+:      :+:    :+:   */
+/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dohyunki <dohyunki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/16 16:42:22 by dohyunki          #+#    #+#             */
-/*   Updated: 2023/08/16 16:42:23 by dohyunki         ###   ########.fr       */
+/*   Created: 2023/04/05 17:27:50 by sangyepa          #+#    #+#             */
+/*   Updated: 2023/04/09 14:36:10 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include	"libft.h"
 
-void	run_pwd(char **cmd)
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	char	cwd[PATH_MAX];
+	t_list	*last;
 
-	if (cmd[1])
+	if (!lst || !new)
+		return ;
+	if (!*lst)
 	{
-		print_error("pwd", "too many arguments", FAIL);
+		*lst = new;
 		return ;
 	}
-	if (!getcwd(cwd, sizeof(cwd)))
-	{
-		print_error("pwd", strerror(errno), FAIL);
-		return ;
-	}
-	printf("%s\n", cwd);
+	last = ft_lstlast(*lst);
+	last->next = new;
 }

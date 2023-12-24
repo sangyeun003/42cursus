@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   run_cd.c                                           :+:      :+:    :+:   */
+/*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dohyunki <dohyunki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: suacho <suacho@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/16 16:42:03 by dohyunki          #+#    #+#             */
-/*   Updated: 2023/08/16 16:46:17 by dohyunki         ###   ########.fr       */
+/*   Created: 2023/12/24 14:07:26 by suacho            #+#    #+#             */
+/*   Updated: 2023/12/24 14:09:01 by suacho           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static void	update_env_pwds(char *cwd)
 	}
 }
 
-void	run_cd(char **cmd)
+void	exec_cd(char **cmd)
 {
 	char	cwd[PATH_MAX];
 

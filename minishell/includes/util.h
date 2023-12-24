@@ -6,7 +6,7 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 13:49:27 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/12/24 14:19:20 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/12/24 16:23:35 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ void	print_error_exit(char *cmd, char *msg, int exit_num);
 void	unset_echoctl(void);
 void	set_echoctl(void);
 
-
 void	register_signal_handler(void);
 void	ignore_signal(void);
 void	default_signal(void);
@@ -50,7 +49,7 @@ void	free_env(void *env);
 void	free_redir(t_redir *redir);
 
 int		ft_redirsize(t_redir *redirs);
-t_redir	*ft_redirlast(t_redir *redir);
+t_redir	*ft_redir_last(t_redir *redir);
 void	ft_redir_add_back(t_redir **redirs, t_redir *new);
 void	free_argv(t_argv *argv);
 int		ft_argvsize(t_argv *argvs);

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   run_unset.c                                        :+:      :+:    :+:   */
+/*   unset.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dohyunki <dohyunki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: suacho <suacho@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/16 16:42:26 by dohyunki          #+#    #+#             */
-/*   Updated: 2023/08/16 16:47:30 by dohyunki         ###   ########.fr       */
+/*   Created: 2023/12/24 14:10:06 by suacho            #+#    #+#             */
+/*   Updated: 2023/12/24 14:25:02 by suacho           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static void	del_env_one(t_env *del)
 	free(del);
 }
 
-void	run_unset(char **cmd)
+void	exec_unset(char **cmd)
 {
 	t_env	*del;
 	int		idx;

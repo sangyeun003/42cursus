@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/24 14:25:45 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/12/24 14:25:45 by sangyepa         ###   ########.fr       */
+/*   Created: 2023/12/24 16:06:15 by suacho            #+#    #+#             */
+/*   Updated: 2023/12/24 16:20:05 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	ft_redirsize(t_redir *redirs)
 	return (len);
 }
 
-t_redir	*ft_redirlast(t_redir *redir)
+t_redir	*ft_redir_last(t_redir *redir)
 {
 	while (ft_redirsize(redir) > 1)
 		redir = redir->next;
@@ -62,5 +62,5 @@ void	ft_redir_add_back(t_redir **redirs, t_redir *new)
 	if (!*redirs)
 		*redirs = new;
 	else
-		ft_redirlast(*redirs)->next = new;
+		ft_redir_last(*redirs)->next = new;
 }

@@ -6,7 +6,7 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 14:26:26 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/12/24 14:26:26 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/12/24 15:17:06 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,12 @@ void	parse(t_argv **argvs)
 	while (TRUE)
 	{
 		ft_memset(&info, 0, sizeof(t_parse));
-		if (input_to_line(&info) == FAIL)
+		if (add_input_to_line(&info) == FAIL)
 		{
 			ft_lstclear(&info.dummys, free_dummy);
 			continue ;
 		}
-		error = line_to_tokens(&info.tokens, &info.dummys, info.line);
+		error = add_line_to_token_list(&info.tokens, &info.dummys, info.line);
 		free(info.line);
 		ft_lstclear(&info.dummys, free_dummy);
 		if (error & ERROR_OCCURED)
