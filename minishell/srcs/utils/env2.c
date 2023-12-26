@@ -6,7 +6,7 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 16:05:35 by suacho            #+#    #+#             */
-/*   Updated: 2023/12/24 16:20:22 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/12/26 14:39:18 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,7 @@ char	*get_env_value(char *line)
 	t_env	*env;
 
 	key = ft_substr(line, 1, get_env_key_length(line + 1));
-	if (!key)
-		exit_shell_by_error("malloc failed");
+	check_malloc_error((void *)key);
 	env = get_env(key);
 	if (env == NULL)
 	{
@@ -91,6 +90,7 @@ char	*get_env_value(char *line)
 	}
 	else
 		value = ft_strdup(env->value);
+	check_malloc_error((void *)value);
 	free(key);
 	return (value);
 }

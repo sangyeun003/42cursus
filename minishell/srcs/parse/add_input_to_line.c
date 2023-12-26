@@ -6,7 +6,7 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 13:46:27 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/12/24 15:08:37 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/12/26 14:34:51 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static int	get_size(char *input)
 	flag = 0;
 	while (*input)
 	{
-		if (is_env(input, &flag))
+		if (is_env(input, &flag) == TRUE)
 		{
 			env = get_env_value(input);
 			check_malloc_error(env);
@@ -66,9 +66,9 @@ void	update_env(char **line, char *input)
 	flag = DM_NONE;
 	size = get_size(input);
 	*line = malloc(sizeof(char) * (size + 1));
-	ft_memset(*line, 0, size + 1);
 	if (!(*line))
 		exit_shell_by_error("malloc failed");
+	ft_memset(*line, 0, size + 1);
 	while (*input)
 	{
 		if (is_env(input, &flag))

@@ -6,7 +6,7 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 14:30:41 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/12/24 15:15:22 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/12/26 14:20:07 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 # include "minishell.h"
 
 void	parse(t_argv **argvs);
+int		check_token_error(t_parse info, int error);
 int		add_input_to_line(t_parse *info);
 int		add_line_to_token_list(t_list **token_list, t_list **dummy_list, \
 			char *line);
