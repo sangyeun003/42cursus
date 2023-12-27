@@ -1,26 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youngkpa <youngkpa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/19 04:35:34 by youngkpa          #+#    #+#             */
-/*   Updated: 2023/01/15 15:50:04 by youngkpa         ###   ########.fr       */
+/*   Created: 2023/12/27 21:19:09 by sangyepa          #+#    #+#             */
+/*   Updated: 2023/12/27 22:25:26 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include	"../includes/philo.h"
 
-void	ft_bzero(void *s, size_t n)
+int	main(int argc, char *argv[])
 {
-	char	*ptr;
+	t_arg	arg;
 
-	ptr = (char *) s;
-	while (n)
-	{
-		*ptr = 0;
-		ptr++;
-		n--;
-	}
+	if (argc != 5 && argc != 6)
+		print_error_exit("Invalid argument!");
+	if (init_arg(&arg, argc, argv) == FAIL)
+		print_error_exit("Negative number exists!");
+
+	return (0);
 }
