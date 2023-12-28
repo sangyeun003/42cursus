@@ -6,7 +6,7 @@
 /*   By: sangyepa <sangyepa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 21:19:37 by sangyepa          #+#    #+#             */
-/*   Updated: 2023/12/27 22:22:59 by sangyepa         ###   ########.fr       */
+/*   Updated: 2023/12/28 20:26:43 by sangyepa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,12 @@ typedef struct s_arg
 	int	sleep_span;
 	int	eat_num;
 }	t_arg;
+
+typedef struct s_philo
+{
+	
+}	t_philo;
+
 
 
 int		ft_atoi(const char *str);
