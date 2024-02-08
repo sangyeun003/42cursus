@@ -2,10 +2,10 @@
 --2023년 2월 6일 42 Seoul 시작--
 
 Piscine   
-  Shell   
-  C   
-  Rush   
-  BSQ   
+-Shell   
+-C   
+-Rush   
+-BSQ   
 
 Cadet
 1. Libft
